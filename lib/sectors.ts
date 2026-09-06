@@ -7,7 +7,6 @@ export const SECTORS = [
   "Higiene",
   "Brinquedos",
   "Areias",
-  "Rações",
   "Coadjuvantes",
   "Farmácia",
 ] as const
