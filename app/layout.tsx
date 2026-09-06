@@ -1,36 +1,35 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
+import { Baloo_2, Nunito } from 'next/font/google'
+import { Toaster } from '@/components/ui/sonner'
 import './globals.css'
 
+const baloo = Baloo_2({ subsets: ['latin'], variable: '--font-baloo', weight: ['500', '600', '700', '800'] })
+const nunito = Nunito({ subsets: ['latin'], variable: '--font-nunito', weight: ['400', '500', '600', '700', '800'] })
+
 export const metadata: Metadata = {
-  title: 'PetCamp | Tudo para o seu pet',
-  description: 'Encontre rações, higiene, brinquedos e cuidados para cães e gatos na PetCamp.',
+  title: 'PetCamp — Promoções',
+  description: 'Gestão de promoções e verificações da equipe PetCamp',
   generator: 'v0.app',
+  manifest: '/manifest.webmanifest',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'PetCamp',
+  },
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: '/petcamp-logo.png',
+    apple: '/petcamp-logo.png',
   },
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'light dark',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
-  ],
+  colorScheme: 'light',
+  themeColor: '#3D1C87',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 }
 
 export default function RootLayout({
@@ -39,9 +38,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className={`bg-background ${baloo.variable} ${nunito.variable}`}>
       <body className="antialiased">
         {children}
+        <Toaster position="top-center" richColors />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
