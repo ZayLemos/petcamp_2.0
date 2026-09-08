@@ -10,7 +10,6 @@ import { SECTORS } from "@/lib/sectors"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { toast } from "sonner"
 
 export function AuthForm({ mode }: { mode: "sign-in" | "sign-up" }) {
@@ -20,7 +19,7 @@ export function AuthForm({ mode }: { mode: "sign-in" | "sign-up" }) {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [sector, setSector] = useState<string>("")
+  const [sectors, setSectors] = useState<string[]>([])
   const [managerCode, setManagerCode] = useState("")
   const [loading, setLoading] = useState(false)
 
@@ -29,8 +28,8 @@ export function AuthForm({ mode }: { mode: "sign-in" | "sign-up" }) {
     setLoading(true)
     try {
       if (isSignUp) {
-        if (!sector) {
-          toast.error("Selecione o seu setor.")
+        if (sectors.length === 0) {
+          toast.error("Selecione ao menos um setor ou 'Não tenho setor'.")
           setLoading(false)
           return
         }
@@ -39,7 +38,7 @@ export function AuthForm({ mode }: { mode: "sign-in" | "sign-up" }) {
           password,
           name,
           // additionalFields
-          sector,
+          sector: JSON.stringify(sectors),
         } as Parameters<typeof authClient.signUp.email>[0])
         if (error) {
           toast.error(error.message ?? "Não foi possível criar a conta.")
@@ -59,7 +58,7 @@ export function AuthForm({ mode }: { mode: "sign-in" | "sign-up" }) {
           return
         }
       }
-      router.push("/painel")
+      router.push("/")
       router.refresh()
     } catch (err) {
       toast.error("Algo deu errado. Tente novamente.")
@@ -118,20 +117,17 @@ export function AuthForm({ mode }: { mode: "sign-in" | "sign-up" }) {
 
         {isSignUp && (
           <>
-            <div className="flex flex-col gap-1.5">
-              <Label htmlFor="sector">Setor</Label>
-              <Select value={sector} onValueChange={setSector}>
-                <SelectTrigger id="sector">
-                  <SelectValue placeholder="Selecione seu setor" />
-                </SelectTrigger>
-                <SelectContent>
-                  {SECTORS.map((s) => (
-                    <SelectItem key={s} value={s}>
-                      {s}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+            <div className="flex flex-col gap-2">
+              <Label>Setores</Label>
+              <div className="grid gap-2 rounded-xl border border-border p-3 sm:grid-cols-2">
+                {[...SECTORS, "Não tenho setor"].map((item) => {
+                  const checked = sectors.includes(item)
+                  return <label key={item} className="flex cursor-pointer items-center gap-2 text-sm">
+                    <input type="checkbox" checked={checked} onChange={() => setSectors((current) => item === "Não tenho setor" ? (checked ? [] : [item]) : checked ? current.filter((value) => value !== item) : [...current.filter((value) => value !== "Não tenho setor"), item])} className="size-4 accent-primary" />
+                    <span>{item}</span>
+                  </label>
+                })}
+              </div>
             </div>
 
             <div className="flex flex-col gap-1.5">

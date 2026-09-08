@@ -22,7 +22,8 @@ export async function promoteToManager(code: string) {
 export async function updateSector(sector: string) {
   const me = await getCurrentUser()
   if (!me) throw new Error("Não autenticado.")
-  await db.update(user).set({ sector }).where(eq(user.id, me.id))
+  if (!sector.trim()) return { ok: false, error: "Selecione ao menos uma opção." }
+  await db.update(user).set({ sector: sector.trim() }).where(eq(user.id, me.id))
   revalidatePath("/", "layout")
   return { ok: true }
 }

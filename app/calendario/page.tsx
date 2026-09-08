@@ -1,0 +1,32 @@
+import { redirect } from "next/navigation"
+import { AppHeader } from "@/components/app-header"
+import { BottomNav } from "@/components/bottom-nav"
+import { CalendarView } from "@/components/calendar-view"
+import { getAllTasks, getCurrentUser, getNotifications, getSession, getUnreadCount } from "@/lib/data"
+
+export default async function CalendarPage() {
+  const session = await getSession()
+  if (!session?.user) redirect("/sign-in")
+
+  const employee = await getCurrentUser()
+  if (!employee) redirect("/sign-in")
+
+  const [tasks, notifications, unread] = await Promise.all([
+    getAllTasks(),
+    getNotifications(employee.id),
+    getUnreadCount(employee.id),
+  ])
+
+  return (
+    <main className="min-h-dvh bg-background pb-20">
+      <AppHeader
+        title="Calendário"
+        subtitle="Promoções e verificações agendadas"
+        notifications={notifications}
+        unread={unread}
+      />
+      <CalendarView tasks={tasks} sector={employee.sector} isManager={employee.role === "manager"} />
+      <BottomNav isManager={employee.role === "manager"} />
+    </main>
+  )
+}
