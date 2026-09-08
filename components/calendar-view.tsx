@@ -43,7 +43,7 @@ export function CalendarView({ tasks, sector, isManager }: { tasks: TaskWithProm
       </section>
       <section className="rounded-2xl border border-border bg-card p-5 shadow-sm">
         <div className="flex items-center gap-2"><ClipboardList className="size-5 text-primary" /><h2 className="text-lg font-extrabold">Próximas verificações</h2></div>
-        {visibleTasks.length === 0 ? <p className="mt-3 text-sm text-muted-foreground">Nenhuma verificação agendada.</p> : <ul className="mt-4 space-y-3">{visibleTasks.slice(0, 12).map((task) => <li key={task.id} className="flex items-start justify-between gap-3 rounded-xl bg-muted p-3"><div><p className="font-bold">{task.title}</p><p className="mt-1 text-xs text-muted-foreground">{task.type === "start" ? "Aplicar promoção" : "Retirar promoção"} · {formatDate(task.dueDate)}</p><p className="mt-1 text-xs text-muted-foreground">Setor: {task.sector}</p></div>{task.completed && <CircleCheck className="mt-1 size-5 shrink-0 text-primary" />}</li>)}</ul>}
+        {visibleTasks.length === 0 ? <p className="mt-3 text-sm text-muted-foreground">Nenhuma verificação agendada.</p> : <ul className="mt-4 space-y-3">{visibleTasks.map((task) => <li key={task.id} className="flex items-start justify-between gap-3 rounded-xl bg-muted p-3"><div><p className="font-bold">{task.title}</p><p className="mt-1 text-xs text-muted-foreground">{task.type === "start" ? "Aplicar promoção" : "Retirar promoção"} · {formatDate(task.dueDate)}</p><p className="mt-1 text-xs text-muted-foreground">Setor: {task.sector}</p></div>{task.completed && <CircleCheck className="mt-1 size-5 shrink-0 text-primary" />}</li>)}</ul>}
       </section>
     </div>
   )
