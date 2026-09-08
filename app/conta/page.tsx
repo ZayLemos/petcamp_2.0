@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation"
 import { AppHeader } from "@/components/app-header"
 import { BottomNav } from "@/components/bottom-nav"
+import { SectorEditor } from "@/components/sector-editor"
 import { getCurrentUser, getNotifications, getSession, getUnreadCount } from "@/lib/data"
 
 export default async function AccountPage() {
@@ -43,17 +44,7 @@ export default async function AccountPage() {
             </div>
           </dl>
         </section>
-        {employee.role !== "manager" && (
-          <section className="rounded-2xl border border-primary/20 bg-primary/5 p-5">
-            <h2 className="text-lg font-extrabold">Acesso de gerente</h2>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Para criar uma conta com permissão de gerente, use o código autorizado no cadastro de uma nova conta.
-            </p>
-            <p className="mt-3 rounded-xl bg-background px-4 py-3 text-center font-mono text-sm font-bold tracking-wide">
-              petcamp-gerente
-            </p>
-          </section>
-        )}
+        <SectorEditor initialSector={employee.sector} />
       </div>
       <BottomNav isManager={employee.role === "manager"} />
     </main>
