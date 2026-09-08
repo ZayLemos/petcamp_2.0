@@ -59,7 +59,7 @@ export function AuthForm({ mode }: { mode: "sign-in" | "sign-up" }) {
           return
         }
       }
-      router.push("/painel")
+      router.push("/")
       router.refresh()
     } catch (err) {
       toast.error("Algo deu errado. Tente novamente.")
