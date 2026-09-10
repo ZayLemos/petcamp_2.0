@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { importPromotionsFromExcel } from "@/app/actions/promotions"
-import { CheckCircle2, ClipboardList, FileSpreadsheet, Upload } from "lucide-react"
+import { CheckCircle2, ClipboardList, FileSpreadsheet, Upload, AlertTriangle } from "lucide-react"
 
 type Task = { id: number; sector: string; dueDate: string; completed: boolean; completedByName: string | null; title: string; type: string }
 
@@ -38,13 +38,12 @@ export function ManagerPanel({ tasks }: { tasks: Task[] }) {
           <div>
             <h2 className="font-extrabold">Importar planilha Excel</h2>
             <p className="mt-1 text-sm text-muted-foreground">
-              Envie .xlsx com produto, setor, início e término. As tarefas serão encaminhadas aos setores correspondentes.
+              Envie .xlsx ou .csv com produto, sector/setor, início e término. As tarefas serão encaminhadas aos setores correspondentes.
             </p>
           </div>
         </div>
 
         <form action={handleUpload} className="mt-4 flex flex-col gap-3 sm:flex-row">
-          {/* Alterado o accept para "*/*" para desbloquear a visualização de todos os arquivos no gerenciador do sistema */}
           <input 
             name="file" 
             type="file" 
@@ -59,10 +58,26 @@ export function ManagerPanel({ tasks }: { tasks: Task[] }) {
         </form>
 
         {result && (
-          <p className="mt-3 text-sm">
-            {result.imported} item(ns) importado(s).
-            {result.errors.length > 0 && ` ${result.errors.length} linha(s) precisam de revisão.`}
-          </p>
+          <div className="mt-4 space-y-2">
+            <p className="text-base font-bold text-secondary">
+              {result.imported} item(ns) importado(s).
+            </p>
+            
+            {/* Caixa de diagnóstico para listar os erros na tela */}
+            {result.errors && result.errors.length > 0 && (
+              <div className="rounded-xl border border-destructive/20 bg-destructive/10 p-4 text-sm text-destructive">
+                <div className="flex items-center gap-2 font-bold mb-2">
+                  <AlertTriangle className="size-4" />
+                  <span>Motivos da rejeição das linhas:</span>
+                </div>
+                <ul className="list-disc pl-5 space-y-1 max-h-60 overflow-y-auto">
+                  {result.errors.map((err, idx) => (
+                    <li key={idx} className="text-pretty">{err}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
         )}
       </section>
 
