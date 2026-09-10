@@ -4,7 +4,6 @@ import * as XLSX from "xlsx"
 import { db } from "@/lib/db"
 import { promotions, promotionTasks, notifications, user } from "@/lib/db/schema"
 import { getCurrentUser } from "@/lib/data"
-import { normalizeSector } from "@/lib/sectors"
 import { sendPushToUser } from "@/lib/push"
 import { eq, inArray } from "drizzle-orm"
 import { revalidatePath } from "next/cache"
@@ -16,14 +15,12 @@ async function requireManager() {
   return me
 }
 
-// Intercepta e limpa acentuações e espaços para encontrar o cabeçalho correto na linha
 function pick(row: Record<string, any>, keys: string[]): string {
   const normalizedRow: Record<string, any> = {}
   for (const k of Object.keys(row)) {
-    // Normaliza os nomes das chaves (ex: "preço padrão" vira "preco padrao")
     const normalizedKey = k.trim().toLowerCase()
       .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "") // Remove acentos
+      .replace(/[\u0300-\u036f]/g, "")
     normalizedRow[normalizedKey] = row[k]
   }
   for (const key of keys) {
@@ -34,10 +31,13 @@ function pick(row: Record<string, any>, keys: string[]): string {
   return ""
 }
 
-// Converte datas no formato brasileiro (DD/MM/YYYY) vindas do seu CSV para ISO (YYYY-MM-DD)
 function toISODate(value: string): string | null {
   if (!value) return null
-  const num = Number(value)
+  
+  // Limpa possíveis espaços ou caracteres invisíveis
+  const cleanValue = String(value).trim()
+  
+  const num = Number(cleanValue)
   if (!Number.isNaN(num) && num > 20000 && num < 90000) {
     const parsed = XLSX.SSF.parse_date_code(num)
     if (parsed) {
@@ -46,19 +46,21 @@ function toISODate(value: string): string | null {
       return `${parsed.y}-${mm}-${dd}`
     }
   }
-  // Mapeia o formato DD/MM/YYYY enviado no seu arquivo
-  const br = value.match(/^(\d{1,2})[/\-.](\d{1,2})[/\-.](\d{2,4})$/)
+  
+  const br = cleanValue.match(/^(\d{1,2})[/\-.](\d{1,2})[/\-.](\d{2,4})$/)
   if (br) {
     let [, d, m, y] = br
     if (y.length === 2) y = "20" + y
     return `${y}-${m.padStart(2, "0")}-${d.padStart(2, "0")}`
   }
-  const iso = value.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/)
+  
+  const iso = cleanValue.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/)
   if (iso) {
     const [, y, m, d] = iso
     return `${y}-${m.padStart(2, "0")}-${d.padStart(2, "0")}`
   }
-  const dt = new Date(value)
+  
+  const dt = new Date(cleanValue)
   if (!Number.isNaN(dt.getTime())) return dt.toISOString().slice(0, 10)
   return null
 }
@@ -88,14 +90,13 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
     let rows: Record<string, any>[] = []
     
     if (fileNameLower.endsWith(".csv") || file.type === "text/csv") {
-      // Lê o conteúdo bruto de texto e normaliza quebras de linha brasileiras do Excel
       const csvString = buffer.toString("utf-8").replace(/\r\n/g, "\n").replace(/\r/g, "\n")
+      const separator = csvString.includes(";") ? ";" : ","
       
-      // Força a biblioteca XLSX a usar estritamente o ponto e vírgula como separador estrutural
       const wb = XLSX.read(Buffer.from(csvString, "utf-8"), { 
         type: "buffer", 
-        codepage: 65001, // Suporte nativo a acentuação UTF-8
-        FS: ";"          // <--- Define ponto e vírgula como separador fixo obrigatório
+        codepage: 65001, 
+        FS: separator 
       })
       
       rows = wb.SheetNames.flatMap((sheetName) => {
@@ -119,37 +120,33 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
       const row = rows[i]
       const line = i + 2
       
-      // Mapeamento idêntico às colunas reais do arquivo enviado
       const title = pick(row, ["tipo", "promo flex", "titulo", "promocao"])
-      const productName = pick(row, ["produto", "descricao", "item"])
-      const sectorRaw = pick(row, ["setor", "categoria2", "sector"])
+      const productName = pick(row, ["produto", "descricao", "item", "nome do produto"])
+      const sectorRaw = pick(row, ["setor", "categoria2", "sector", "departamento", "area"])
       const startRaw = pick(row, ["datainicio", "data inicio", "inicio"])
-      const endRaw = pick(row, ["datafinal", "data termino", "termino"])
+      const endRaw = pick(row, ["datafinal", "data termino", "termino", "final"])
 
       if (!title && !productName && !sectorRaw && !startRaw && !endRaw) continue
 
-      if (!sectorRaw) {
-        errors.push(`Linha ${line} [${productName || "Sem Nome"}]: Setor ausente ou ilegível.`)
-        continue
-      }
+      // CORREÇÃO: Se o setor não foi preenchido na linha, usa "Geral" para não pular a linha
+      const sector = sectorRaw ? sectorRaw.trim() : "Geral"
       
       const startDate = toISODate(startRaw)
       const endDate = toISODate(endRaw)
       
       if (!startDate) {
-        errors.push(`Linha ${line} [${productName || "Sem Nome"}]: Data inicial inválida ("${startRaw}").`)
+        errors.push(`Linha ${line} [${productName || "Sem Nome"}]: Data inicial inválida ou vazia (Recebido: "${startRaw}").`)
         continue
       }
       if (!endDate) {
-        errors.push(`Linha ${line} [${productName || "Sem Nome"}]: Data final inválida ("${endRaw}").`)
+        errors.push(`Linha ${line} [${productName || "Sem Nome"}]: Data final inválida ou vazia (Recebido: "${endRaw}").`)
         continue
       }
 
-      const sector = normalizeSector(sectorRaw)
-      const oldPrice = toPrice(pick(row, ["preço padrão", "preçopadrao", "preco antigo"]))
-      const newPrice = toPrice(pick(row, ["preço promocional", "preçopromocional", "preco novo"]))
+      const oldPrice = toPrice(pick(row, ["preço padrão", "preçopadrao", "preço padrao", "preco padrao", "preco antigo"]))
+      const newPrice = toPrice(pick(row, ["preço promocional", "preçopromocional", "preco promocional", "preco novo"]))
 
-      // Insere no banco
+      // Insere no banco utilizando o setor bruto lido diretamente do arquivo
       const [promo] = await db
         .insert(promotions)
         .values({
@@ -184,13 +181,13 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
         await db.insert(notifications).values({
           userId: emp.id,
           title: "Novas promoções agendadas",
-          body: `Foram adicionadas promoções para o setor ${emp.sector}.`,
+          body: `Foram adicionadas promoções para o seu setor.`,
           type: "new_promotions",
         })
         try {
           await sendPushToUser(emp.id, {
             title: "Novas promoções agendadas",
-            body: `Há novas promoções para o setor ${emp.sector}.`,
+            body: `Há novas promoções para o seu setor.`,
             url: "/painel",
           })
         } catch (pushErr) {
@@ -203,7 +200,7 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
     revalidatePath("/painel")
     revalidatePath("/calendario")
     
-    return { ok: imported > 0, imported, errors }
+    return { ok: imported > 0 && errors.length === 0, imported, errors }
 
   } catch (globalError: any) {
     return { ok: false, imported: 0, errors: [globalError?.message || "Erro desconhecido."] }
