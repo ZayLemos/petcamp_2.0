@@ -1,10 +1,11 @@
 "use server"
 
 import * as XLSX from "xlsx"
+import { generateText, gateway } from "ai"
 import { db } from "@/lib/db"
 import { promotions, promotionTasks, notifications, user } from "@/lib/db/schema"
 import { getCurrentUser } from "@/lib/data"
-import { normalizeSector } from "@/lib/sectors"
+import { normalizeSector, SECTORS } from "@/lib/sectors"
 import { sendPushToUser } from "@/lib/push"
 import { and, eq, inArray } from "drizzle-orm"
 import { revalidatePath } from "next/cache"
@@ -79,9 +80,11 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
   const buffer = Buffer.from(await file.arrayBuffer())
   let rows: Record<string, any>[]
   try {
-    const wb = XLSX.read(buffer, { type: "buffer" })
-    const sheet = wb.Sheets[wb.SheetNames[0]]
-    rows = XLSX.utils.sheet_to_json(sheet, { defval: "" })
+    const wb = XLSX.read(buffer, { type: "buffer", cellDates: true })
+    rows = wb.SheetNames.flatMap((sheetName) => {
+      const sheetRows = XLSX.utils.sheet_to_json(wb.Sheets[sheetName], { defval: "" }) as Record<string, any>[]
+      return sheetRows.map((row) => ({ ...row, __sheet: sheetName }))
+    })
   } catch (e) {
     return { ok: false, imported: 0, errors: ["Não foi possível ler a planilha. Envie um arquivo .xlsx válido."] }
   }
@@ -90,8 +93,21 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
   let imported = 0
   const affectedSectors = new Set<string>()
 
-  for (let i = 0; i < rows.length; i++) {
-    const row = rows[i]
+  let aiRows = rows
+  try {
+    const { text } = await generateText({
+      model: gateway("openai/gpt-5.4-mini"),
+      system: `Você é um validador de planilhas da PetCamp. Leia todas as linhas recebidas, preserve uma linha por item e normalize os campos. Para cada linha retorne JSON com: originalLine (número), title, productName, sector, startDate, endDate, oldPrice, newPrice. Sector deve ser exatamente um destes: ${JSON.stringify(SECTORS)}. Não invente datas; use null quando estiverem ausentes. Responda somente com um array JSON válido.`,
+      prompt: JSON.stringify(rows),
+    })
+    const parsed = JSON.parse(text)
+    if (Array.isArray(parsed)) aiRows = parsed
+  } catch (error) {
+    console.error("[v0] Falha na revisão da planilha por IA; usando leitura local:", error)
+  }
+
+  for (let i = 0; i < aiRows.length; i++) {
+    const row = aiRows[i]
     const line = i + 2 // +1 header, +1 base-1
     const title = pick(row, ["título", "titulo", "promoção", "promocao", "nome", "produto"])
     const productName = pick(row, ["produto", "item", "nome do produto"])
