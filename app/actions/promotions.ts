@@ -2,7 +2,7 @@
 
 import * as XLSX from "xlsx"
 import { generateText } from "ai"
-import { openai } from "@ai-sdk/openai" // Utiliza o pacote oficial estável da OpenAI
+import { openai } from "@ai-sdk/openai"
 import { db } from "@/lib/db"
 import { promotions, promotionTasks, notifications, user } from "@/lib/db/schema"
 import { getCurrentUser } from "@/lib/data"
@@ -18,7 +18,6 @@ async function requireManager() {
   return me
 }
 
-// Encontra o valor de uma linha testando várias chaves possíveis da planilha
 function pick(row: Record<string, any>, keys: string[]): string {
   const normalizedRow: Record<string, any> = {}
   for (const k of Object.keys(row)) {
@@ -31,7 +30,6 @@ function pick(row: Record<string, any>, keys: string[]): string {
   return ""
 }
 
-// Converte datas do Excel/CSV para YYYY-MM-DD
 function toISODate(value: string): string | null {
   if (!value) return null
   const num = Number(value)
@@ -101,28 +99,38 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
       return { ok: false, imported: 0, errors: ["A planilha foi lida, mas nenhuma linha foi encontrada dentro dela."] }
     }
 
+    // --- PAINEL DE DEBUG EM TEMPO REAL ---
+    // Pega as chaves da primeira linha para ver se o parser do CSV não quebrou tudo em uma string só
+    const primeiraLinhaExemplo = rows[0]
+    const chavesDetectadas = Object.keys(primeiraLinhaExemplo).filter(k => k !== "__sheet")
+    
+    // Se o CSV leu errado, todas as colunas se juntam em uma chave gigante separada por vírgula/ponto-e-vírgula
+    if (chavesDetectadas.length === 1) {
+      return {
+        ok: false,
+        imported: 0,
+        errors: [
+          `⚠️ ERRO DE LEITURA (Separador Inválido): O sistema leu o arquivo, mas não conseguiu separar as colunas. Ele enxergou apenas uma coluna gigante chamada: "${chavesDetectadas[0]}". Verifique se o seu arquivo está separado por vírgula ou ponto-e-vírgula.`
+        ]
+      }
+    }
+
     let imported = 0
     const affectedSectors = new Set<string>()
     let aiRows = rows
 
-    // --- INTEGRACAO COM INTELIGENCIA ARTIFICIAL ---
     try {
       const { text } = await generateText({
-        model: openai("gpt-4o-mini"), // Modelo comercial oficial estável [1]
+        model: openai("gpt-4o-mini"),
         system: `Você é um validador de planilhas da PetCamp. Leia todas as linhas recebidas, preserve uma linha por item e normalize os campos. Para cada linha retorne JSON com: originalLine (número), title, productName, sector, startDate, endDate, oldPrice, newPrice. Sector deve ser exatamente um destes: ${JSON.stringify(SECTORS)}. Não invente datas; use null quando estiverem ausentes. Responda somente com um array JSON válido.`,
         prompt: JSON.stringify(rows),
       })
       const parsed = JSON.parse(text)
-      if (Array.isArray(parsed)) {
-        aiRows = parsed
-        console.log("[PetCamp AI] Planilha revisada e estruturada com sucesso pela IA.")
-      }
+      if (Array.isArray(parsed)) aiRows = parsed
     } catch (error) {
-      // Plano de contingência: se a IA falhar (falta de chave, internet), o sistema usa a leitura local automática
-      console.warn("[PetCamp AI Warning] Falha na revisão por IA (verifique a OPENAI_API_KEY). Executando leitura local preventiva de contingência...", error)
+      console.warn("[PetCamp AI] Falha na IA, usando leitura local de contingência...", error)
     }
 
-    // Processamento das linhas
     for (let i = 0; i < aiRows.length; i++) {
       const row = aiRows[i]
       const line = i + 2
@@ -133,10 +141,13 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
       const startRaw = pick(row, ["data inicio", "data início", "início", "inicio", "start"])
       const endRaw = pick(row, ["data termino", "data término", "término", "termino", "fim", "end"])
 
-      if (!title && !productName && !sectorRaw && !startRaw && !endRaw) continue
+      if (!title && !productName && !sectorRaw && !startRaw && !endRaw) {
+        errors.push(`Linha ${line}: Ignorada (Nenhum cabeçalho compatível encontrado. Chaves da linha: ${Object.keys(row).join(", ")})`)
+        continue
+      }
 
       if (!sectorRaw) {
-        errors.push(`Linha ${line}: Coluna de 'setor' ausente ou vazia.`)
+        errors.push(`Linha ${line}: Pula da (Coluna de 'setor' veio vazia ou inválida. Valor recebido: "${JSON.stringify(row)}")`)
         continue
       }
       
@@ -144,11 +155,11 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
       const endDate = toISODate(endRaw)
       
       if (!startDate) {
-        errors.push(`Linha ${line}: Data de início inválida (Valor: "${startRaw}").`)
+        errors.push(`Linha ${line} [Produto: ${productName || "Sem nome"}]: Pulada devido à Data de Início inválida ou vazia (Recebido: "${startRaw}").`)
         continue
       }
       if (!endDate) {
-        errors.push(`Linha ${line}: Data de término inválida (Valor: "${endRaw}").`)
+        errors.push(`Linha ${line} [Produto: ${productName || "Sem nome"}]: Pulada devido à Data de Término inválida ou vazia (Recebido: "${endRaw}").`)
         continue
       }
 
@@ -156,7 +167,6 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
       const oldPrice = toPrice(pick(row, ["preço padrao", "preco padrao", "preço antigo", "preço original"]))
       const newPrice = toPrice(pick(row, ["preço promocional", "preco promocional", "preço novo"]))
 
-      // Gravação no banco local
       const [promo] = await db
         .insert(promotions)
         .values({
@@ -201,7 +211,7 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
             url: "/painel",
           })
         } catch (pushErr) {
-          console.error("Falha ao enviar push de notificação:", pushErr)
+          console.error("Falha ao enviar push:", pushErr)
         }
       }
     }
@@ -209,10 +219,12 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
     revalidatePath("/gerente")
     revalidatePath("/painel")
     revalidatePath("/calendario")
-    return { ok: imported > 0 && errors.length === 0, imported, errors }
+    
+    // Se não importou nada mas gerou logs, repassa os logs detalhados para a tela
+    return { ok: imported > 0, imported, errors: errors.length > 0 ? errors : ["Nenhum dado válido extraído."] }
 
   } catch (globalError: any) {
-    return { ok: false, imported: 0, errors: [globalError?.message || "Erro desconhecido ao processar arquivo."] }
+    return { ok: false, imported: 0, errors: [globalError?.message || "Erro desconhecido."] }
   }
 }
 
