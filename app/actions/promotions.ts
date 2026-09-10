@@ -2,7 +2,7 @@
 
 import * as XLSX from "xlsx"
 import { generateText } from "ai"
-import { openai } from "@ai-sdk/openai" // Importação corrigida para o modelo oficial estável
+import { openai } from "@ai-sdk/openai"
 import { db } from "@/lib/db"
 import { promotions, promotionTasks, notifications, user } from "@/lib/db/schema"
 import { getCurrentUser } from "@/lib/data"
@@ -17,7 +17,6 @@ async function requireManager() {
   return me
 }
 
-// Encontra o valor de uma linha testando várias chaves possíveis (planilha flexível).
 function pick(row: Record<string, any>, keys: string[]): string {
   const normalizedRow: Record<string, any> = {}
   for (const k of Object.keys(row)) {
@@ -30,7 +29,6 @@ function pick(row: Record<string, any>, keys: string[]): string {
   return ""
 }
 
-// Converte datas do Excel (serial number ou texto) para YYYY-MM-DD.
 function toISODate(value: string): string | null {
   if (!value) return null
   const num = Number(value)
@@ -42,14 +40,12 @@ function toISODate(value: string): string | null {
       return `${parsed.y}-${mm}-${dd}`
     }
   }
-  // dd/mm/yyyy ou dd-mm-yyyy
   const br = value.match(/^(\d{1,2})[/\-.](\d{1,2})[/\-.](\d{2,4})$/)
   if (br) {
     let [, d, m, y] = br
     if (y.length === 2) y = "20" + y
     return `${y}-${m.padStart(2, "0")}-${d.padStart(2, "0")}`
   }
-  // yyyy-mm-dd
   const iso = value.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/)
   if (iso) {
     const [, y, m, d] = iso
@@ -78,21 +74,23 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
   const file = formData.get("file") as File | null
   if (!file) return { ok: false, imported: 0, errors: ["Nenhum arquivo enviado."] }
 
-  // Permite que qualquer arquivo chegue ao backend, mas valida se possui extensão Excel antes de ler
-  if (!file.name.endsWith(".xlsx") && !file.name.endsWith(".xls")) {
-    return { ok: false, imported: 0, errors: ["Arquivo inválido. Por favor, envie apenas planilhas Excel (.xlsx ou .xls)."] }
+  // ATUALIZADO: Agora aceita .csv além de .xlsx e .xls (tratando maiúsculas e minúsculas)
+  const fileNameLower = file.name.toLowerCase()
+  if (!fileNameLower.endsWith(".xlsx") && !fileNameLower.endsWith(".xls") && !fileNameLower.endsWith(".csv")) {
+    return { ok: false, imported: 0, errors: ["Arquivo inválido. Envie planilhas Excel (.xlsx, .xls) ou arquivos .csv."] }
   }
 
   const buffer = Buffer.from(await file.arrayBuffer())
   let rows: Record<string, any>[]
   try {
+    // A biblioteca XLSX lê arquivos CSV automaticamente informando o tipo buffer
     const wb = XLSX.read(buffer, { type: "buffer", cellDates: true })
     rows = wb.SheetNames.flatMap((sheetName) => {
       const sheetRows = XLSX.utils.sheet_to_json(wb.Sheets[sheetName], { defval: "" }) as Record<string, any>[]
       return sheetRows.map((row) => ({ ...row, __sheet: sheetName }))
     })
   } catch (e) {
-    return { ok: false, imported: 0, errors: ["Não foi possível ler a planilha. Envie um arquivo .xlsx válido."] }
+    return { ok: false, imported: 0, errors: ["Não foi possível ler o arquivo. Envie um formato válido (.xlsx ou .csv)."] }
   }
 
   const errors: string[] = []
@@ -101,7 +99,6 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
 
   let aiRows = rows
   try {
-    // Atualizado para usar o modelo de produção gpt-4o-mini de forma direta e segura
     const { text } = await generateText({
       model: openai("gpt-4o-mini"),
       system: `Você é um validador de planilhas da PetCamp. Leia todas as linhas recebidas, preserve uma linha por item e normalize os campos. Para cada linha retorne JSON com: originalLine (número), title, productName, sector, startDate, endDate, oldPrice, newPrice. Sector deve ser exatamente um destes: ${JSON.stringify(SECTORS)}. Não invente datas; use null quando estiverem ausentes. Responda somente com um array JSON válido.`,
@@ -110,19 +107,19 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
     const parsed = JSON.parse(text)
     if (Array.isArray(parsed)) aiRows = parsed
   } catch (error) {
-    console.error("[v0] Falha na revisão da planilha por IA; usando leitura local:", error)
+    console.error("[v0] Falha na revisão dos dados por IA; usando leitura local:", error)
   }
 
   for (let i = 0; i < aiRows.length; i++) {
     const row = aiRows[i]
-    const line = i + 2 // +1 header, +1 base-1
+    const line = i + 2
     const title = pick(row, ["título", "titulo", "promoção", "promocao", "nome", "produto"])
     const productName = pick(row, ["produto", "item", "nome do produto"])
     const sectorRaw = pick(row, ["setor", "sector", "departamento", "área", "area"])
     const startRaw = pick(row, ["início", "inicio", "data início", "data inicio", "data_inicio", "start"])
     const endRaw = pick(row, ["término", "termino", "fim", "data fim", "data término", "data_fim", "end"])
 
-    if (!title && !productName && !sectorRaw && !startRaw && !endRaw) continue // linha vazia
+    if (!title && !productName && !sectorRaw && !startRaw && !endRaw) continue
 
     if (!sectorRaw) {
       errors.push(`Linha ${line}: setor ausente.`)
@@ -166,7 +163,6 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
     imported++
   }
 
-  // Notifica funcionários dos setores afetados que há novas promoções agendadas.
   if (affectedSectors.size > 0) {
     const sectors = Array.from(affectedSectors)
     const employees = await db
@@ -195,7 +191,6 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
   return { ok: errors.length === 0, imported, errors }
 }
 
-// Gerente "dá baixa" (aprova) uma promoção: ela passa a aparecer no calendário futuro.
 export async function approvePromotion(promotionId: number) {
   await requireManager()
   await db
@@ -225,9 +220,7 @@ export async function deletePromotion(promotionId: number) {
   revalidatePath("/calendario")
 }
 
-// Funcionário conclui uma verificação (aplicar novos preços = start, retirar = end).
 export async function completeTask(taskId: number) {
   const me = await getCurrentUser()
   if (!me) throw new Error("Não autenticado.")
-  // Lógica original preservada conforme enviado na mensagem anterior
 }
