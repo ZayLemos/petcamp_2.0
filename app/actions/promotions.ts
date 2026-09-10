@@ -1,12 +1,10 @@
 "use server"
 
 import * as XLSX from "xlsx"
-import { generateText } from "ai"
-import { openai } from "@ai-sdk/openai"
 import { db } from "@/lib/db"
 import { promotions, promotionTasks, notifications, user } from "@/lib/db/schema"
 import { getCurrentUser } from "@/lib/data"
-import { normalizeSector, SECTORS } from "@/lib/sectors"
+import { normalizeSector } from "@/lib/sectors"
 import { sendPushToUser } from "@/lib/push"
 import { eq, inArray } from "drizzle-orm"
 import { revalidatePath } from "next/cache"
@@ -18,18 +16,25 @@ async function requireManager() {
   return me
 }
 
+// Intercepta e limpa acentuações e espaços para encontrar o cabeçalho correto na linha
 function pick(row: Record<string, any>, keys: string[]): string {
   const normalizedRow: Record<string, any> = {}
   for (const k of Object.keys(row)) {
-    normalizedRow[k.trim().toLowerCase()] = row[k]
+    // Normaliza os nomes das chaves (ex: "preço padrão" vira "preco padrao")
+    const normalizedKey = k.trim().toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "") // Remove acentos
+    normalizedRow[normalizedKey] = row[k]
   }
   for (const key of keys) {
-    const v = normalizedRow[key]
+    const normalizedTargetKey = key.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    const v = normalizedRow[normalizedTargetKey]
     if (v !== undefined && v !== null && String(v).trim() !== "") return String(v).trim()
   }
   return ""
 }
 
+// Converte datas no formato brasileiro (DD/MM/YYYY) vindas do seu CSV para ISO (YYYY-MM-DD)
 function toISODate(value: string): string | null {
   if (!value) return null
   const num = Number(value)
@@ -41,6 +46,7 @@ function toISODate(value: string): string | null {
       return `${parsed.y}-${mm}-${dd}`
     }
   }
+  // Mapeia o formato DD/MM/YYYY enviado no seu arquivo
   const br = value.match(/^(\d{1,2})[/\-.](\d{1,2})[/\-.](\d{2,4})$/)
   if (br) {
     let [, d, m, y] = br
@@ -79,75 +85,51 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
 
     const fileNameLower = file.name.toLowerCase()
     const buffer = Buffer.from(await file.arrayBuffer())
-    let rows: Record<string, any>[]
+    let rows: Record<string, any>[] = []
     
-    let wb;
-    if (fileNameLower.endsWith(".csv")) {
-      const csvString = buffer.toString("utf-8")
-      const separator = csvString.includes(";") ? ";" : ","
-      wb = XLSX.read(buffer, { type: "buffer", codepage: 65001, FS: separator })
+    if (fileNameLower.endsWith(".csv") || file.type === "text/csv") {
+      // Lê o conteúdo bruto de texto e normaliza quebras de linha brasileiras do Excel
+      const csvString = buffer.toString("utf-8").replace(/\r\n/g, "\n").replace(/\r/g, "\n")
+      
+      // Força a biblioteca XLSX a usar estritamente o ponto e vírgula como separador estrutural
+      const wb = XLSX.read(Buffer.from(csvString, "utf-8"), { 
+        type: "buffer", 
+        codepage: 65001, // Suporte nativo a acentuação UTF-8
+        FS: ";"          // <--- Define ponto e vírgula como separador fixo obrigatório
+      })
+      
+      rows = wb.SheetNames.flatMap((sheetName) => {
+        return XLSX.utils.sheet_to_json(wb.Sheets[sheetName], { defval: "", raw: false }) as Record<string, any>[]
+      })
     } else {
-      wb = XLSX.read(buffer, { type: "buffer", cellDates: true })
+      const wb = XLSX.read(buffer, { type: "buffer", cellDates: true })
+      rows = wb.SheetNames.flatMap((sheetName) => {
+        return XLSX.utils.sheet_to_json(wb.Sheets[sheetName], { defval: "" }) as Record<string, any>[]
+      })
     }
-
-    rows = wb.SheetNames.flatMap((sheetName) => {
-      const sheetRows = XLSX.utils.sheet_to_json(wb.Sheets[sheetName], { defval: "" }) as Record<string, any>[]
-      return sheetRows.map((row) => ({ ...row, __sheet: sheetName }))
-    })
 
     if (!rows || rows.length === 0) {
-      return { ok: false, imported: 0, errors: ["A planilha foi lida, mas nenhuma linha foi encontrada dentro dela."] }
-    }
-
-    // --- PAINEL DE DEBUG EM TEMPO REAL ---
-    // Pega as chaves da primeira linha para ver se o parser do CSV não quebrou tudo em uma string só
-    const primeiraLinhaExemplo = rows[0]
-    const chavesDetectadas = Object.keys(primeiraLinhaExemplo).filter(k => k !== "__sheet")
-    
-    // Se o CSV leu errado, todas as colunas se juntam em uma chave gigante separada por vírgula/ponto-e-vírgula
-    if (chavesDetectadas.length === 1) {
-      return {
-        ok: false,
-        imported: 0,
-        errors: [
-          `⚠️ ERRO DE LEITURA (Separador Inválido): O sistema leu o arquivo, mas não conseguiu separar as colunas. Ele enxergou apenas uma coluna gigante chamada: "${chavesDetectadas[0]}". Verifique se o seu arquivo está separado por vírgula ou ponto-e-vírgula.`
-        ]
-      }
+      return { ok: false, imported: 0, errors: ["Nenhuma linha de dados encontrada de forma legível dentro do arquivo."] }
     }
 
     let imported = 0
     const affectedSectors = new Set<string>()
-    let aiRows = rows
 
-    try {
-      const { text } = await generateText({
-        model: openai("gpt-4o-mini"),
-        system: `Você é um validador de planilhas da PetCamp. Leia todas as linhas recebidas, preserve uma linha por item e normalize os campos. Para cada linha retorne JSON com: originalLine (número), title, productName, sector, startDate, endDate, oldPrice, newPrice. Sector deve ser exatamente um destes: ${JSON.stringify(SECTORS)}. Não invente datas; use null quando estiverem ausentes. Responda somente com um array JSON válido.`,
-        prompt: JSON.stringify(rows),
-      })
-      const parsed = JSON.parse(text)
-      if (Array.isArray(parsed)) aiRows = parsed
-    } catch (error) {
-      console.warn("[PetCamp AI] Falha na IA, usando leitura local de contingência...", error)
-    }
-
-    for (let i = 0; i < aiRows.length; i++) {
-      const row = aiRows[i]
+    for (let i = 0; i < rows.length; i++) {
+      const row = rows[i]
       const line = i + 2
       
-      const title = pick(row, ["promo flex", "título", "titulo", "promoção", "promocao"])
-      const productName = pick(row, ["produto", "descrição", "descricao", "item", "nome do produto"])
-      const sectorRaw = pick(row, ["setor", "categoria2", "sector", "departamento", "área", "area"])
-      const startRaw = pick(row, ["data inicio", "data início", "início", "inicio", "start"])
-      const endRaw = pick(row, ["data termino", "data término", "término", "termino", "fim", "end"])
+      // Mapeamento idêntico às colunas reais do arquivo enviado
+      const title = pick(row, ["tipo", "promo flex", "titulo", "promocao"])
+      const productName = pick(row, ["produto", "descricao", "item"])
+      const sectorRaw = pick(row, ["setor", "categoria2", "sector"])
+      const startRaw = pick(row, ["datainicio", "data inicio", "inicio"])
+      const endRaw = pick(row, ["datafinal", "data termino", "termino"])
 
-      if (!title && !productName && !sectorRaw && !startRaw && !endRaw) {
-        errors.push(`Linha ${line}: Ignorada (Nenhum cabeçalho compatível encontrado. Chaves da linha: ${Object.keys(row).join(", ")})`)
-        continue
-      }
+      if (!title && !productName && !sectorRaw && !startRaw && !endRaw) continue
 
       if (!sectorRaw) {
-        errors.push(`Linha ${line}: Pula da (Coluna de 'setor' veio vazia ou inválida. Valor recebido: "${JSON.stringify(row)}")`)
+        errors.push(`Linha ${line} [${productName || "Sem Nome"}]: Setor ausente ou ilegível.`)
         continue
       }
       
@@ -155,18 +137,19 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
       const endDate = toISODate(endRaw)
       
       if (!startDate) {
-        errors.push(`Linha ${line} [Produto: ${productName || "Sem nome"}]: Pulada devido à Data de Início inválida ou vazia (Recebido: "${startRaw}").`)
+        errors.push(`Linha ${line} [${productName || "Sem Nome"}]: Data inicial inválida ("${startRaw}").`)
         continue
       }
       if (!endDate) {
-        errors.push(`Linha ${line} [Produto: ${productName || "Sem nome"}]: Pulada devido à Data de Término inválida ou vazia (Recebido: "${endRaw}").`)
+        errors.push(`Linha ${line} [${productName || "Sem Nome"}]: Data final inválida ("${endRaw}").`)
         continue
       }
 
       const sector = normalizeSector(sectorRaw)
-      const oldPrice = toPrice(pick(row, ["preço padrao", "preco padrao", "preço antigo", "preço original"]))
-      const newPrice = toPrice(pick(row, ["preço promocional", "preco promocional", "preço novo"]))
+      const oldPrice = toPrice(pick(row, ["preço padrão", "preçopadrao", "preco antigo"]))
+      const newPrice = toPrice(pick(row, ["preço promocional", "preçopromocional", "preco novo"]))
 
+      // Insere no banco
       const [promo] = await db
         .insert(promotions)
         .values({
@@ -201,7 +184,7 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
         await db.insert(notifications).values({
           userId: emp.id,
           title: "Novas promoções agendadas",
-          body: `Foram adicionadas promoções para o setor ${emp.sector}. Confira as datas e verificações.`,
+          body: `Foram adicionadas promoções para o setor ${emp.sector}.`,
           type: "new_promotions",
         })
         try {
@@ -211,7 +194,7 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
             url: "/painel",
           })
         } catch (pushErr) {
-          console.error("Falha ao enviar push:", pushErr)
+          console.error(pushErr)
         }
       }
     }
@@ -220,8 +203,7 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
     revalidatePath("/painel")
     revalidatePath("/calendario")
     
-    // Se não importou nada mas gerou logs, repassa os logs detalhados para a tela
-    return { ok: imported > 0, imported, errors: errors.length > 0 ? errors : ["Nenhum dado válido extraído."] }
+    return { ok: imported > 0, imported, errors }
 
   } catch (globalError: any) {
     return { ok: false, imported: 0, errors: [globalError?.message || "Erro desconhecido."] }
