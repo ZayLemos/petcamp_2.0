@@ -74,7 +74,6 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
   const file = formData.get("file") as File | null
   if (!file) return { ok: false, imported: 0, errors: ["Nenhum arquivo enviado."] }
 
-  // ATUALIZADO: Agora aceita .csv além de .xlsx e .xls (tratando maiúsculas e minúsculas)
   const fileNameLower = file.name.toLowerCase()
   if (!fileNameLower.endsWith(".xlsx") && !fileNameLower.endsWith(".xls") && !fileNameLower.endsWith(".csv")) {
     return { ok: false, imported: 0, errors: ["Arquivo inválido. Envie planilhas Excel (.xlsx, .xls) ou arquivos .csv."] }
@@ -82,15 +81,36 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
 
   const buffer = Buffer.from(await file.arrayBuffer())
   let rows: Record<string, any>[]
+  
   try {
-    // A biblioteca XLSX lê arquivos CSV automaticamente informando o tipo buffer
-    const wb = XLSX.read(buffer, { type: "buffer", cellDates: true })
+    let wb;
+    if (fileNameLower.endsWith(".csv")) {
+      // Força a leitura do CSV tratando texto bruto (codificação UTF-8 ou Latin1 comum em sistemas brasileiros)
+      const csvString = buffer.toString("utf-8")
+      
+      // Tenta detectar se o separador é ponto-e-vírgula (padrão Excel brasileiro) ou vírgula americana
+      const separator = csvString.includes(";") ? ";" : ","
+      
+      wb = XLSX.read(buffer, { 
+        type: "buffer", 
+        codepage: 65001, // Garante suporte a acentuações (UTF-8)
+        FS: separator    // Define dinamicamente o caractere delimitador de colunas
+      })
+    } else {
+      wb = XLSX.read(buffer, { type: "buffer", cellDates: true })
+    }
+
     rows = wb.SheetNames.flatMap((sheetName) => {
       const sheetRows = XLSX.utils.sheet_to_json(wb.Sheets[sheetName], { defval: "" }) as Record<string, any>[]
       return sheetRows.map((row) => ({ ...row, __sheet: sheetName }))
     })
   } catch (e) {
-    return { ok: false, imported: 0, errors: ["Não foi possível ler o arquivo. Envie um formato válido (.xlsx ou .csv)."] }
+    return { ok: false, imported: 0, errors: ["Não foi possível ler o arquivo. Verifique a codificação do seu .csv."] }
+  }
+
+  // Se mesmo com a leitura não gerou nenhuma linha de dados, para o processo antes de chamar a IA
+  if (!rows || rows.length === 0) {
+    return { ok: false, imported: 0, errors: ["A planilha lida está vazia ou as colunas não foram detectadas."] }
   }
 
   const errors: string[] = []
