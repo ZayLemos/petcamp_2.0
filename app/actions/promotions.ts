@@ -1,21 +1,24 @@
 "use server"
 
 import * as XLSX from "xlsx"
+import { generateText } from "ai"
+import { openai } from "@ai-sdk/openai" // Utiliza o pacote oficial estável da OpenAI
 import { db } from "@/lib/db"
 import { promotions, promotionTasks, notifications, user } from "@/lib/db/schema"
 import { getCurrentUser } from "@/lib/data"
-import { normalizeSector } from "@/lib/sectors"
+import { normalizeSector, SECTORS } from "@/lib/sectors"
 import { sendPushToUser } from "@/lib/push"
 import { eq, inArray } from "drizzle-orm"
 import { revalidatePath } from "next/cache"
 
 async function requireManager() {
   const me = await getCurrentUser()
-  if (!me || me.role !== "manager") throw new Error("Apenas o gerente pode fazer isso.")
+  if (!me) throw new Error("Usuário não está autenticado no sistema (Sessão inválida).")
+  if (me.role !== "manager") throw new Error(`Seu usuário tem permissão "${me.role}", mas apenas "manager" pode importar.`);
   return me
 }
 
-// Encontra o valor de uma linha testando várias chaves possíveis (planilha flexível).
+// Encontra o valor de uma linha testando várias chaves possíveis da planilha
 function pick(row: Record<string, any>, keys: string[]): string {
   const normalizedRow: Record<string, any> = {}
   for (const k of Object.keys(row)) {
@@ -28,7 +31,7 @@ function pick(row: Record<string, any>, keys: string[]): string {
   return ""
 }
 
-// Converte datas do Excel/CSV para YYYY-MM-DD.
+// Converte datas do Excel/CSV para YYYY-MM-DD
 function toISODate(value: string): string | null {
   if (!value) return null
   const num = Number(value)
@@ -70,6 +73,7 @@ export type ImportResult = {
 }
 
 export async function importPromotionsFromExcel(formData: FormData): Promise<ImportResult> {
+  const errors: string[] = []
   try {
     const me = await requireManager()
     const file = formData.get("file") as File | null
@@ -79,7 +83,6 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
     const buffer = Buffer.from(await file.arrayBuffer())
     let rows: Record<string, any>[]
     
-    // Leitura nativa e direta usando a biblioteca local XLSX
     let wb;
     if (fileNameLower.endsWith(".csv")) {
       const csvString = buffer.toString("utf-8")
@@ -95,28 +98,45 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
     })
 
     if (!rows || rows.length === 0) {
-      return { ok: false, imported: 0, errors: ["A planilha lida está vazia ou ilegível."] }
+      return { ok: false, imported: 0, errors: ["A planilha foi lida, mas nenhuma linha foi encontrada dentro dela."] }
     }
 
-    const errors: string[] = []
     let imported = 0
     const affectedSectors = new Set<string>()
+    let aiRows = rows
 
-    // Processa linha por linha localmente sem chamar APIs externas de IA
-    for (let i = 0; i < rows.length; i++) {
-      const row = rows[i]
+    // --- INTEGRACAO COM INTELIGENCIA ARTIFICIAL ---
+    try {
+      const { text } = await generateText({
+        model: openai("gpt-4o-mini"), // Modelo comercial oficial estável [1]
+        system: `Você é um validador de planilhas da PetCamp. Leia todas as linhas recebidas, preserve uma linha por item e normalize os campos. Para cada linha retorne JSON com: originalLine (número), title, productName, sector, startDate, endDate, oldPrice, newPrice. Sector deve ser exatamente um destes: ${JSON.stringify(SECTORS)}. Não invente datas; use null quando estiverem ausentes. Responda somente com um array JSON válido.`,
+        prompt: JSON.stringify(rows),
+      })
+      const parsed = JSON.parse(text)
+      if (Array.isArray(parsed)) {
+        aiRows = parsed
+        console.log("[PetCamp AI] Planilha revisada e estruturada com sucesso pela IA.")
+      }
+    } catch (error) {
+      // Plano de contingência: se a IA falhar (falta de chave, internet), o sistema usa a leitura local automática
+      console.warn("[PetCamp AI Warning] Falha na revisão por IA (verifique a OPENAI_API_KEY). Executando leitura local preventiva de contingência...", error)
+    }
+
+    // Processamento das linhas
+    for (let i = 0; i < aiRows.length; i++) {
+      const row = aiRows[i]
       const line = i + 2
       
-      const title = pick(row, ["título", "titulo", "promoção", "promocao", "nome", "produto"])
-      const productName = pick(row, ["produto", "item", "nome do produto"])
-      const sectorRaw = pick(row, ["setor", "sector", "departamento", "área", "area"])
-      const startRaw = pick(row, ["início", "inicio", "data início", "data inicio", "data_inicio", "start"])
-      const endRaw = pick(row, ["término", "termino", "fim", "data fim", "data término", "data_fim", "end"])
+      const title = pick(row, ["promo flex", "título", "titulo", "promoção", "promocao"])
+      const productName = pick(row, ["produto", "descrição", "descricao", "item", "nome do produto"])
+      const sectorRaw = pick(row, ["setor", "categoria2", "sector", "departamento", "área", "area"])
+      const startRaw = pick(row, ["data inicio", "data início", "início", "inicio", "start"])
+      const endRaw = pick(row, ["data termino", "data término", "término", "termino", "fim", "end"])
 
       if (!title && !productName && !sectorRaw && !startRaw && !endRaw) continue
 
       if (!sectorRaw) {
-        errors.push(`Linha ${line}: setor ausente.`)
+        errors.push(`Linha ${line}: Coluna de 'setor' ausente ou vazia.`)
         continue
       }
       
@@ -124,19 +144,19 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
       const endDate = toISODate(endRaw)
       
       if (!startDate) {
-        errors.push(`Linha ${line}: data de início inválida ("${startRaw}").`)
+        errors.push(`Linha ${line}: Data de início inválida (Valor: "${startRaw}").`)
         continue
       }
       if (!endDate) {
-        errors.push(`Linha ${line}: data de término inválida ("${endRaw}").`)
+        errors.push(`Linha ${line}: Data de término inválida (Valor: "${endRaw}").`)
         continue
       }
 
       const sector = normalizeSector(sectorRaw)
-      const oldPrice = toPrice(pick(row, ["preço antigo", "preco antigo", "preço original", "de", "preço de", "preco_antigo"]))
-      const newPrice = toPrice(pick(row, ["preço novo", "preco novo", "preço promocional", "por", "preço por", "preco_novo"]))
+      const oldPrice = toPrice(pick(row, ["preço padrao", "preco padrao", "preço antigo", "preço original"]))
+      const newPrice = toPrice(pick(row, ["preço promocional", "preco promocional", "preço novo"]))
 
-      // Insere diretamente no banco local
+      // Gravação no banco local
       const [promo] = await db
         .insert(promotions)
         .values({
@@ -189,11 +209,10 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
     revalidatePath("/gerente")
     revalidatePath("/painel")
     revalidatePath("/calendario")
-    return { ok: errors.length === 0, imported, errors }
+    return { ok: imported > 0 && errors.length === 0, imported, errors }
 
   } catch (globalError: any) {
-    console.error("Erro interno catastrófico na importação:", globalError)
-    return { ok: false, imported: 0, errors: [globalError?.message || "Erro desconhecido ao processar planilha."] }
+    return { ok: false, imported: 0, errors: [globalError?.message || "Erro desconhecido ao processar arquivo."] }
   }
 }
 
