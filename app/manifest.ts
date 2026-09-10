@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "PetCamp — Promoções",
     short_name: "PetCamp",
     description: "Gestão de promoções e verificações da equipe PetCamp",
-    start_url: "/",
+    start_url: "/painel",
     display: "standalone",
     orientation: "portrait",
     background_color: "#3D1C87",

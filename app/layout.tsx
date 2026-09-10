@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import { Baloo_2, Nunito } from 'next/font/google'
 import { Toaster } from '@/components/ui/sonner'
 import './globals.css'
+import { PwaRegister } from '@/components/pwa-register'
 
 const baloo = Baloo_2({ subsets: ['latin'], variable: '--font-baloo', weight: ['500', '600', '700', '800'] })
 const nunito = Nunito({ subsets: ['latin'], variable: '--font-nunito', weight: ['400', '500', '600', '700', '800'] })
@@ -41,6 +42,7 @@ export default function RootLayout({
     <html lang="pt-BR" className={`bg-background ${baloo.variable} ${nunito.variable}`}>
       <body className="antialiased">
         {children}
+        <PwaRegister />
         <Toaster position="top-center" richColors />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

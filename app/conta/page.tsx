@@ -2,6 +2,7 @@ import { redirect } from "next/navigation"
 import { AppHeader } from "@/components/app-header"
 import { BottomNav } from "@/components/bottom-nav"
 import { SectorEditor } from "@/components/sector-editor"
+import { LogoutButton } from "@/components/logout-button"
 import { getCurrentUser, getNotifications, getSession, getUnreadCount } from "@/lib/data"
 
 export default async function AccountPage() {
@@ -45,6 +46,7 @@ export default async function AccountPage() {
           </dl>
         </section>
         <SectorEditor initialSector={employee.sector} />
+        <LogoutButton />
       </div>
       <BottomNav isManager={employee.role === "manager"} />
     </main>
