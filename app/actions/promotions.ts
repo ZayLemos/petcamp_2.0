@@ -18,13 +18,15 @@ async function requireManager() {
 function pick(row: Record<string, any>, keys: string[]): string {
   const normalizedRow: Record<string, any> = {}
   for (const k of Object.keys(row)) {
+    // Remove espaços e acentos para mapear as chaves cruas perfeitamente
     const normalizedKey = k.trim().toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+/g, "") // Remove qualquer espaço no meio (ex: "data inicio" vira "datainicio")
     normalizedRow[normalizedKey] = row[k]
   }
   for (const key of keys) {
-    const normalizedTargetKey = key.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    const normalizedTargetKey = key.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "")
     const v = normalizedRow[normalizedTargetKey]
     if (v !== undefined && v !== null && String(v).trim() !== "") return String(v).trim()
   }
@@ -34,7 +36,6 @@ function pick(row: Record<string, any>, keys: string[]): string {
 function toISODate(value: string): string | null {
   if (!value) return null
   
-  // Limpa possíveis espaços ou caracteres invisíveis
   const cleanValue = String(value).trim()
   
   const num = Number(cleanValue)
@@ -120,33 +121,32 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
       const row = rows[i]
       const line = i + 2
       
-      const title = pick(row, ["tipo", "promo flex", "titulo", "promocao"])
-      const productName = pick(row, ["produto", "descricao", "item", "nome do produto"])
+      // Mapeamento idêntico às chaves cruas de cabeçalho do seu arquivo de origem
+      const title = pick(row, ["tipo", "promoflex", "titulo", "promocao"])
+      const productName = pick(row, ["produto", "descricao", "item", "nomedoproduto"])
       const sectorRaw = pick(row, ["setor", "categoria2", "sector", "departamento", "area"])
-      const startRaw = pick(row, ["datainicio", "data inicio", "inicio"])
-      const endRaw = pick(row, ["datafinal", "data termino", "termino", "final"])
+      const startRaw = pick(row, ["datainicio", "data_inicio", "inicio"])
+      const endRaw = pick(row, ["datafinal", "data_final", "termino", "final"])
 
       if (!title && !productName && !sectorRaw && !startRaw && !endRaw) continue
 
-      // CORREÇÃO: Se o setor não foi preenchido na linha, usa "Geral" para não pular a linha
       const sector = sectorRaw ? sectorRaw.trim() : "Geral"
-      
       const startDate = toISODate(startRaw)
       const endDate = toISODate(endRaw)
       
       if (!startDate) {
-        errors.push(`Linha ${line} [${productName || "Sem Nome"}]: Data inicial inválida ou vazia (Recebido: "${startRaw}").`)
+        errors.push(`Linha ${line} [${productName || "Sem Nome"}]: Data inicial inválida ("${startRaw}").`)
         continue
       }
       if (!endDate) {
-        errors.push(`Linha ${line} [${productName || "Sem Nome"}]: Data final inválida ou vazia (Recebido: "${endRaw}").`)
+        errors.push(`Linha ${line} [${productName || "Sem Nome"}]: Data final inválida ("${endRaw}").`)
         continue
       }
 
-      const oldPrice = toPrice(pick(row, ["preço padrão", "preçopadrao", "preço padrao", "preco padrao", "preco antigo"]))
-      const newPrice = toPrice(pick(row, ["preço promocional", "preçopromocional", "preco promocional", "preco novo"]))
+      const oldPrice = toPrice(pick(row, ["preçopadrão", "precopadrao", "preçoantigo", "precoriginal"]))
+      const newPrice = toPrice(pick(row, ["preçopromocional", "precopromocional", "preçonovo"]))
 
-      // Insere no banco utilizando o setor bruto lido diretamente do arquivo
+      // Gravação no banco utilizando as strings extraídas
       const [promo] = await db
         .insert(promotions)
         .values({
