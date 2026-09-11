@@ -17,13 +17,23 @@ async function requireManager() {
 }
 
 // Encontra o valor de uma linha testando várias chaves possíveis (planilha flexível).
+function normalizeHeader(value: string): string {
+  return value
+    .replace(/^\uFEFF/, "")
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[ºª]/g, "")
+    .replace(/[._-]+/g, " ")
+    .replace(/\s+/g, " ")
+}
+
 function pick(row: Record<string, any>, keys: string[]): string {
   const normalizedRow: Record<string, any> = {}
-  for (const k of Object.keys(row)) {
-    normalizedRow[k.trim().toLowerCase()] = row[k]
-  }
+  for (const k of Object.keys(row)) normalizedRow[normalizeHeader(k)] = row[k]
   for (const key of keys) {
-    const v = normalizedRow[key]
+    const v = normalizedRow[normalizeHeader(key)]
     if (v !== undefined && v !== null && String(v).trim() !== "") return String(v).trim()
   }
   return ""
@@ -78,15 +88,23 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
   if (!file) return { ok: false, imported: 0, errors: ["Nenhum arquivo enviado."] }
 
   const buffer = Buffer.from(await file.arrayBuffer())
+  const extension = file.name.toLowerCase().split(".").pop()
+  if (extension !== "xlsx" && extension !== "csv") {
+    return { ok: false, imported: 0, errors: ["Formato inválido. Envie um arquivo .xlsx ou .csv."] }
+  }
   let rows: Record<string, any>[]
   try {
-    const wb = XLSX.read(buffer, { type: "buffer", cellDates: true })
+    const wb = XLSX.read(buffer, {
+      type: "buffer",
+      cellDates: true,
+      ...(extension === "csv" ? { FS: ";" } : {}),
+    })
     rows = wb.SheetNames.flatMap((sheetName) => {
       const sheetRows = XLSX.utils.sheet_to_json(wb.Sheets[sheetName], { defval: "" }) as Record<string, any>[]
       return sheetRows.map((row) => ({ ...row, __sheet: sheetName }))
     })
   } catch (e) {
-    return { ok: false, imported: 0, errors: ["Não foi possível ler a planilha. Envie um arquivo .xlsx válido."] }
+    return { ok: false, imported: 0, errors: ["Não foi possível ler a planilha. Envie um arquivo .xlsx ou .csv válido."] }
   }
 
   const errors: string[] = []
@@ -101,19 +119,28 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
       prompt: JSON.stringify(rows),
     })
     const parsed = JSON.parse(text)
-    if (Array.isArray(parsed)) aiRows = parsed
+    if (Array.isArray(parsed) && parsed.length === rows.length) {
+      aiRows = rows.map((original, index) => {
+        const reviewed = parsed[index]
+        if (!reviewed || typeof reviewed !== "object") return original
+        return Object.fromEntries(
+          Object.entries({ ...original, ...reviewed }).filter(([, value]) => value !== null && value !== undefined && String(value).trim() !== ""),
+        )
+      })
+    }
   } catch (error) {
     console.error("[v0] Falha na revisão da planilha por IA; usando leitura local:", error)
   }
 
   for (let i = 0; i < aiRows.length; i++) {
     const row = aiRows[i]
-    const line = i + 2 // +1 header, +1 base-1
-    const title = pick(row, ["título", "titulo", "promoção", "promocao", "nome", "produto"])
-    const productName = pick(row, ["produto", "item", "nome do produto"])
+    const lineValue = pick(row, ["originalLine", "linha original", "linha", "line"])
+    const line = lineValue ? Number(lineValue) || i + 2 : i + 2
+    const title = pick(row, ["título", "titulo", "promoção", "promocao", "nome", "produto", "title"])
+    const productName = pick(row, ["produto", "item", "nome do produto", "productName", "product"])
     const sectorRaw = pick(row, ["setor", "sector", "departamento", "área", "area"])
-    const startRaw = pick(row, ["início", "inicio", "data início", "data inicio", "data_inicio", "start"])
-    const endRaw = pick(row, ["término", "termino", "fim", "data fim", "data término", "data_fim", "end"])
+    const startRaw = pick(row, ["início", "inicio", "data início", "data inicio", "data_inicio", "start", "startDate", "data de início"])
+    const endRaw = pick(row, ["término", "termino", "fim", "data fim", "data término", "data_fim", "end", "endDate", "data de término"])
 
     if (!title && !productName && !sectorRaw && !startRaw && !endRaw) continue // linha vazia
 
@@ -186,27 +213,6 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
   revalidatePath("/painel")
   revalidatePath("/calendario")
   return { ok: errors.length === 0, imported, errors }
-}
-
-// Gerente "dá baixa" (aprova) uma promoção: ela passa a aparecer no calendário futuro.
-export async function approvePromotion(promotionId: number) {
-  await requireManager()
-  await db
-    .update(promotions)
-    .set({ approved: true, approvedAt: new Date() })
-    .where(eq(promotions.id, promotionId))
-  revalidatePath("/gerente")
-  revalidatePath("/calendario")
-}
-
-export async function unapprovePromotion(promotionId: number) {
-  await requireManager()
-  await db
-    .update(promotions)
-    .set({ approved: false, approvedAt: null })
-    .where(eq(promotions.id, promotionId))
-  revalidatePath("/gerente")
-  revalidatePath("/calendario")
 }
 
 export async function deletePromotion(promotionId: number) {
