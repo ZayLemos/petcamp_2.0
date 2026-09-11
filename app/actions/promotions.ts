@@ -84,7 +84,11 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
   }
   let rows: Record<string, any>[]
   try {
-    const wb = XLSX.read(buffer, { type: "buffer", cellDates: true })
+    const wb = XLSX.read(buffer, {
+      type: "buffer",
+      cellDates: true,
+      ...(extension === "csv" ? { FS: ";" } : {}),
+    })
     rows = wb.SheetNames.flatMap((sheetName) => {
       const sheetRows = XLSX.utils.sheet_to_json(wb.Sheets[sheetName], { defval: "" }) as Record<string, any>[]
       return sheetRows.map((row) => ({ ...row, __sheet: sheetName }))
