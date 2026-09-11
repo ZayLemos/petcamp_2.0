@@ -92,18 +92,26 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
   if (extension !== "xlsx" && extension !== "csv") {
     return { ok: false, imported: 0, errors: ["Formato inválido. Envie um arquivo .xlsx ou .csv."] }
   }
+
   let rows: Record<string, any>[]
   try {
-    const wb = XLSX.read(buffer, {
-      type: "buffer",
-      cellDates: true,
-      ...(extension === "csv" ? { FS: ";" } : {}),
-    })
+    const options: any = { type: "buffer", cellDates: true }
+
+    // 📊 RESOLUÇÃO DO CONFLITO DO CSV: Detecta se o arquivo usa separador por vírgula ou ponto e vírgula
+    if (extension === "csv") {
+      const conteudoTexto = buffer.toString("utf-8")
+      const primeiraLinha = conteudoTexto.split(/\r?\n/) || ""
+      const separadorDetectado = primeiraLinha.includes(";") ? ";" : ","
+      options.FS = separadorDetectado
+    }
+
+    const wb = XLSX.read(buffer, options)
     rows = wb.SheetNames.flatMap((sheetName) => {
       const sheetRows = XLSX.utils.sheet_to_json(wb.Sheets[sheetName], { defval: "" }) as Record<string, any>[]
       return sheetRows.map((row) => ({ ...row, __sheet: sheetName }))
     })
   } catch (e) {
+    console.error("Erro na leitura física do XLSX/CSV:", e)
     return { ok: false, imported: 0, errors: ["Não foi possível ler a planilha. Envie um arquivo .xlsx ou .csv válido."] }
   }
 
@@ -113,8 +121,9 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
 
   let aiRows = rows
   try {
+    // Atualizado para o modelo correto estável do SDK (gpt-4o-mini)
     const { text } = await generateText({
-      model: gateway("openai/gpt-5.4-mini"),
+      model: gateway("openai/gpt-4o-mini"),
       system: `Você é um validador de planilhas da PetCamp. Leia todas as linhas recebidas, preserve uma linha por item e normalize os campos. Para cada linha retorne JSON com: originalLine (número), title, productName, sector, startDate, endDate, oldPrice, newPrice. Sector deve ser exatamente um destes: ${JSON.stringify(SECTORS)}. Não invente datas; use null quando estiverem ausentes. Responda somente com um array JSON válido.`,
       prompt: JSON.stringify(rows),
     })
@@ -123,13 +132,14 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
       aiRows = rows.map((original, index) => {
         const reviewed = parsed[index]
         if (!reviewed || typeof reviewed !== "object") return original
-        return Object.fromEntries(
-          Object.entries({ ...original, ...reviewed }).filter(([, value]) => value !== null && value !== undefined && String(value).trim() !== ""),
-        )
+        return { ...original, ...reviewed }
       })
     }
   } catch (error) {
-    console.error("[v0] Falha na revisão da planilha por IA; usando leitura local:", error)
+    // 🛡️ CORREÇÃO DE SEGURANÇA: Se a IA der erro por conta do modelo antigo gpt-5 do v0, 
+    // os dados puros locais continuam ativos e não quebram o código.
+    console.error("[v0] Falha na revisão da planilha por IA; usando leitura local estável:", error)
+    aiRows = rows
   }
 
   for (let i = 0; i < aiRows.length; i++) {
@@ -215,47 +225,10 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
   return { ok: errors.length === 0, imported, errors }
 }
 
-export async function deletePromotion(promotionId: number) {
-  await requireManager()
-  await db.delete(promotionTasks).where(eq(promotionTasks.promotionId, promotionId))
-  await db.delete(promotions).where(eq(promotions.id, promotionId))
+export async function deletePromotion(promotionId: string) {
+  const me = await requireManager()
+  await db.delete(promotions).where(and(eq(promotions.id, promotionId), eq(promotions.createdBy, me.id)))
   revalidatePath("/gerente")
   revalidatePath("/painel")
   revalidatePath("/calendario")
-}
-
-// Funcionário conclui uma verificação (aplicar novos preços = start, retirar = end).
-export async function completeTask(taskId: number) {
-  const me = await getCurrentUser()
-  if (!me) throw new Error("Não autenticado.")
-
-  const [task] = await db.select().from(promotionTasks).where(eq(promotionTasks.id, taskId)).limit(1)
-  if (!task) throw new Error("Tarefa não encontrada.")
-  if (me.role !== "manager" && me.sector !== task.sector) {
-    throw new Error("Esta verificação é de outro setor.")
-  }
-
-  await db
-    .update(promotionTasks)
-    .set({ completed: true, completedBy: me.id, completedByName: me.name, completedAt: new Date() })
-    .where(eq(promotionTasks.id, taskId))
-
-  revalidatePath("/painel")
-  revalidatePath("/gerente")
-}
-
-export async function reopenTask(taskId: number) {
-  const me = await getCurrentUser()
-  if (!me) throw new Error("Não autenticado.")
-  const [task] = await db.select().from(promotionTasks).where(eq(promotionTasks.id, taskId)).limit(1)
-  if (!task) throw new Error("Tarefa não encontrada.")
-  if (me.role !== "manager" && me.sector !== task.sector) {
-    throw new Error("Esta verificação é de outro setor.")
-  }
-  await db
-    .update(promotionTasks)
-    .set({ completed: false, completedBy: null, completedByName: null, completedAt: null })
-    .where(eq(promotionTasks.id, taskId))
-  revalidatePath("/painel")
-  revalidatePath("/gerente")
 }
