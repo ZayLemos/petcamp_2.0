@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { importPromotionsFromExcel } from "@/app/actions"; // Ajuste o caminho caso o seu arquivo de actions fique em outro lugar
+import { importPromotionsFromExcel } from "@/app/actions"; // Certifique-se de ajustar o caminho para o arquivo de actions acima
 
-// Estrutura das tarefas para exibição visual
 interface TarefaVisual {
   produto: string;
   setor: string;
@@ -15,8 +14,6 @@ interface TarefaVisual {
 export default function GerentePage() {
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
-  
-  // Estados para os contadores dinâmicos da tela
   const [status, setStatus] = useState({ imported: 0, review: 0 });
   const [tarefasCarregadas, setTarefasCarregadas] = useState<TarefaVisual[]>([]);
 
@@ -26,42 +23,32 @@ export default function GerentePage() {
     }
   };
 
-  // Envio seguro que impede a quebra de renderização do Next.js
   const handleSubmitReal = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!file) {
-      alert("Por favor, escolha um arquivo antes de importar.");
-      return;
-    }
+    if (!file) return alert("Por favor, selecione um arquivo.");
 
     setLoading(true);
     const formData = new FormData();
     formData.append("file", file);
 
     try {
-      // Executa a action de servidor sem recarregar a tela inteira
       const res = await importPromotionsFromExcel(formData);
       
       if (res.imported > 0) {
-        setStatus({
-          imported: res.imported,
-          review: res.errors?.length || 0
-        });
+        setStatus({ imported: res.imported, review: res.errors?.length || 0 });
 
-        // Simulação opcional: Lê o arquivo no front-end apenas para preencher a tabela visual imediatamente
         const reader = new FileReader();
         reader.onload = (event) => {
           const text = event.target?.result as string;
           if (text) {
             const linhas = text.split(/\r?\n/).filter(l => l.trim() !== "");
-            const primeiraLinha = linhas[0] || "";
-            const sep = primeiraLinha.includes(";") ? ";" : ",";
-            const cabecalho = primeiraLinha.split(sep).map(c => c.trim().toLowerCase());
+            const sep = linhas[0].includes(";") ? ";" : ",";
+            const cabecalho = linhas[0].split(sep).map(c => c.trim().toLowerCase());
             
             const idxProd = cabecalho.findIndex(c => c.includes("produto"));
             const idxSet = cabecalho.findIndex(c => c.includes("setor"));
-            const idxIni = cabecalho.findIndex(c => c.includes("início") || c.includes("inicio"));
-            const idxTer = cabecalho.findIndex(c => c.includes("término") || c.includes("termino"));
+            const idxIni = cabecalho.findIndex(c => c.includes("inicio") || c.includes("início"));
+            const idxTer = cabecalho.findIndex(c => c.includes("termino") || c.includes("término"));
 
             const listaFormatada: TarefaVisual[] = [];
             linhas.slice(1).forEach(linha => {
@@ -80,15 +67,14 @@ export default function GerentePage() {
           }
         };
         reader.readAsText(file);
-
-        alert(`Sucesso! ${res.imported} item(ns) processados com sucesso.`);
+        alert(`Sucesso! ${res.imported} item(ns) importados.`);
       } else {
         setStatus({ imported: 0, review: res.errors?.length || 22 });
-        alert("Atenção: Nenhuma linha pôde ser importada. Revise o arquivo.");
+        alert("Nenhum item pôde ser importado. Verifique os logs.");
       }
     } catch (err) {
-      console.error("Erro na comunicação com a Server Action:", err);
-      alert("Ocorreu um erro no servidor ao processar os dados.");
+      console.error(err);
+      alert("Erro ao processar arquivo no servidor.");
     } finally {
       setLoading(false);
     }
@@ -96,12 +82,9 @@ export default function GerentePage() {
 
   return (
     <div className="min-h-screen bg-gray-50 pb-20 font-sans">
-      {/* Topbar Roxa */}
       <header className="bg-[#4C1D95] text-white p-4 shadow-md flex justify-between items-center">
         <div className="flex items-center gap-3">
-          <div className="bg-orange-500 font-bold p-2 rounded-full w-10 h-10 flex items-center justify-center text-sm shadow">
-            Pet
-          </div>
+          <div className="bg-orange-500 font-bold p-2 rounded-full w-10 h-10 flex items-center justify-center text-sm shadow">Pet</div>
           <div>
             <h1 className="text-lg font-bold">Conta do gerente</h1>
             <p className="text-xs text-purple-200">Acompanhe a equipe e importe tarefas</p>
@@ -110,7 +93,6 @@ export default function GerentePage() {
       </header>
 
       <main className="max-w-6xl mx-auto p-4 md:p-6 space-y-6">
-        {/* Grid de Cards de Indicadores */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
             <p className="text-xs font-medium text-gray-400">Tarefas concluídas</p>
@@ -126,41 +108,25 @@ export default function GerentePage() {
           </div>
         </div>
 
-        {/* Card do Formulário de Importação */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
           <div className="flex items-start gap-3">
             <span className="text-xl mt-0.5">📄</span>
             <div>
               <h2 className="text-base font-bold text-gray-800">Importar planilha CSV</h2>
-              <p className="text-xs text-gray-400 mt-0.5">
-                Envie um arquivo .csv com produto, setor, início e término. As tarefas serão vinculadas no banco.
-              </p>
+              <p className="text-xs text-gray-400 mt-0.5">Envie um arquivo .csv com produto, setor, início e término.</p>
             </div>
           </div>
 
-          {/* Tag form controlada por JavaScript assíncrono */}
           <form onSubmit={handleSubmitReal} className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
             <div className="flex-1 flex items-center gap-2 border border-gray-200 rounded-xl p-2 bg-gray-50/50">
-              <label className="cursor-pointer bg-white px-3 py-1.5 border border-gray-300 rounded-lg text-xs font-medium hover:bg-gray-50 transition-colors shadow-sm text-gray-700 whitespace-nowrap">
+              <label className="cursor-pointer bg-white px-3 py-1.5 border border-gray-300 rounded-lg text-xs font-medium hover:bg-gray-50 text-gray-700 whitespace-nowrap">
                 Escolher arquivo
-                <input 
-                  type="file" 
-                  accept=".csv" 
-                  className="hidden" 
-                  onChange={handleFileChange} 
-                />
+                <input type="file" accept=".csv" className="hidden" onChange={handleFileChange} />
               </label>
-              <span className="text-xs text-gray-500 truncate max-w-[300px]">
-                {file ? file.name : "Nenhum arquivo escolhido"}
-              </span>
+              <span className="text-xs text-gray-500 truncate max-w-[300px]">{file ? file.name : "Nenhum arquivo escolhido"}</span>
             </div>
-
-            <button
-              type="submit"
-              disabled={loading}
-              className="bg-orange-500 hover:bg-orange-600 text-white font-medium text-sm py-2.5 px-5 rounded-xl transition-all shadow-sm flex items-center justify-center gap-2 disabled:opacity-50"
-            >
-              <span>📤</span> {loading ? "Processando..." : "Importar planilha"}
+            <button type="submit" disabled={loading} className="bg-orange-500 hover:bg-orange-600 text-white font-medium text-sm py-2.5 px-5 rounded-xl disabled:opacity-50">
+              {loading ? "Processando..." : "Importar planilha"}
             </button>
           </form>
 
@@ -170,13 +136,8 @@ export default function GerentePage() {
           </p>
         </div>
 
-        {/* Card Histórico de Acompanhamento */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
-          <div className="flex items-center gap-3">
-            <span className="text-xl">📋</span>
-            <h2 className="text-base font-bold text-gray-800">Acompanhamento por funcionário</h2>
-          </div>
-
+          <h2 className="text-base font-bold text-gray-800">Acompanhamento por funcionário</h2>
           {tarefasCarregadas.length === 0 ? (
             <p className="text-xs text-gray-400">Ainda não há tarefas importadas para exibição.</p>
           ) : (
@@ -184,11 +145,7 @@ export default function GerentePage() {
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
                   <tr className="bg-gray-50 text-gray-500 font-medium border-b border-gray-100">
-                    <th className="p-3">Produto</th>
-                    <th className="p-3">Setor</th>
-                    <th className="p-3">Início</th>
-                    <th className="p-3">Término</th>
-                    <th className="p-3">Status</th>
+                    <th className="p-3">Produto</th><th className="p-3">Setor</th><th className="p-3">Início</th><th className="p-3">Término</th><th className="p-3">Status</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-50 text-gray-700">
@@ -198,11 +155,7 @@ export default function GerentePage() {
                       <td className="p-3">{tarefa.setor}</td>
                       <td className="p-3 text-gray-400">{tarefa.inicio}</td>
                       <td className="p-3 text-gray-400">{tarefa.termino}</td>
-                      <td className="p-3">
-                        <span className="bg-amber-50 text-amber-600 px-2 py-0.5 rounded-full font-medium text-[10px]">
-                          {tarefa.status}
-                        </span>
-                      </td>
+                      <td className="p-3"><span className="bg-amber-50 text-amber-600 px-2 py-0.5 rounded-full font-medium text-[10px]">{tarefa.status}</span></td>
                     </tr>
                   ))}
                 </tbody>
