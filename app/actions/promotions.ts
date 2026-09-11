@@ -112,12 +112,13 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
 
   for (let i = 0; i < aiRows.length; i++) {
     const row = aiRows[i]
-    const line = i + 2 // +1 header, +1 base-1
-    const title = pick(row, ["título", "titulo", "promoção", "promocao", "nome", "produto"])
-    const productName = pick(row, ["produto", "item", "nome do produto"])
+    const lineValue = pick(row, ["originalLine", "linha original", "linha", "line"])
+    const line = lineValue ? Number(lineValue) || i + 2 : i + 2
+    const title = pick(row, ["título", "titulo", "promoção", "promocao", "nome", "produto", "title"])
+    const productName = pick(row, ["produto", "item", "nome do produto", "productName", "product"])
     const sectorRaw = pick(row, ["setor", "sector", "departamento", "área", "area"])
-    const startRaw = pick(row, ["início", "inicio", "data início", "data inicio", "data_inicio", "start"])
-    const endRaw = pick(row, ["término", "termino", "fim", "data fim", "data término", "data_fim", "end"])
+    const startRaw = pick(row, ["início", "inicio", "data início", "data inicio", "data_inicio", "start", "startDate", "data de início"])
+    const endRaw = pick(row, ["término", "termino", "fim", "data fim", "data término", "data_fim", "end", "endDate", "data de término"])
 
     if (!title && !productName && !sectorRaw && !startRaw && !endRaw) continue // linha vazia
 
