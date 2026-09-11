@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { importPromotionsFromExcel } from "@/app/actions"; // Ajuste o caminho se a sua action estiver em outro arquivo
+import { importPromotionsFromExcel } from "@/app/actions/promotions";
 
 interface TarefaVisual {
   produto: string;
@@ -37,7 +37,6 @@ export default function GerentePage() {
       if (res.imported > 0) {
         setStatus({ imported: res.imported, review: res.errors?.length || 0 });
 
-        // Processa o layout textual local apenas para preencher a tabela dinamicamente
         const reader = new FileReader();
         reader.onload = (event) => {
           const text = event.target?.result as string;
@@ -48,8 +47,8 @@ export default function GerentePage() {
             
             const idxProd = cabecalho.findIndex(c => c.includes("produto"));
             const idxSet = cabecalho.findIndex(c => c.includes("setor"));
-            const idxIni = cabecalho.findIndex(c => c.includes("inicio") || c.includes("início"));
-            const idxTer = cabecalho.findIndex(c => c.includes("termino") || c.includes("término"));
+            const idxIni = cabecalho.findIndex(c => c.includes("datainicio") || c.includes("inicio"));
+            const idxTer = cabecalho.findIndex(c => c.includes("datafinal") || c.includes("termino"));
 
             const listaFormatada: TarefaVisual[] = [];
             linhas.slice(1).forEach(linha => {
@@ -68,14 +67,14 @@ export default function GerentePage() {
           }
         };
         reader.readAsText(file);
-        alert(`Sucesso! ${res.imported} item(ns) importados com sucesso.`);
+        alert(`Sucesso! ${res.imported} itens processados em lote.`);
       } else {
-        setStatus({ imported: 0, review: res.errors?.length || 22 });
-        alert("Nenhuma linha pôde ser cadastrada. Verifique o console do servidor.");
+        setStatus({ imported: 0, review: res.errors?.length || 0 });
+        alert("Nenhum item pôde ser cadastrado. Verifique a estrutura das colunas.");
       }
     } catch (err) {
       console.error(err);
-      alert("Erro crítico no servidor ao ler os dados.");
+      alert("Erro ao processar lote de dados.");
     } finally {
       setLoading(false);
     }
@@ -114,7 +113,7 @@ export default function GerentePage() {
             <span className="text-xl mt-0.5">📄</span>
             <div>
               <h2 className="text-base font-bold text-gray-800">Importar planilha CSV</h2>
-              <p className="text-xs text-gray-400 mt-0.5">Envie um arquivo .csv com produto, setor, início e término.</p>
+              <p className="text-xs text-gray-400 mt-0.5">Envie a planilha atualizada para processamento instantâneo em lote.</p>
             </div>
           </div>
 
@@ -127,7 +126,7 @@ export default function GerentePage() {
               <span className="text-xs text-gray-500 truncate max-w-[300px]">{file ? file.name : "Nenhum arquivo escolhido"}</span>
             </div>
             <button type="submit" disabled={loading} className="bg-orange-500 hover:bg-orange-600 text-white font-medium text-sm py-2.5 px-5 rounded-xl disabled:opacity-50">
-              {loading ? "Processando..." : "Importar planilha"}
+              {loading ? "Processando lote..." : "Importar planilha"}
             </button>
           </form>
 
@@ -138,13 +137,13 @@ export default function GerentePage() {
         </div>
 
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
-          <h2 className="text-base font-bold text-gray-800">Acompanhamento por funcionário</h2>
+          <h2 className="text-base font-bold text-gray-800">Acompanhamento por funcionário ({tarefasCarregadas.length} itens listados)</h2>
           {tarefasCarregadas.length === 0 ? (
             <p className="text-xs text-gray-400">Ainda não há tarefas importadas para exibição.</p>
           ) : (
-            <div className="overflow-x-auto border border-gray-100 rounded-xl">
+            <div className="overflow-y-auto max-h-[500px] border border-gray-100 rounded-xl">
               <table className="w-full text-left border-collapse text-xs">
-                <thead>
+                <thead className="sticky top-0 bg-gray-50 shadow-sm z-10">
                   <tr className="bg-gray-50 text-gray-500 font-medium border-b border-gray-100">
                     <th className="p-3">Produto</th><th className="p-3">Setor</th><th className="p-3">Início</th><th className="p-3">Término</th><th className="p-3">Status</th>
                   </tr>
@@ -152,7 +151,7 @@ export default function GerentePage() {
                 <tbody className="divide-y divide-gray-50 text-gray-700">
                   {tarefasCarregadas.map((tarefa, idx) => (
                     <tr key={idx} className="hover:bg-gray-50/50 transition-colors">
-                      <td className="p-3 font-medium">{tarefa.produto}</td>
+                      <td className="p-3 font-medium max-w-[250px] truncate">{tarefa.produto}</td>
                       <td className="p-3">{tarefa.setor}</td>
                       <td className="p-3 text-gray-400">{tarefa.inicio}</td>
                       <td className="p-3 text-gray-400">{tarefa.termino}</td>
