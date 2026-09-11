@@ -17,13 +17,23 @@ async function requireManager() {
 }
 
 // Encontra o valor de uma linha testando várias chaves possíveis (planilha flexível).
+function normalizeHeader(value: string): string {
+  return value
+    .replace(/^\uFEFF/, "")
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[ºª]/g, "")
+    .replace(/[._-]+/g, " ")
+    .replace(/\s+/g, " ")
+}
+
 function pick(row: Record<string, any>, keys: string[]): string {
   const normalizedRow: Record<string, any> = {}
-  for (const k of Object.keys(row)) {
-    normalizedRow[k.trim().toLowerCase()] = row[k]
-  }
+  for (const k of Object.keys(row)) normalizedRow[normalizeHeader(k)] = row[k]
   for (const key of keys) {
-    const v = normalizedRow[key.trim().toLowerCase()]
+    const v = normalizedRow[normalizeHeader(key)]
     if (v !== undefined && v !== null && String(v).trim() !== "") return String(v).trim()
   }
   return ""
