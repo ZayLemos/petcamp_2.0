@@ -33,20 +33,18 @@ export function AuthForm({ mode }: { mode: "sign-in" | "sign-up" }) {
           setLoading(false)
           return
         }
-
-        // Removido o campo 'sector' daqui para evitar o erro de validação (invalid) do Better Auth
         const { error } = await authClient.signUp.email({
           email,
           password,
           name,
-        })
-
+          // additionalFields
+          sector: JSON.stringify(sectors),
+        } as Parameters<typeof authClient.signUp.email>[0])
         if (error) {
           toast.error(error.message ?? "Não foi possível criar a conta.")
           setLoading(false)
           return
         }
-
         if (managerCode.trim()) {
           const res = await promoteToManager(managerCode)
           if (!res.ok) toast.error(res.error ?? "Código de gerente inválido.")
