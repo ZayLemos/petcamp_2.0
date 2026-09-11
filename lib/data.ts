@@ -52,11 +52,7 @@ export async function getPromotions() {
 }
 
 export async function getApprovedPromotions() {
-  return db
-    .select()
-    .from(promotions)
-    .where(eq(promotions.approved, true))
-    .orderBy(promotions.startDate)
+  return db.select().from(promotions).orderBy(promotions.startDate)
 }
 
 export type TaskWithPromotion = {

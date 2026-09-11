@@ -78,6 +78,10 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
   if (!file) return { ok: false, imported: 0, errors: ["Nenhum arquivo enviado."] }
 
   const buffer = Buffer.from(await file.arrayBuffer())
+  const extension = file.name.toLowerCase().split(".").pop()
+  if (extension !== "xlsx" && extension !== "csv") {
+    return { ok: false, imported: 0, errors: ["Formato inválido. Envie um arquivo .xlsx ou .csv."] }
+  }
   let rows: Record<string, any>[]
   try {
     const wb = XLSX.read(buffer, { type: "buffer", cellDates: true })
@@ -86,7 +90,7 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
       return sheetRows.map((row) => ({ ...row, __sheet: sheetName }))
     })
   } catch (e) {
-    return { ok: false, imported: 0, errors: ["Não foi possível ler a planilha. Envie um arquivo .xlsx válido."] }
+    return { ok: false, imported: 0, errors: ["Não foi possível ler a planilha. Envie um arquivo .xlsx ou .csv válido."] }
   }
 
   const errors: string[] = []
@@ -186,27 +190,6 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
   revalidatePath("/painel")
   revalidatePath("/calendario")
   return { ok: errors.length === 0, imported, errors }
-}
-
-// Gerente "dá baixa" (aprova) uma promoção: ela passa a aparecer no calendário futuro.
-export async function approvePromotion(promotionId: number) {
-  await requireManager()
-  await db
-    .update(promotions)
-    .set({ approved: true, approvedAt: new Date() })
-    .where(eq(promotions.id, promotionId))
-  revalidatePath("/gerente")
-  revalidatePath("/calendario")
-}
-
-export async function unapprovePromotion(promotionId: number) {
-  await requireManager()
-  await db
-    .update(promotions)
-    .set({ approved: false, approvedAt: null })
-    .where(eq(promotions.id, promotionId))
-  revalidatePath("/gerente")
-  revalidatePath("/calendario")
 }
 
 export async function deletePromotion(promotionId: number) {
