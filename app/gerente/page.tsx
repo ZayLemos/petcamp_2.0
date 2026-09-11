@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { importPromotionsFromExcel } from "@/app/actions"; // Certifique-se de ajustar o caminho para o arquivo de actions acima
+import { importPromotionsFromExcel } from "@/app/actions"; // Ajuste o caminho se a sua action estiver em outro arquivo
 
 interface TarefaVisual {
   produto: string;
@@ -18,8 +18,8 @@ export default function GerentePage() {
   const [tarefasCarregadas, setTarefasCarregadas] = useState<TarefaVisual[]>([]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setFile(e.target.files[0]);
+    if (e.target.files && e.target.files) {
+      setFile(e.target.files);
     }
   };
 
@@ -37,13 +37,14 @@ export default function GerentePage() {
       if (res.imported > 0) {
         setStatus({ imported: res.imported, review: res.errors?.length || 0 });
 
+        // Processa o layout textual local apenas para preencher a tabela dinamicamente
         const reader = new FileReader();
         reader.onload = (event) => {
           const text = event.target?.result as string;
           if (text) {
             const linhas = text.split(/\r?\n/).filter(l => l.trim() !== "");
-            const sep = linhas[0].includes(";") ? ";" : ",";
-            const cabecalho = linhas[0].split(sep).map(c => c.trim().toLowerCase());
+            const sep = linhas.includes(";") ? ";" : ",";
+            const cabecalho = linhas.split(sep).map(c => c.trim().toLowerCase());
             
             const idxProd = cabecalho.findIndex(c => c.includes("produto"));
             const idxSet = cabecalho.findIndex(c => c.includes("setor"));
@@ -67,14 +68,14 @@ export default function GerentePage() {
           }
         };
         reader.readAsText(file);
-        alert(`Sucesso! ${res.imported} item(ns) importados.`);
+        alert(`Sucesso! ${res.imported} item(ns) importados com sucesso.`);
       } else {
         setStatus({ imported: 0, review: res.errors?.length || 22 });
-        alert("Nenhum item pôde ser importado. Verifique os logs.");
+        alert("Nenhuma linha pôde ser cadastrada. Verifique o console do servidor.");
       }
     } catch (err) {
       console.error(err);
-      alert("Erro ao processar arquivo no servidor.");
+      alert("Erro crítico no servidor ao ler os dados.");
     } finally {
       setLoading(false);
     }
