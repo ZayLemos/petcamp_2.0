@@ -23,7 +23,7 @@ function pick(row: Record<string, any>, keys: string[]): string {
     normalizedRow[k.trim().toLowerCase()] = row[k]
   }
   for (const key of keys) {
-    const v = normalizedRow[key]
+    const v = normalizedRow[key.trim().toLowerCase()]
     if (v !== undefined && v !== null && String(v).trim() !== "") return String(v).trim()
   }
   return ""
@@ -105,7 +105,15 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
       prompt: JSON.stringify(rows),
     })
     const parsed = JSON.parse(text)
-    if (Array.isArray(parsed)) aiRows = parsed
+    if (Array.isArray(parsed) && parsed.length === rows.length) {
+      aiRows = rows.map((original, index) => {
+        const reviewed = parsed[index]
+        if (!reviewed || typeof reviewed !== "object") return original
+        return Object.fromEntries(
+          Object.entries({ ...original, ...reviewed }).filter(([, value]) => value !== null && value !== undefined && String(value).trim() !== ""),
+        )
+      })
+    }
   } catch (error) {
     console.error("[v0] Falha na revisão da planilha por IA; usando leitura local:", error)
   }

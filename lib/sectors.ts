@@ -19,6 +19,14 @@ export function normalizeSector(raw: string): string {
   const match = SECTORS.find((s) => s.toLowerCase() === value)
   if (match) return match
   // casamento parcial para entradas abreviadas ou variações de texto
+  const aliases: Array<[string, Sector]> = [
+    ["brindes", "Brinquedos"],
+    ["cama e conforto", "Brinquedos"],
+    ["coleiras, guias e peitorais", "Coleiras"],
+    ["tbd", "Coadjuvantes"],
+  ]
+  const alias = aliases.find(([name]) => value === name || value.includes(name))
+  if (alias) return alias[1]
   const partial = SECTORS.find((s) => s.toLowerCase().includes(value) || value.includes(s.toLowerCase().split(" ")[0]))
   return partial ?? raw.trim()
 }
