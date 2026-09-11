@@ -86,97 +86,70 @@ export type ImportResult = {
 }
 
 export async function importPromotionsFromExcel(formData: FormData): Promise<ImportResult> {
-  const me = await requireManager()
-  const file = formData.get("file") as File | null
-  if (!file) return { ok: false, imported: 0, errors: ["Nenhum arquivo enviado."] }
-
-  const buffer = Buffer.from(await file.arrayBuffer())
-  const extension = file.name.toLowerCase().split(".").pop()
-  if (extension !== "xlsx" && extension !== "csv") {
-    return { ok: false, imported: 0, errors: ["Formato inválido. Envie um arquivo .xlsx ou .csv."] }
-  }
-
-  let rows: Record<string, any>[]
   try {
+    const me = await requireManager()
+    const file = formData.get("file") as File | null
+    if (!file) return { ok: false, imported: 0, errors: ["Nenhum arquivo enviado."] }
+
+    const buffer = Buffer.from(await file.arrayBuffer())
+    const extension = file.name.toLowerCase().split(".").pop()
+    
+    let rows: Record<string, any>[]
     const options: any = { type: "buffer", cellDates: true }
 
     if (extension === "csv") {
       const conteudoTexto = buffer.toString("utf-8")
-      const primeiraLinha = conteudoTexto.split(/\r?\n/) || ""
+      const primeiraLinha = conteudoTexto.split(/\r?\n/)[0] || ""
       options.FS = primeiraLinha.includes(";") ? ";" : ","
     }
 
     const wb = XLSX.read(buffer, options)
     rows = wb.SheetNames.flatMap((sheetName) => {
-      const sheetRows = XLSX.utils.sheet_to_json(wb.Sheets[sheetName], { defval: "" }) as Record<string, any>[]
-      return sheetRows.map((row) => ({ ...row, __sheet: sheetName }))
-    })
-  } catch (e) {
-    console.error("Erro na leitura física do XLSX/CSV:", e)
-    return { ok: false, imported: 0, errors: ["Não foi possível ler a planilha."] }
-  }
-
-  const errors: string[] = []
-  const affectedSectors = new Set<string>()
-  const promotionsToInsert: any[] = []
-  const tasksToInsert: any[] = []
-
-  for (let i = 0; i < rows.length; i++) {
-    const row = rows[i]
-    const line = i + 2
-    
-    const productName = pick(row, ["produto", "produto ", "item"])
-    const title = pick(row, ["tipo", "titulo"]) || "Promoção"
-    const sectorRaw = pick(row, ["setor", "sector"])
-    const startRaw = pick(row, ["datainicio", "inicio"])
-    const endRaw = pick(row, ["datafinal", "termino", "fim"])
-    const oldPriceRaw = pick(row, ["arg1", "preco antigo"])
-    const newPriceRaw = pick(row, ["arg2", "preco novo"])
-
-    if (!productName && !sectorRaw && !startRaw && !endRaw) continue
-
-    if (!sectorRaw) {
-      errors.push(`Linha ${line}: Coluna de setor ausente.`)
-      continue
-    }
-
-    const startDate = toISODate(startRaw)
-    const endDate = toISODate(endRaw)
-
-    if (!startDate) {
-      errors.push(`Linha ${line}: Data de início inválida ("${startRaw}").`)
-      continue
-    }
-    if (!endDate) {
-      errors.push(`Linha ${line}: Data de término inválida ("${endRaw}").`)
-      continue
-    }
-
-    let sector = sectorRaw
-    try {
-      sector = normalizeSector(sectorRaw)
-    } catch (e) {}
-
-    const oldPrice = toPrice(oldPriceRaw)
-    const newPrice = toPrice(newPriceRaw)
-
-    promotionsToInsert.push({
-      title,
-      productName: productName || null,
-      sector,
-      oldPrice,
-      newPrice,
-      startDate,
-      endDate,
-      createdBy: me.id,
+      return XLSX.utils.sheet_to_json(wb.Sheets[sheetName], { defval: "" }) as Record<string, any>[]
     })
 
-    affectedSectors.add(sector)
-  }
+    const affectedSectors = new Set<string>()
+    const promotionsToInsert: any[] = []
+    const tasksToInsert: any[] = []
 
-  let importedCount = 0
-  if (promotionsToInsert.length > 0) {
-    try {
+    for (let i = 0; i < rows.length; i++) {
+      const row = rows[i]
+      
+      const productName = pick(row, ["produto", "produto ", "item"])
+      const title = pick(row, ["tipo", "titulo"]) || "Promoção"
+      const sectorRaw = pick(row, ["setor", "sector"])
+      const startRaw = pick(row, ["datainicio", "inicio"])
+      const endRaw = pick(row, ["datafinal", "termino", "fim"])
+      const oldPriceRaw = pick(row, ["arg1", "preco antigo"])
+      const newPriceRaw = pick(row, ["arg2", "preco novo"])
+
+      if (!productName && !sectorRaw && !startRaw && !endRaw) continue
+
+      const startDate = toISODate(startRaw)
+      const endDate = toISODate(endRaw)
+      if (!startDate || !endDate) continue
+
+      let sector = sectorRaw
+      try {
+        sector = normalizeSector(sectorRaw)
+      } catch (e) {}
+
+      promotionsToInsert.push({
+        title,
+        productName: productName || null,
+        sector,
+        oldPrice: toPrice(oldPriceRaw),
+        newPrice: toPrice(newPriceRaw),
+        startDate,
+        endDate,
+        createdBy: me.id,
+      })
+
+      affectedSectors.add(sector)
+    }
+
+    let importedCount = 0
+    if (promotionsToInsert.length > 0) {
       const insertedPromos = await db
         .insert(promotions)
         .values(promotionsToInsert)
@@ -190,50 +163,13 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
       if (tasksToInsert.length > 0) {
         await db.insert(promotionTasks).values(tasksToInsert)
       }
-
       importedCount = insertedPromos.length
-    } catch (bulkError: any) {
-      console.error("Erro no Bulk Insert do banco de dados:", bulkError)
-      return { ok: false, imported: 0, errors: ["Erro crítico ao salvar o lote no banco."] }
     }
+
+    revalidatePath("/gerente")
+    return { ok: true, imported: importedCount, errors: [] }
+  } catch (error: any) {
+    console.error(error)
+    return { ok: false, imported: 0, errors: [error.message || "Erro desconhecido"] }
   }
-
-  if (affectedSectors.size > 0 && importedCount > 0) {
-    try {
-      const sectors = Array.from(affectedSectors)
-      const employees = await db
-        .select({ id: user.id, sector: user.sector })
-        .from(user)
-        .where(inArray(user.sector, sectors))
-
-      for (const emp of employees) {
-        if (!emp.sector) continue
-        await db.insert(notifications).values({
-          userId: emp.id,
-          title: "Novas promoções agendadas",
-          body: `Foram adicionadas promoções em lote para o seu setor.`,
-          type: "new_promotions",
-        })
-        await sendPushToUser(emp.id, {
-          title: "Novas promoções agendadas",
-          body: `Há novas promoções em lote para o seu setor.`,
-          url: "/painel",
-        })
-      }
-    } catch (err) {}
-  }
-
-  revalidatePath("/gerente")
-  revalidatePath("/painel")
-  revalidatePath("/calendario")
-  
-  return { ok: errors.length === 0, imported: importedCount, errors }
-}
-
-export async function deletePromotion(promotionId: string) {
-  const me = await requireManager()
-  await db.delete(promotions).where(and(eq(promotions.id, promotionId), eq(promotions.createdBy, me.id)))
-  revalidatePath("/gerente")
-  revalidatePath("/painel")
-  revalidatePath("/calendario")
 }
