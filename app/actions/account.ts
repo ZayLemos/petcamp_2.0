@@ -15,7 +15,7 @@ async function requireManager() {
   return me
 }
 
-// Remove acentos, espaços extras e caracteres invisíveis do Excel (BOM)
+// Limpa acentos, espaços extras e caracteres invisíveis do Excel (BOM)
 function normalizeHeader(value: string): string {
   if (!value) return ""
   return value
@@ -30,7 +30,7 @@ function normalizeHeader(value: string): string {
     .replace(/\s+/g, " ")
 }
 
-// Faz a busca flexível dos campos tanto em português quanto em inglês
+// Busca as colunas na planilha baseado no cabeçalho limpo
 function pick(row: Record<string, any>, keys: string[]): string {
   const normalizedRow: Record<string, any> = {}
   for (const k of Object.keys(row)) {
@@ -43,7 +43,7 @@ function pick(row: Record<string, any>, keys: string[]): string {
   return ""
 }
 
-// Converte a data brasileira (dd/mm/yyyy) para o padrão ISO (yyyy-mm-dd) do banco
+// Converte a data brasileira (dd/mm/yyyy) do seu CSV para o padrão YYYY-MM-DD do banco
 function toISODate(value: string): string | null {
   if (!value) return null
   const num = Number(value)
@@ -71,7 +71,6 @@ function toISODate(value: string): string | null {
   return null
 }
 
-// Formata strings de dinheiro para decimal (ex: 22.99)
 function toPrice(value: string): string | null {
   if (!value) return null
   const cleaned = value.replace(/[R$\s]/g, "").replace(/\.(?=\d{3})/g, "").replace(",", ".")
@@ -100,10 +99,9 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
   try {
     const options: any = { type: "buffer", cellDates: true }
 
-    // Garante a leitura dinâmica usando ponto e vírgula se detectado na primeira linha
     if (extension === "csv") {
       const conteudoTexto = buffer.toString("utf-8")
-      const primeiraLinha = conteudoTexto.split(/\r?\n/)[0] || ""
+      const primeiraLinha = conteudoTexto.split(/\r?\n/) || ""
       options.FS = primeiraLinha.includes(";") ? ";" : ","
     }
 
@@ -113,24 +111,24 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
       return sheetRows.map((row) => ({ ...row, __sheet: sheetName }))
     })
   } catch (e) {
-    return { ok: false, imported: 0, errors: ["Não foi possível ler a planilha. Arquivo corrompido."] }
+    console.error("Erro na leitura física do XLSX/CSV:", e)
+    return { ok: false, imported: 0, errors: ["Não foi possível ler a planilha."] }
   }
 
   const errors: string[] = []
   let imported = 0
   const affectedSectors = new Set<string>()
 
-  // Processamento direto baseado estritamente na estrutura em português enviada
   for (let i = 0; i < rows.length; i++) {
     const row = rows[i]
     const line = i + 2
     
-    // Mapeamento direto das colunas da sua planilha física
-    const productName = pick(row, ["produto", "item", "productname"])
+    // Mapeamento direto batendo com os cabeçalhos em português enviados
+    const productName = pick(row, ["produto", "item"])
     const title = pick(row, ["tipo", "titulo"]) || "Promoção"
     const sectorRaw = pick(row, ["setor", "sector"])
-    const startRaw = pick(row, ["inicio", "data inicio", "startdate"])
-    const endRaw = pick(row, ["termino", "data fim", "enddate"])
+    const startRaw = pick(row, ["inicio", "data inicio"])
+    const endRaw = pick(row, ["termino", "data fim"])
     const oldPriceRaw = pick(row, ["preco antigo", "preco original"])
     const newPriceRaw = pick(row, ["preco novo", "preco promocional"])
 
@@ -157,7 +155,7 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
     try {
       sector = normalizeSector(sectorRaw)
     } catch (e) {
-      // Mantém o valor bruto se o validador não achar correspondência exata
+      // Fallback seguro caso o setor não encontre match rígido no sistema
     }
 
     const oldPrice = toPrice(oldPriceRaw)
