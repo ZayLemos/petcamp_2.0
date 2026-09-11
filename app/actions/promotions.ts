@@ -90,19 +90,40 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
     const buffer = Buffer.from(await file.arrayBuffer())
     let rows: Record<string, any>[] = []
     
-    if (fileNameLower.endsWith(".csv") || file.type === "text/csv") {
-      const csvString = buffer.toString("utf-8").replace(/\r\n/g, "\n").replace(/\r/g, "\n")
-      const separator = csvString.includes(";") ? ";" : ","
-      
-      const wb = XLSX.read(Buffer.from(csvString, "utf-8"), { 
-        type: "buffer", 
-        codepage: 65001, 
-        FS: separator 
+    if (fileNameLower.endsWith(".csv") || file.type === "text/csv" || file.type === "text/plain") {
+      const csvString = buffer
+        .toString("utf8")
+        .replace(/^\uFEFF/, "")
+        .replace(/\r\n/g, "\n")
+        .replace(/\r/g, "\n")
+        .trim()
+
+      if (!csvString) {
+        return { ok: false, imported: 0, errors: ["O arquivo CSV está vazio."] }
+      }
+
+      const sample = csvString.split("\n").slice(0, 5).join("\n")
+      const candidates = [";", ",", "\\t"]
+      const separator = candidates
+        .map((candidate) => ({
+          candidate,
+          count: sample.split(candidate).length - 1,
+        }))
+        .sort((a, b) => b.count - a.count)[0].candidate
+
+      const wb = XLSX.read(csvString, {
+        type: "string",
+        raw: false,
+        codepage: 65001,
+        FS: separator,
       })
-      
-      rows = wb.SheetNames.flatMap((sheetName) => {
-        return XLSX.utils.sheet_to_json(wb.Sheets[sheetName], { defval: "", raw: false }) as Record<string, any>[]
-      })
+
+      rows = wb.SheetNames.flatMap((sheetName) =>
+        XLSX.utils.sheet_to_json(wb.Sheets[sheetName], {
+          defval: "",
+          raw: false,
+        }) as Record<string, any>[]
+      )
     } else {
       const wb = XLSX.read(buffer, { type: "buffer", cellDates: true })
       rows = wb.SheetNames.flatMap((sheetName) => {
