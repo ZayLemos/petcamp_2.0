@@ -205,11 +205,18 @@ export async function importPromotionsFromExcel(formData: FormData) {
 
 export async function deleteSpreadsheetImports() {
   const me = await requireManager()
-  const imported = await db.select({ id: promotions.id }).from(promotions).where(eq(promotions.createdBy, `${me.id}:spreadsheet`))
-  for (const promotion of imported) {
-    await db.delete(promotionTasks).where(eq(promotionTasks.promotionId, promotion.id))
-    await db.delete(notifications).where(eq(notifications.promotionId, promotion.id))
-    await db.delete(promotions).where(eq(promotions.id, promotion.id))
+  const imported = await db
+    .select({ id: promotions.id })
+    .from(promotions)
+    .where(eq(promotions.createdBy, `${me.id}:spreadsheet`))
+
+  if (imported.length > 0) {
+    const importedIds = imported.map(({ id }) => id)
+    for (const promotionId of importedIds) {
+      await db.delete(promotionTasks).where(eq(promotionTasks.promotionId, promotionId))
+      await db.delete(notifications).where(eq(notifications.promotionId, promotionId))
+      await db.delete(promotions).where(eq(promotions.id, promotionId))
+    }
   }
   revalidatePath("/gerente")
   revalidatePath("/painel")
