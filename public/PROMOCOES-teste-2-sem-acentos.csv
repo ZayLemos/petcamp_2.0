@@ -1,0 +1,950 @@
+Promo/Flex;Codigo;Descricao;Tipo;Arg1;Arg2;Arg3;DataInicio;DataFinal;Categoria1;Categoria2;Categoria3;Categoria4,ESTOQUE
+Promo;302251;Zzbalde Promocional Royal Canin;BRINDE;1;0.01;;2026-08-20;30/09/2026;Acessorios;Brindes;Caes;Brindes;-5
+Promo;37128;ZZ Balde 3.6 R Branco Gran Plus Gatos Angor/maine Com Ala Branca;BRINDE;1;0.01;;2026-04-02;04/11/2026;Acessorios;Brindes;Gatos;Brindes;0
+Promo;39774;Zz Rede Golden Gatos Yogui;BRINDE;1;0.01;;2026-04-02;04/11/2026;Acessorios;Brindes;Gatos;Brindes;0
+Promo;42514;ZZCat Fun Torcida Premier;BRINDE;1;0.01;;2026-04-02;04/11/2026;Acessorios;Brindes;Gatos;Brindes;0
+Promo;277644;Manta Fleece Mgico Azul 70cmx90cm;FIDELIDADE;22.99;18.39;;2026-08-13;09/09/2026;ACESSORIOS;Cama e Conforto;Caes e Gatos;Cobertor;9
+Promo;277642;Manta Fleece Mgico Rosa 70cmx90cm;FIDELIDADE;22.99;18.39;;2026-08-13;09/09/2026;ACESSORIOS;Cama e Conforto;Caes e Gatos;Cobertor;9
+Promo;277643;Manta Fleece Mgico Preto 70cmx90cm;FIDELIDADE;22.99;18.39;;2026-08-13;09/09/2026;ACESSORIOS;Cama e Conforto;Caes e Gatos;Cobertor;8
+Promo;277641;Manta Fleece Mgico Vermelho 70cmx90cm;FIDELIDADE;22.99;18.39;;2026-08-13;09/09/2026;ACESSORIOS;Cama e Conforto;Caes e Gatos;Cobertor;6
+Promo;279859;Cinto Segurana Preto G;FIDELIDADE;37.99;30.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Cintos De Seguranca/Acess Carro;1
+Promo;279865;Cinto Segurana Azul G;FIDELIDADE;37.99;30.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Cintos De Seguranca/Acess Carro;3
+Promo;279863;Cinto Segurana Azul P;FIDELIDADE;27.89;22.31;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Cintos De Seguranca/Acess Carro;4
+Promo;279866;Cinto Segurana Rosa P;FIDELIDADE;27.89;22.31;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Cintos De Seguranca/Acess Carro;0
+Promo;279868;Cinto Segurana Rosa G;FIDELIDADE;37.99;30.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Cintos De Seguranca/Acess Carro;2
+Promo;279860;Cinto Segurana Vermelho P;FIDELIDADE;27.89;22.31;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Cintos De Seguranca/Acess Carro;2
+Promo;279864;Cinto Segurana Azul M;FIDELIDADE;36.39;29.11;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Cintos De Seguranca/Acess Carro;2
+Promo;279867;Cinto Segurana Rosa M;FIDELIDADE;36.39;29.11;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Cintos De Seguranca/Acess Carro;3
+Promo;279862;Cinto Segurana Vermelho G;FIDELIDADE;37.99;30.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Cintos De Seguranca/Acess Carro;2
+Promo;279858;Cinto Segurana Preto M;FIDELIDADE;36.39;29.11;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Cintos De Seguranca/Acess Carro;2
+Promo;279857;Cinto Segurana Preto P;FIDELIDADE;27.89;22.31;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Cintos De Seguranca/Acess Carro;5
+Promo;279861;Cinto Segurana Vermelho M;FIDELIDADE;36.39;29.11;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Cintos De Seguranca/Acess Carro;3
+Promo;277588;Coleira Premium Cat Free Spirit P;FIDELIDADE;18.59;14.87;;2026-08-13;09/09/2026;ACESSORIOS;Coleiras, Guias e Peitorais;Caes;Coleiras;0
+Promo;303204;Coleira Premium Vibe P;FIDELIDADE;29.99;23.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;1
+Promo;303347;Coleira Bombom N.0;FIDELIDADE;11.99;9.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;2
+Promo;303329;Coleira Triangulo N.4;FIDELIDADE;11.99;9.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;4
+Promo;303205;Coleira Premium Vibe M;FIDELIDADE;33.99;27.19;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;1
+Promo;276744;Coleira Premium Classic Azul - P;FIDELIDADE;29.89;23.91;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;0
+Promo;279795;Coleira .30 Preto N.6 ;FIDELIDADE;20.39;16.31;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;2
+Promo;303332;Coleira Cactus N.4;FIDELIDADE;11.99;9.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;0
+Promo;303334;Coleira Donuts Amarelo N.2;FIDELIDADE;11.99;9.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;0
+Promo;303337;Coleira Xadrez Chic N.2;FIDELIDADE;11.99;9.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;4
+Promo;303327;Coleira Triangulo N.0;FIDELIDADE;11.99;9.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;3
+Promo;303202;Coleira Premium Terracota M;FIDELIDADE;33.99;27.19;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;3
+Promo;279806;Coleira .40 Preto N.8 ;FIDELIDADE;25.59;20.47;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;1
+Promo;303201;Coleira Premium Terracota P;FIDELIDADE;29.99;23.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;2
+Promo;279809;Coleira .40 Vermelho N.8 ;FIDELIDADE;25.59;20.47;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;2
+Promo;303207;Coleira Premium Aurora P;FIDELIDADE;29.99;23.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;2
+Promo;276743;Coleira Premium Classic Azul - M;FIDELIDADE;33.89;27.11;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;2
+Promo;279796;Coleira .30 Preto N.7 ;FIDELIDADE;21.29;17.03;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;0
+Promo;279801;Coleira .30 Vermelho N.5 ;FIDELIDADE;20.09;16.07;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;2
+Promo;303333;Coleira Donuts Amarelo N.0;FIDELIDADE;11.99;9.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;1
+Promo;276742;Coleira Premium Classic Azul - G;FIDELIDADE;41.89;33.51;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;1
+Promo;303330;Coleira Cactus N.0;FIDELIDADE;11.99;9.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;1
+Promo;276746;Coleira Premium Classic Rosa - G;FIDELIDADE;41.89;33.51;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;3
+Promo;303328;Coleira Triangulo N.2;FIDELIDADE;11.99;9.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;2
+Promo;279807;Coleira .40 Preto N.9 ;FIDELIDADE;25.59;20.47;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;3
+Promo;303206;Coleira Premium Vibe G;FIDELIDADE;41.99;33.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;3
+Promo;303335;Coleira Donuts Amarelo N.4;FIDELIDADE;11.99;9.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;0
+Promo;303331;Coleira Cactus N.2;FIDELIDADE;11.99;9.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;1
+Promo;303338;Coleira Xadrez Chic N.4;FIDELIDADE;11.99;9.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;4
+Promo;276747;Coleira Premium Classic Rosa - M;FIDELIDADE;33.89;27.11;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;0
+Promo;277589;Coleira Premium Cat Dangerous Cat P;FIDELIDADE;18.59;14.87;;2026-08-13;09/09/2026;ACESSORIOS;Coleiras, Guias e Peitorais;Caes;Coleiras;4
+Promo;279803;Coleira .30 Vermelho N.7 ;FIDELIDADE;21.29;17.03;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;0
+Promo;279802;Coleira .30 Vermelho N.6 ;FIDELIDADE;20.39;16.31;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;0
+Promo;303200;Coleira Premium Aventura G;FIDELIDADE;41.99;33.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;3
+Promo;279810;Coleira .40 Vermelho N.9;FIDELIDADE;25.59;20.47;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;4
+Promo;303336;Coleira Xadrez Chic N.0;FIDELIDADE;11.99;9.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;2
+Promo;303199;Coleira Premium Aventura M;FIDELIDADE;33.99;27.19;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;2
+Promo;277590;Coleira Premium Cat Cat Paw P;FIDELIDADE;18.59;14.87;;2026-08-13;09/09/2026;ACESSORIOS;Coleiras, Guias e Peitorais;Caes;Coleiras;0
+Promo;303340;Coleira Classic N.2;FIDELIDADE;11.99;9.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;2
+Promo;303341;Coleira Classic N.4;FIDELIDADE;11.99;9.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;2
+Promo;303208;Coleira Premium Aurora M;FIDELIDADE;33.99;27.19;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;3
+Promo;303203;Coleira Premium Terracota G;FIDELIDADE;41.99;33.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;1
+Promo;303339;Coleira Classic N.0;FIDELIDADE;11.99;9.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;3
+Promo;279794;Coleira .30 Preto N.5 ;FIDELIDADE;20.09;16.07;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;3
+Promo;303349;Coleira Bombom N.4;FIDELIDADE;11.99;9.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;3
+Promo;276748;Coleira Premium Classic Rosa - P;FIDELIDADE;29.89;23.91;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;1
+Promo;303348;Coleira Bombom N.2;FIDELIDADE;11.99;9.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;3
+Promo;303209;Coleira Premium Aurora G;FIDELIDADE;41.99;33.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;1
+Promo;303198;Coleira Premium Aventura P;FIDELIDADE;29.99;23.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Coleiras;1
+Promo;279851;Enforcador Corda Fina Vermelha 1,30mt;FIDELIDADE;19.89;15.91;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Enforcadores;1
+Promo;279854;Enforcador Corda Grossa Vermelha  1,50mt;FIDELIDADE;37.49;29.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Enforcadores;3
+Promo;279856;Enforcador Corda Grossa Preta  1,50mt;FIDELIDADE;37.49;29.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Enforcadores;4
+Promo;279853;Enforcador Corda Fina Preta  1,30mt;FIDELIDADE;19.89;15.91;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Enforcadores;3
+Promo;279678;Conj Guia Peit Comum Poa Vermelho  N.2;FIDELIDADE;24.69;19.75;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;3
+Promo;279705;Conj Guia Peit Comum Poa Preto  N.1 ;FIDELIDADE;24.69;19.75;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;2
+Promo;303345;Guia 15mm Xadrez Chic;FIDELIDADE;14.99;11.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;4
+Promo;303213;Guia Preimum Terracota P;FIDELIDADE;47.99;38.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;1
+Promo;279823;Conj Guia Peit Americano Rosa G;FIDELIDADE;57.09;45.67;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;3
+Promo;279842;Guia Corda Fina C/ Amort Preta 80cm;FIDELIDADE;20.39;16.31;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;1
+Promo;303216;Guia Preimum Vibe P;FIDELIDADE;47.99;38.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;2
+Promo;303350;Guia 15mm Bombom;FIDELIDADE;14.99;11.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;0
+Promo;303214;Guia Preimum Terracota M;FIDELIDADE;51.99;41.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;0
+Promo;279706;Conj Guia Peit Comum Poa Preto  N.2 ;FIDELIDADE;24.69;19.75;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;1
+Promo;303220;Guia Preimum Aurora M;FIDELIDADE;51.99;41.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;0
+Promo;279820;Conj Guia Peit Americano Vermelho G;FIDELIDADE;57.09;45.67;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;1
+Promo;303243;Guia Corda Premium Tyffany 1,20mt;FIDELIDADE;55.99;44.79;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;0
+Promo;279693;Conj Guia Peit Comum Poa Azul  N.3 ;FIDELIDADE;24.69;19.75;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;2
+Promo;291511;Conj Guia Peit Americano Preto  M;FIDELIDADE;50.49;40.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;1
+Promo;303246;Guia Corda Premium Laranja 1,20mt;FIDELIDADE;55.99;44.79;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;2
+Promo;303346;Guia 15mm Classic;FIDELIDADE;14.99;11.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;0
+Promo;303211;Guia Preimum Aventura M;FIDELIDADE;51.99;41.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;3
+Promo;303210;Guia Preimum Aventura P;FIDELIDADE;47.99;38.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;1
+Promo;279833;Guia Corda C/ Amort Preta 60cm;FIDELIDADE;34.49;27.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;2
+Promo;303218;Guia Preimum Vibe G;FIDELIDADE;59.99;47.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;1
+Promo;303217;Guia Preimum Vibe M;FIDELIDADE;51.99;41.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;4
+Promo;279822;Conj Guia Peit Americano Rosa M;FIDELIDADE;50.49;40.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;2
+Promo;303245;Guia Corda Premium Preta 1,20mt;FIDELIDADE;55.99;44.79;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;0
+Promo;279839;Guia Corda C/ Amort Vermelha 60cm;FIDELIDADE;34.49;27.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;3
+Promo;303219;Guia Preimum Aurora P;FIDELIDADE;47.99;38.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;4
+Promo;279844;Guia Corda Fina C/ Amort Preta 1,50mt;FIDELIDADE;24.59;19.67;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;0
+Promo;279840;Guia Corda C/ Amort Vermelha 1mt;FIDELIDADE;35.89;28.71;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;4
+Promo;303344;Guia 15mm Donuts Amarelo;FIDELIDADE;14.99;11.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;1
+Promo;279818;Conj Guia Peit Americano Vermelho P;FIDELIDADE;40.59;32.47;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;1
+Promo;279834;Guia Corda C/ Amort Preta 1mt;FIDELIDADE;35.89;28.71;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;1
+Promo;279819;Conj Guia Peit Americano Vermelho M;FIDELIDADE;50.49;40.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;0
+Promo;303244;Guia Corda Premium Salmo 1,20mt;FIDELIDADE;55.99;44.79;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;1
+Promo;303343;Guia 15mm Cactus;FIDELIDADE;14.99;11.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;1
+Promo;279825;Conj Guia Peit Americano Azul M;FIDELIDADE;50.49;40.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;0
+Promo;303342;Guia 15mm Triangulo;FIDELIDADE;14.99;11.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;1
+Promo;279843;Guia Corda Fina C/ Amort Preta 1,10mt;FIDELIDADE;21.49;17.19;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;2
+Promo;291512;Conj Guia Peit Americano Preto  G ;FIDELIDADE;57.09;45.67;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;4
+Promo;279677;Conj Guia Peit Comum Poa Vermelho  N.1 ;FIDELIDADE;24.69;19.75;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;2
+Promo;279835;Guia Corda C/ Amort Preta 1,50mt;FIDELIDADE;46.99;37.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;3
+Promo;279841;Guia Corda C/ Amort Vermelha 1,50mt;FIDELIDADE;46.99;37.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;2
+Promo;279826;Conj Guia Peit Americano Azul G;FIDELIDADE;57.09;45.67;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;2
+Promo;303221;Guia Preimum Aurora G;FIDELIDADE;59.99;47.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;2
+Promo;303247;Guia Corda Premium Lilas 1,20mt;FIDELIDADE;55.99;44.79;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;2
+Promo;279692;Conj Guia Peit Comum Poa Azul  N.2;FIDELIDADE;24.69;19.75;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;4
+Promo;279708;Conj Guia Peit Comum Poa Preto  N.4 ;FIDELIDADE;24.69;19.75;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;3
+Promo;291510;Conj Guia Peit Americano Preto  P ;FIDELIDADE;40.59;32.47;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;1
+Promo;279679;Conj Guia Peit Comum Poa Vermelho  N.3 ;FIDELIDADE;24.69;19.75;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;2
+Promo;279680;Conj Guia Peit Comum Poa Vermelho  N.4 ;FIDELIDADE;24.69;19.75;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;1
+Promo;279691;Conj Guia Peit Comum Poa Azul  N.1 ;FIDELIDADE;24.69;19.75;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;2
+Promo;279707;Conj Guia Peit Comum Poa Preto  N.3 ;FIDELIDADE;24.69;19.75;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;2
+Promo;279694;Conj Guia Peit Comum Poa Azul  N.4 ;FIDELIDADE;24.69;19.75;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;1
+Promo;279824;Conj Guia Peit Americano Azul P;FIDELIDADE;40.59;32.47;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;0
+Promo;303212;Guia Preimum Aventura G;FIDELIDADE;59.99;47.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;2
+Promo;303215;Guia Preimum Terracota G;FIDELIDADE;59.99;47.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;0
+Promo;279821;Conj Guia Peit Americano Rosa P;FIDELIDADE;40.59;32.47;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Guias;3
+Promo;279793;Peitoal  Comum .30 Preto N.7 ;FIDELIDADE;44.09;35.27;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303241;Peitoral Fresh Premium Aurora M;FIDELIDADE;64.99;51.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;0
+Promo;303280;Conj Guia Peit Comum Candy Azul N.4;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303234;Peitoral Fresh Premium Terracota P;FIDELIDADE;54.99;43.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;0
+Promo;303269;Conj Guia Peit Comum Candy Lilas N.4;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;3
+Promo;303264;Conj Guia Peit Ajustavel Neon Laranja N.2;FIDELIDADE;25.99;20.79;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;3
+Promo;303279;Conj Guia Peit Comum Candy Laranja N.4;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303325;Conj Guia Peitoral Comum Bombom N.6;FIDELIDADE;47.99;38.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303285;Conj Guia Peitoral Comum Triangulos N.1;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;4
+Promo;279656;Conj Guia Peitoral Conforto Rosa  N.3;FIDELIDADE;57.99;46.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303230;Kit Peitoral 8 + Guia Premium Vibe G;FIDELIDADE;127.99;102.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303320;Conj Guia Peitoral Comum Bombom N.1;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;0
+Promo;279666;Conj Guia Peit Comum Poa Rosa  N.4;FIDELIDADE;24.69;19.75;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;4
+Promo;303313;Conj Guia Peitoral Comum Classic N.1;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303223;Kit Peitoral 8 + Guia Premium Aventura M;FIDELIDADE;106.99;85.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;0
+Promo;303274;Conj Guia Peit Comum Candy Azul N.2;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;4
+Promo;303281;Conj Guia Peit Comum Candy Azul N.3;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;4
+Promo;279653;Conj Guia Peitoral Conforto Azul  N.3;FIDELIDADE;57.99;46.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;3
+Promo;303300;Conj Guia Peitoral Comum Donuts Amarelo N.2;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;0
+Promo;279805;Peitoral Comum .40 Preto N.8 ;FIDELIDADE;55.09;44.07;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;0
+Promo;303323;Conj Guia Peitoral Comum Bombom N.4;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;4
+Promo;303299;Conj Guia Peitoral Comum Donuts Amarelo N.1;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;279652;Conj Guia Peitoral Conforto Azul  N.2;FIDELIDADE;57.09;45.67;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;3
+Promo;303273;Conj Guia Peit Comum Candy Verde N.1;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303271;Conj Guia Peit Comum Candy Lilas N.2;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303295;Conj Guia Peitoral Comum Cactus N.4;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303306;Conj Guia Peitoral Comum Xadrez Chic N.1;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303314;Conj Guia Peitoral Comum Classic N.2;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;279799;Peitoal  Comum .30 Veremlho N.6;FIDELIDADE;44.09;35.27;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303292;Conj Guia Peitoral Comum Cactus N.1;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303302;Conj Guia Peitoral Comum Donuts Amarelo N.4;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;4
+Promo;303228;Kit Peitoral 8 + Guia Premium Vibe P;FIDELIDADE;94.99;75.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303305;Conj Guia Peitoral Comum Donuts Amarelo N.7;FIDELIDADE;51.99;41.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303317;Conj Guia Peitoral Comum Classic N.5;FIDELIDADE;40.99;32.79;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;4
+Promo;303318;Conj Guia Peitoral Comum Classic N.6;FIDELIDADE;47.99;38.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;279791;Peitoal  Comum .30 Preto N.5 ;FIDELIDADE;44.09;35.27;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303239;Peitoral Fresh Premium Vibe G;FIDELIDADE;85.99;68.79;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303233;Peitoral Fresh Premium Aventura G;FIDELIDADE;85.99;68.79;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303267;Conj Guia Peit Comum Candy Laranja N.3;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303293;Conj Guia Peitoral Comum Cactus N.2;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;4
+Promo;303303;Conj Guia Peitoral Comum Donuts Amarelo N.5;FIDELIDADE;40.99;32.79;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303259;Conj Guia Peit Ajustavel Neon Verde N.4;FIDELIDADE;25.99;20.79;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303321;Conj Guia Peitoral Comum Bombom N.2;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;279663;Conj Guia Peit Comum Poa Rosa  N.1 ;FIDELIDADE;24.69;19.75;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303229;Kit Peitoral 8 + Guia Premium Vibe M;FIDELIDADE;106.99;85.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303231;Peitoral Fresh Premium Aventura P;FIDELIDADE;54.99;43.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;0
+Promo;303232;Peitoral Fresh Premium Aventura M;FIDELIDADE;64.99;51.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303291;Conj Guia Peitoral Comum Triangulos N.7;FIDELIDADE;51.99;41.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303240;Peitoral Fresh Premium Aurora P;FIDELIDADE;54.99;43.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303309;Conj Guia Peitoral Comum Xadrez Chic N.4;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;4
+Promo;303256;Conj Guia Peit Ajustavel Neon Rosa N.2;FIDELIDADE;25.99;20.79;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;4
+Promo;303261;Conj Guia Peit Ajustavel Neon Verde N.0;FIDELIDADE;25.99;20.79;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;3
+Promo;303288;Conj Guia Peitoral Comum Triangulos N.4;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303324;Conj Guia Peitoral Comum Bombom N.5;FIDELIDADE;40.99;32.79;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;3
+Promo;303222;Kit Peitoral 8 + Guia Premium Aventura P;FIDELIDADE;94.99;75.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303236;Peitoral Fresh Premium Terracota G;FIDELIDADE;85.99;68.79;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;4
+Promo;279808;Peitoral Comum .40 Vermelho N.8 ;FIDELIDADE;55.09;44.07;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;0
+Promo;303304;Conj Guia Peitoral Comum Donuts Amarelo N.6;FIDELIDADE;47.99;38.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;0
+Promo;303307;Conj Guia Peitoral Comum Xadrez Chic N.2;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;3
+Promo;279665;Conj Guia Peit Comum Poa Rosa  N.3 ;FIDELIDADE;24.69;19.75;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303242;Peitoral Fresh Premium Aurora G;FIDELIDADE;85.99;68.79;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;279658;Conj Guia Peitoral Conforto Preto  N.2;FIDELIDADE;57.09;45.67;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;279792;Peitoal  Comum .30 Preto N.6;FIDELIDADE;44.09;35.27;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303263;Conj Guia Peit Ajustavel Neon Laranja N.0;FIDELIDADE;25.99;20.79;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303286;Conj Guia Peitoral Comum Triangulos N.2;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303225;Kit Peitoral 8 + Guia Premium Terracota P;FIDELIDADE;94.99;75.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303257;Conj Guia Peit Ajustavel Neon Rosa N.0;FIDELIDADE;25.99;20.79;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303266;Conj Guia Peit Comum Candy Verde N.3;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303287;Conj Guia Peitoral Comum Triangulos N.3;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;279664;Conj Guia Peit Comum Poa Rosa  N.2;FIDELIDADE;24.69;19.75;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303322;Conj Guia Peitoral Comum Bombom N.3;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;4
+Promo;303282;Conj Guia Peit Comum Candy Rosa N.3;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;3
+Promo;303316;Conj Guia Peitoral Comum Classic N.4;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303224;Kit Peitoral 8 + Guia Premium Aventura G;FIDELIDADE;127.99;102.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303315;Conj Guia Peitoral Comum Classic N.3;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303283;Conj Guia Peit Comum Candy Rosa N.2;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;0
+Promo;303254;Kit Peitoral 8 + Guia Premium Aurora M;FIDELIDADE;106.99;85.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;279654;Conj Guia Peitoral Conforto Rosa  N.1;FIDELIDADE;51.99;41.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;0
+Promo;279660;Conj Guia Peitoral Conforto Vermelho  N.1;FIDELIDADE;51.99;41.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303284;Conj Guia Peit Comum Candy Rosa N.1;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303301;Conj Guia Peitoral Comum Donuts Amarelo N.3;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;4
+Promo;303319;Conj Guia Peitoral Comum Classic N.7;FIDELIDADE;51.99;41.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;0
+Promo;279798;Peitoal  Comum .30 Vermelho N.5 ;FIDELIDADE;44.09;35.27;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;3
+Promo;279661;Conj Guia Peitoral Conforto Vermelho  N.2;FIDELIDADE;57.09;45.67;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;4
+Promo;303290;Conj Guia Peitoral Comum Triangulos N.6;FIDELIDADE;47.99;38.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303237;Peitoral Fresh Premium Vibe P;FIDELIDADE;54.99;43.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;4
+Promo;279662;Conj Guia Peitoral Conforto Vermelho  N.3;FIDELIDADE;57.99;46.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303262;Conj Guia Peit Ajustavel Neon Rosa N.4;FIDELIDADE;25.99;20.79;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303308;Conj Guia Peitoral Comum Xadrez Chic N.3;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;3
+Promo;303226;Kit Peitoral 8 + Guia Premium Terracota M;FIDELIDADE;106.99;85.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303278;Conj Guia Peit Comum Candy Lilas N.1;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;3
+Promo;279657;Conj Guia Peitoral Conforto Preto  N.1;FIDELIDADE;51.99;41.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;4
+Promo;279651;Conj Guia Peitoral Conforto Azul  N.1;FIDELIDADE;51.99;41.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;3
+Promo;279659;Conj Guia Peitoral Conforto Preto  N.3;FIDELIDADE;57.99;46.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303268;Conj Guia Peit Comum Candy Laranja N.2;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;0
+Promo;303294;Conj Guia Peitoral Comum Cactus N.3;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303258;Conj Guia Peit Ajustavel Neon Laranja N.4;FIDELIDADE;25.99;20.79;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303272;Conj Guia Peit Comum Candy Verde N.2;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;4
+Promo;303253;Kit Peitoral 8 + Guia Premium Aurora P;FIDELIDADE;94.99;75.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;4
+Promo;303275;Conj Guia Peit Comum Candy Azul N.1;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;4
+Promo;303276;Conj Guia Peit Comum Candy Laranja N.1;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303289;Conj Guia Peitoral Comum Triangulos N.5;FIDELIDADE;40.99;32.79;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;4
+Promo;303255;Kit Peitoral 8 + Guia Premium Aurora G;FIDELIDADE;127.99;102.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;279800;Peitoal  Comum .30 Vermelho  N.7 ;FIDELIDADE;44.09;35.27;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;0
+Promo;303277;Conj Guia Peit Comum Candy Rosa N.4;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;3
+Promo;303238;Peitoral Fresh Premium Vibe M;FIDELIDADE;64.99;51.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;0
+Promo;303270;Conj Guia Peit Comum Candy Lilas N.3;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303260;Conj Guia Peit Ajustavel Neon Verde N.2;FIDELIDADE;25.99;20.79;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303326;Conj Guia Peitoral Comum Bombom N.7;FIDELIDADE;51.99;41.59;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;4
+Promo;303235;Peitoral Fresh Premium Terracota M;FIDELIDADE;64.99;51.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;303265;Conj Guia Peit Comum Candy Verde N.4;FIDELIDADE;27.99;22.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;2
+Promo;279655;Conj Guia Peitoral Conforto Rosa  N.2;FIDELIDADE;57.09;45.67;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;303227;Kit Peitoral 8 + Guia Premium Terracota G;FIDELIDADE;127.99;102.39;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Caes;Peitorais;1
+Promo;279643;Coleira Gato Elastico Neon  C/ Placa Latanja - U;FIDELIDADE;12.49;9.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Coleiras;3
+Promo;279646;Coleira Gato Elastico Brilho  C/ Placa Preto - U;FIDELIDADE;12.49;9.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Coleiras;0
+Promo;279637;Coleira Gato Confort Preto - U;FIDELIDADE;12.49;9.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Coleiras;3
+Promo;279633;Coleira Gato Foto Vermelho -  U;FIDELIDADE;10.29;8.23;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Coleiras;0
+Promo;279647;Coleira Gato Elastico Brilho  C/ Placa Vermelho - U;FIDELIDADE;12.49;9.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Coleiras;1
+Promo;279634;Coleira Gato Foto Rosa -  U;FIDELIDADE;10.29;8.23;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Coleiras;1
+Promo;279649;Coleira Gato Elastico Brilho  C/ Placa Laranja - U;FIDELIDADE;12.49;9.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Coleiras;1
+Promo;279641;Coleira Gato Elastico Listra  C/ Placa Verde - U;FIDELIDADE;12.49;9.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Coleiras;3
+Promo;279648;Coleira Gato Elastico Brilho  C/ Placa Amarelo - U;FIDELIDADE;12.49;9.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Coleiras;2
+Promo;279638;Coleira Gato Confort Vermelho - U;FIDELIDADE;12.49;9.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Coleiras;1
+Promo;279650;Coleira Gato Elastico Brilho  C/ Placa Rosa - U;FIDELIDADE;12.49;9.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Coleiras;0
+Promo;279635;Coleira Gato Confort Rosa - U;FIDELIDADE;12.49;9.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Coleiras;0
+Promo;279632;Coleira Gato Foto Azul - U;FIDELIDADE;10.29;8.23;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Coleiras;0
+Promo;279640;Coleira Gato Elastico Listra  C/ Placa Azul - U;FIDELIDADE;12.49;9.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Coleiras;1
+Promo;279644;Coleira Gato Elastico Neon  C/ Placa Rosa - U;FIDELIDADE;12.49;9.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Coleiras;0
+Promo;279645;Coleira Gato Elastico Neon  C/ Placa Verde - U;FIDELIDADE;12.49;9.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Coleiras;4
+Promo;279636;Coleira Gato Confort Azul - U;FIDELIDADE;12.49;9.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Coleiras;0
+Promo;279642;Coleira Gato Elastico Listra  C/ Placa Vermelho - U;FIDELIDADE;12.49;9.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Coleiras;1
+Promo;279639;Coleira Gato Elastico Listra  C/ Placa Latanja - U;FIDELIDADE;12.49;9.99;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Coleiras;2
+Promo;277599;Kit Peitoral  + Guia Premium Cat Dangerous G;FIDELIDADE;46.59;37.27;;2026-08-13;09/09/2026;ACESSORIOS;Coleiras, Guias e Peitorais;Gatos;Peitorais;1
+Promo;277601;Kit Peitoral Fresh + Guia Premium Cat Dangerous Pp;FIDELIDADE;59.79;47.83;;2026-08-13;09/09/2026;ACESSORIOS;Coleiras, Guias e Peitorais;Gatos;Peitorais;0
+Promo;277595;Kit Peitoral  + Guia Premium Cat Cat Paw M;FIDELIDADE;46.59;37.27;;2026-08-13;09/09/2026;ACESSORIOS;Coleiras, Guias e Peitorais;Gatos;Peitorais;0
+Promo;279629;Conj Guia Peitoral Gato Confort Vermelho G;FIDELIDADE;37.89;30.31;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Peitorais;4
+Promo;279611;Conj Guia Peitoral Gato Confort Azul P;FIDELIDADE;37.89;30.31;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Peitorais;1
+Promo;279628;Conj Guia Peitoral Gato Confort Vermelho M;FIDELIDADE;37.89;30.31;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Peitorais;1
+Promo;277594;Kit Peitoral  + Guia Premium Cat Dangerous P;FIDELIDADE;46.59;37.27;;2026-08-13;09/09/2026;ACESSORIOS;Coleiras, Guias e Peitorais;Gatos;Peitorais;1
+Promo;279619;Conj Guia Peitoral Gato Confort Rosa P;FIDELIDADE;37.89;30.31;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Peitorais;1
+Promo;277598;Kit Peitoral  + Guia Premium Cat Free Spirit G;FIDELIDADE;46.59;37.27;;2026-08-13;09/09/2026;ACESSORIOS;Coleiras, Guias e Peitorais;Gatos;Peitorais;2
+Promo;277597;Kit Peitoral  + Guia Premium Cat Cat Paw G;FIDELIDADE;46.59;37.27;;2026-08-13;09/09/2026;ACESSORIOS;Coleiras, Guias e Peitorais;Gatos;Peitorais;3
+Promo;279627;Conj Guia Peitoral Gato Confort Vermelho P;FIDELIDADE;37.89;30.31;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Peitorais;3
+Promo;277591;Kit Peitoral  + Guia Premium Cat Free Spirit M;FIDELIDADE;46.59;37.27;;2026-08-13;09/09/2026;ACESSORIOS;Coleiras, Guias e Peitorais;Gatos;Peitorais;1
+Promo;279613;Conj Guia Peitoral Gato Confort Azul G;FIDELIDADE;37.89;30.31;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Peitorais;3
+Promo;279604;Conj Guia Peitoral Gato Confort Preto M;FIDELIDADE;37.89;30.31;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Peitorais;2
+Promo;277602;Kit Peitoral Fresh + Guia Premium Cat Cat Paw Pp;FIDELIDADE;59.79;47.83;;2026-08-13;09/09/2026;ACESSORIOS;Coleiras, Guias e Peitorais;Gatos;Peitorais;4
+Promo;277600;Kit Peitoral Fresh + Guia Premium Cat Free Spirit Pp;FIDELIDADE;59.79;47.83;;2026-08-13;09/09/2026;ACESSORIOS;Coleiras, Guias e Peitorais;Gatos;Peitorais;4
+Promo;279603;Conj Guia Peitoral Gato Confort Preto P;FIDELIDADE;37.89;30.31;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Peitorais;1
+Promo;277596;Kit Peitoral  + Guia Premium Cat Cat Paw P;FIDELIDADE;46.59;37.27;;2026-08-13;09/09/2026;ACESSORIOS;Coleiras, Guias e Peitorais;Gatos;Peitorais;2
+Promo;277593;Kit Peitoral  + Guia Premium Cat Dangerous M;FIDELIDADE;46.59;37.27;;2026-08-13;09/09/2026;ACESSORIOS;Coleiras, Guias e Peitorais;Gatos;Peitorais;1
+Promo;279612;Conj Guia Peitoral Gato Confort Azul M;FIDELIDADE;37.89;30.31;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Peitorais;3
+Promo;277592;Kit Peitoral + Guia Premium Cat Free Spirit P;FIDELIDADE;46.59;37.27;;2026-08-13;09/09/2026;ACESSORIOS;Coleiras, Guias e Peitorais;Gatos;Peitorais;4
+Promo;279605;Conj Guia Peitoral Gato Confort Preto G;FIDELIDADE;37.89;30.31;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Peitorais;2
+Promo;279621;Conj Guia Peitoral Gato Confort Rosa G;FIDELIDADE;37.89;30.31;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Peitorais;4
+Promo;279620;Conj Guia Peitoral Gato Confort Rosa M;FIDELIDADE;37.89;30.31;;2026-08-13;09/09/2026;Acessorios;Coleiras, Guias e Peitorais;Gatos;Peitorais;3
+Promo;284235;Gaiola N1 Prata;FIDELIDADE;105.00;52.50;;2026-04-23;06/01/2027;Acessorios;Outros Pets;Passaros;Gaiolas/Viveiros;0
+Promo;285259;Gaiola Criadeira Para Calopsita Prata;FIDELIDADE;293.00;146.50;;2026-04-23;06/01/2027;Acessorios;Outros Pets;Passaros;Gaiolas/Viveiros;0
+Promo;286250;Gaiola Criadeira Periquito Pequena Prata;FIDELIDADE;107.00;53.50;;2026-04-23;06/01/2027;Acessorios;Outros Pets;Passaros;Gaiolas/Viveiros;0
+Promo;287368;Gaiola Calopsita Mansa Linha Encanto Pink;FIDELIDADE;225.50;112.75;;2026-04-23;06/01/2027;Acessorios;Outros Pets;Passaros;Gaiolas/Viveiros;0
+Promo;288033;Gaiola N14 Canario Prata;FIDELIDADE;96.00;48.00;;2026-04-23;06/01/2027;Acessorios;Outros Pets;Passaros;Gaiolas/Viveiros;0
+Promo;288101;Gaiola N209 Pequena Prata;FIDELIDADE;71.55;35.78;;2026-04-23;06/01/2027;Acessorios;Outros Pets;Passaros;Gaiolas/Viveiros;0
+Promo;288558;Gaiola Periquito Imp. Fundo Plastico Prata;FIDELIDADE;181.00;90.50;;2026-04-23;06/01/2027;Acessorios;Outros Pets;Passaros;Gaiolas/Viveiros;0
+Promo;288865;Gaiola N209 Pequena Epoxi;FIDELIDADE;79.50;39.75;;2026-04-23;06/01/2027;Acessorios;Outros Pets;Passaros;Gaiolas/Viveiros;0
+Promo;290378;Gaiola Calopsita Mansa Linha Encanto Vermelha;FIDELIDADE;225.50;112.75;;2026-04-23;06/01/2027;Acessorios;Outros Pets;Passaros;Gaiolas/Viveiros;0
+Promo;293615;Gaiola Calopsita Mansa Linha Encanto Azul;FIDELIDADE;183.75;91.88;;2026-04-23;06/01/2027;Acessorios;Outros Pets;Passaros;Gaiolas/Viveiros;0
+Promo;301985;Gaiola Criadeira Com Bandeja Prata;FIDELIDADE;340.00;170.00;;2026-04-23;06/01/2027;Acessorios;Outros Pets;Passaros;Gaiolas/Viveiros;0
+Promo;302006;Viveiro Sextavado Canarios Epoxi;FIDELIDADE;985.00;492.50;;2026-04-23;06/01/2027;Acessorios;Outros Pets;Passaros;Gaiolas/Viveiros;0
+Promo;301977;Casinha Plastica Para Gaiolas De Hamster;FIDELIDADE;17.00;8.50;;2026-04-23;06/01/2027;Acessorios;Outros Pets;Roedores;Gaiolas/Casas;0
+Promo;284977;Gaiola Coelho Com Bandeja Prata;FIDELIDADE;330.90;165.45;;2026-04-23;06/01/2027;Acessorios;Outros Pets;Roedores;Gaiolas/Viveiros;0
+Promo;286589;Gaiola Hamster E Topolino 3 Andares Vermelho;FIDELIDADE;161.99;81.00;;2026-04-23;06/01/2027;Acessorios;Outros Pets;Roedores;Gaiolas/Viveiros;0
+Promo;289003;Gaiola Hamster E Topolino 3 Andares Azul;FIDELIDADE;161.99;81.00;;2026-04-23;06/01/2027;Acessorios;Outros Pets;Roedores;Gaiolas/Viveiros;0
+Promo;291570;Gaiola Capela Hamster Imperial Epox;FIDELIDADE;62.50;31.25;;2026-04-23;06/01/2027;Acessorios;Outros Pets;Roedores;Gaiolas/Viveiros;0
+Promo;291578;Gaiola N206 Hamster Prata;FIDELIDADE;64.00;32.00;;2026-04-23;06/01/2027;Acessorios;Outros Pets;Roedores;Gaiolas/Viveiros;0
+Promo;291961;Gaiola N 206 Hamster Epoxi;FIDELIDADE;72.00;36.00;;2026-04-23;06/01/2027;Acessorios;Outros Pets;Roedores;Gaiolas/Viveiros;0
+Promo;301987;Gaiola Pequena Coelho Com Bandeja Prata;FIDELIDADE;201.99;101.00;;2026-04-23;06/01/2027;Acessorios;Outros Pets;Roedores;Gaiolas/Viveiros;0
+Promo;304314;Pote Snack Com Orelha - Gato;BRINDE;1;10.00;;2026-07-23;31/08/2029;Brinde;Brinde;Brinde;Brinde;17
+Promo;304315;Pote Snack Com Orelha - Shih Tzu;BRINDE;1;10.00;;2026-07-23;31/08/2029;Brinde;Brinde;Brinde;Brinde;18
+Promo;304313;Pote Snack Com Orelha - Corgi;BRINDE;1;10.00;;2026-07-23;31/08/2029;Brinde;Brinde;Brinde;Brinde;6
+Promo;304544;Zz Clutch De Columbia;BRINDE;1;0.01;;2026-09-03;04/11/2026;Brinde;Brinde;Brinde;Brinde;5
+Promo;31224;Zz Copo Raas Petcamp;BRINDE;1;0.01;;2026-05-28;31/12/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;35872;ZZ Comedouro Golden Sn ();BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;38309;ZZ Premier  Comedouro Portatil 1un;BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;40182;ZZTigelas Sortidas Golden/vira-lata;BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;40774;ZZTapete Interativo Premier Nattu;BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;40831;ZZGuia De Corda Golden Seleo Natural;BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;41182;ZZMpf00256 - Mat Mkt Copo Granplus Cao;BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;41183;ZZMpf00257 - Mat Mkt Copo Granplus Gato;BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;42019;ZZ  Pote Granplus Cao 1un;BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;42362;ZZ Frasqueira Golden Sn ();BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;42363;ZZ Porta Brinquedo Golden Sn ();BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;42510;ZZCopo Premier 750 Ml;BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;42512;ZZComedouro Cara De Gato Premier;BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;42517;ZZBalde De Pipoca Torcida Premier 4l;BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;276084;ZZColchonete Premier;BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;276546;ZZBalde + Tampa Canister Agosto Laranja Trade;BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;276705;ZZBalde Branco Tampa Verde Premier Pet Canister;BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Brindes;Brindes;
+Promo;276886;ZZGuia De Corda 10mm X 80cm;BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;277533;ZZEcobag Premier Pet;BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;277533;ZZEcobag Premier Pet;BRINDE;1;0.01;;2026-02-17;04/11/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;277534;ZZPote 2.1l Premier Pet;BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;277534;ZZPote 2.1l Premier Pet;BRINDE;1;0.01;;2026-02-12;04/11/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;277997;ZZGarrafa Bebedouro Vero Premier Pet;BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Brindes;Brindes;
+Promo;303853;Kit Cata Caca Saquinho Coleta De Coco Petsuporte E 2rolos;BRINDE;1;0.01;;2026-03-12;31/12/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;303097;Zpets 2025 -buldogue;BRINDE;1;0.01;;2026-06-18;31/12/2026;Brindes;Brindes;Brindes;Brindes;3
+Promo;304401;Pote Copa Credeli - Co Preto;BRINDE;1;0.01;;2026-06-18;31/12/2026;Brindes;Brindes;Brindes;Brindes;2
+Promo;304402;Potinho Copa Credeli - Co Caramelo;BRINDE;1;0.01;;2026-06-18;31/12/2026;Brindes;Brindes;Brindes;Brindes;3
+Promo;303099;Zpets 2025 -gato Srd;BRINDE;1;0.01;;2026-06-18;31/12/2026;Brindes;Brindes;Brindes;Brindes;1
+Promo;276149;ZZ  Pote Gancho Guabi Natural 1 Un;BRINDE;1;0.01;;2026-08-13;04/11/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;303096;Zpets 2025 -salsicha;BRINDE;1;0.01;;2026-06-18;31/12/2026;Brindes;Brindes;Brindes;Brindes;1
+Promo;304466;Bowl Com Tampa Copa Bravecto;BRINDE;1;0.01;;2026-07-02;31/12/2026;Brindes;Brindes;Brindes;Brindes;8
+Promo;304325;Gatinho Cinza Srd-copa Do Mundo;BRINDE;1;0.01;;2026-06-18;31/12/2026;Brindes;Brindes;Brindes;Brindes;2
+Promo;304540;Zz Balde 4l Torcida Branco Premier;BRINDE;1;0.01;;2026-06-11;04/11/2026;Brindes;Brindes;Brindes;Brindes;1
+Promo;304541;Zz Balde 4l Torcida Laranja Premier;BRINDE;1;0.01;;2026-06-11;04/11/2026;Brindes;Brindes;Brindes;Brindes;2
+Promo;303095;Zpets 2025 -labrador;BRINDE;1;0.01;;2026-06-18;31/12/2026;Brindes;Brindes;Brindes;Brindes;1
+Promo;303098;Zpets 2025 -caramelo;BRINDE;1;0.01;;2026-06-18;31/12/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;38309;ZZ Premier  Comedouro Portatil 1un;BRINDE;1;0.01;;2026-08-27;04/11/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;304403;Potinho Copa Credeli - Gato Bege;BRINDE;1;0.01;;2026-06-11;31/12/2026;Brindes;Brindes;Brindes;Brindes;1
+Promo;304403;Potinho Copa Credeli - Gato Bege;BRINDE;1;0.01;;2026-06-18;31/12/2026;Brindes;Brindes;Brindes;Brindes;1
+Promo;37839;ZZBolsa Porta Brinquedo Premier Pet;BRINDE;1;0.01;;2026-08-20;04/11/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;304547;Zz Comedouro Plastico Premier;BRINDE;1;0.01;;2026-06-11;04/11/2026;Brindes;Brindes;Brindes;Brindes;5
+Promo;304539;Zz Comedouro Anatmico Laranja 1000ml-trade 2026 Premier;BRINDE;1;0.01;;2026-06-11;04/11/2026;Brindes;Brindes;Brindes;Brindes;5
+Promo;304324;Cachorro Preto E Branco Srd-copa Do Mundo;BRINDE;1;0.01;;2026-06-11;31/12/2026;Brindes;Brindes;Brindes;Brindes;0
+Promo;302557;Zz Canister Com Tampa Nattu;BRINDE;1;0.01;;2026-07-16;04/11/2026;Brindes;Brindes;Caes;Brindes;0
+Promo;302557;Zz Canister Com Tampa Nattu;BRINDE;1;0.01;;2026-06-25;04/11/2026;Brindes;Brindes;Caes;Brindes;0
+Promo;39773;Zz Rede Golden Gatos Geomtrico;BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Gatos;Brindes;0
+Promo;39773;Zz Rede Golden Gatos Geomtrico;BRINDE;1;0.01;;2026-02-12;04/11/2026;Brindes;Brindes;Gatos;Brindes;0
+Promo;42020;Zz Pote Case Granplus Gato ();BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Gatos;Brindes;0
+Promo;42364;Zz Kit Higiene Para Gatos Golden ();BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Gatos;Brindes;0
+Promo;276085;Zztnel De Gato Premier;BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Gatos;Brindes;0
+Promo;278405;Zz Premier Cocadinha Para Gato;BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Gatos;Brindes;0
+Promo;278405;Zz Premier Cocadinha Para Gato;BRINDE;1;0.01;;2026-02-12;04/11/2026;Brindes;Brindes;Gatos;Brindes;0
+Promo;278406;Zz Premier Pote 1,2 Com Tampa Orelha;BRINDE;1;0.01;;2026-04-02;04/11/2026;Brindes;Brindes;Gatos;Brindes;0
+Promo;278406;Zz Premier Pote 1,2 Com Tampa Orelha;BRINDE;1;0.01;;2026-02-12;04/11/2026;Brindes;Brindes;Gatos;Brindes;0
+Promo;276885;Zzbrinquedo De Pelucia Para Gato 27x17;BRINDE;1;0.01;;2026-08-21;04/11/2026;Brindes;Brindes;Gatos;Brindes;0
+Promo;278406;Zz Premier Pote 1,2 Com Tampa Orelha;BRINDE;1;0.01;;2026-09-03;04/11/2026;Brindes;Brindes;Gatos;Brindes;0
+Promo;302001;Ratoeira N2 Prata;FIDELIDADE;97.35;48.68;;2026-04-23;06/01/2027;Casa;Casa;Controle De Pragas;Gaiolas/Viveiros;0
+Promo;288037;Ratoeira N1 Prata;FIDELIDADE;48.00;24.00;;2026-04-23;06/01/2027;Casa;Casa;Controle De Pragas;Raticidas;0
+Promo;11424;Hysteril 1lt;FIDELIDADE;89.99;76.49;;2026-09-03;30/09/2026;Casa;Casa;Limpeza Casa;Desinfetantes;1
+Promo;278833;Herbalvet T.a. 1000ml;FIDELIDADE;112.99;90.39;;2026-09-03;30/09/2026;Casa;Casa;Limpeza Casa;Desinfetantes;4
+Promo;277922;Enziclim 220ml;FIDELIDADE;39.99;31.99;;2026-09-03;30/09/2026;Casa;Casa;Limpeza Casa;Elimin Odor/Aromatizantes;0
+Promo;302289;Enziclim 220ml;FIDELIDADE;42.99;34.39;;2026-09-03;30/09/2026;Casa;Casa;Limpeza Casa;Elimin Odor/Aromatizantes;3
+Promo;277923;Enziclim 480ml;FIDELIDADE;61.99;49.59;;2026-09-03;30/09/2026;Casa;Casa;Limpeza Casa;Elimin Odor/Aromatizantes;0
+Promo;302290;Enziclim 480ml;FIDELIDADE;66.99;53.59;;2026-09-03;30/09/2026;Casa;Casa;Limpeza Casa;Elimin Odor/Aromatizantes;0
+Promo;287573;Tratador Silvestre Com Suporte;FIDELIDADE;130.50;65.25;;2026-04-23;06/01/2027;Casa;Jardim;Acessorios Jardim;Ferramentas;0
+Promo;3831;Glifomato Insetimax 100ml;FIDELIDADE;16.89;8.45;;2026-08-13;30/09/2026;Casa;Jardim;Defensivos;Herbicidas/Fungicidas;1
+Promo;276656;Cabo Iphone Usb;FIDELIDADE;29.90;19.99;;2026-08-27;09/09/2026;Check Out;Acessorios;Celular;Cabo;6
+Promo;276658;Cabo Universal V8 Usb;FIDELIDADE;29.90;19.99;;2026-08-27;09/09/2026;Check Out;Acessorios;Celular;Cabo;6
+Promo;276657;Cabo Tipo C Usb;FIDELIDADE;29.90;19.99;;2026-08-27;09/09/2026;Check Out;Acessorios;Celular;Cabo;6
+Promo;276659;Carregador Carro Usb;FIDELIDADE;29.90;19.99;;2026-08-27;09/09/2026;Check Out;Acessorios;Celular;Carregador;3
+Promo;276660;Carregador Parede Usb;FIDELIDADE;29.90;19.99;;2026-08-27;09/09/2026;Check Out;Acessorios;Celular;Carregador;3
+Promo;30873;Ouro Branco 20gr;PAGLEV;6;4;;2026-09-03;23/09/2026;Check Out;Alimentos;Doces;Chocolates;4
+Promo;30202;Sonho De Valsa 20gr;PAGLEV;6;4;;2026-09-03;23/09/2026;Check Out;Alimentos;Doces;Chocolates;18
+Promo;21964;Apoquel 3.6 Mg;OUTRA_D;60.00%;2;;2026-09-03;30/09/2026;Farmacia;Medicamentos;Antialergicos;Antialergicos;4
+Promo;21968;Apoquel 16 Mg;OUTRA_D;60.00%;2;;2026-09-03;30/09/2026;Farmacia;Medicamentos;Antialergicos;Antialergicos;1
+Promo;21966;Apoquel 5.4 Mg;OUTRA_D;60.00%;2;;2026-09-03;30/09/2026;Farmacia;Medicamentos;Antialergicos;Antialergicos;3
+Promo;275816;Becordil 5 Mg 30 Comp;FIDELIDADE;129.99;110.49;;2026-09-03;30/09/2026;Farmacia;Medicamentos;Cardiologicos;Cardiologicos;3
+Promo;278971;Felicomfort Difusor + Refil 48ml;FIDELIDADE;305.99;153.00;;2026-07-02;30/09/2026;Farmacia;Medicamentos;Comportamentais;Comportamentais;2
+Promo;278973;Felicomfort Spray 30ml;FIDELIDADE;203.99;102.00;;2026-07-02;30/09/2026;Farmacia;Medicamentos;Comportamentais;Comportamentais;1
+Promo;278972;Felicomfort Refil 48ml;FIDELIDADE;224.99;112.50;;2026-07-02;30/09/2026;Farmacia;Medicamentos;Comportamentais;Comportamentais;1
+Promo;278974;Felicomfort Spray 60ml;FIDELIDADE;273.99;137.00;;2026-07-02;30/09/2026;Farmacia;Medicamentos;Comportamentais;Comportamentais;1
+Promo;39794;Oat Care Spray 200 Ml;FIDELIDADE;152.99;99.44;;2026-09-03;30/09/2026;Farmacia;Medicamentos;Dermatologicos;Dermatologicos;2
+Promo;25262;Regepil 50 Ml;FIDELIDADE;158.99;127.19;;2026-09-03;30/09/2026;Farmacia;Medicamentos;Dermatologicos;Dermatologicos;2
+Promo;23974;Noxxi Wall Spray;FIDELIDADE;170.99;111.14;;2026-09-03;30/09/2026;Farmacia;Medicamentos;Dermatologicos;Dermatologicos;1
+Promo;36885;Torzemin 2 Mg 30 Comp;FIDELIDADE;58.99;50.14;;2026-09-03;30/09/2026;Farmacia;Medicamentos;Diureticos;Diureticos;1
+Promo;36887;Torzemin 4 Mg 30 Comp;FIDELIDADE;81.99;69.69;;2026-09-03;30/09/2026;Farmacia;Medicamentos;Diureticos;Diureticos;1
+Promo;13824;Periovet Gel 25g;FIDELIDADE;84.49;71.82;;2026-09-03;16/09/2026;Farmacia;Medicamentos;Higiene Bucal;Higiene Bucal;4
+Promo;304226;Oralclin Gel 25g;FIDELIDADE;75.99;64.59;;2026-09-03;30/09/2026;Farmacia;Medicamentos;Higiene Bucal;Higiene Bucal;1
+Promo;277566;Auritop 15g;FIDELIDADE;79.99;63.99;;2026-09-03;30/09/2026;Farmacia;Medicamentos;Otologicos;Otologicos;4
+Promo;39792;Oat Care 100 Ml;FIDELIDADE;80.99;52.64;;2026-09-03;30/09/2026;Farmacia;Medicamentos;Otologicos;Otologicos;1
+Promo;13825;Periovet Spray 100 Ml;FIDELIDADE;60.99;51.84;;2026-09-03;16/09/2026;Farmacia;Medicamentos;Saude Bucal;Saude Bucal;3
+Promo;39793;Oat Care Shampoo 200 Ml;FIDELIDADE;143.99;93.59;;2026-09-03;30/09/2026;Farmacia;Medicamentos;Shampoos Medicamentosos;Shampoos Medicamentosos;1
+Promo;23970;Noxxi Atp 200 Ml;FIDELIDADE;120.99;78.64;;2026-09-03;30/09/2026;Farmacia;Medicamentos;Shampoos Medicamentosos;Shampoos Medicamentosos;0
+Promo;23971;Noxxi Control 200 Ml;FIDELIDADE;129.99;84.49;;2026-09-03;30/09/2026;Farmacia;Medicamentos;Shampoos Medicamentosos;Shampoos Medicamentosos;0
+Promo;302910;Metacell Snacks;FIDELIDADE;84.99;67.99;;2026-09-03;30/09/2026;Farmacia;Medicamentos;Suplementos Vitaminicos;Suplementos Vitaminicos;2
+Promo;302911;Kardio Snacks;FIDELIDADE;102.99;82.39;;2026-09-03;30/09/2026;Farmacia;Medicamentos;Suplementos Vitaminicos;Suplementos Vitaminicos;1
+Promo;277190;Coleira Scalibor 65cm;FIDELIDADE;104.99;83.99;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Coleiras;2
+Promo;278584;Coleira Seresto G;FIDELIDADE;238.50;166.95;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Coleiras;7
+Promo;42376;Coleira Leevre 63 Cm;FIDELIDADE;165.99;132.79;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Coleiras;1
+Promo;42375;Coleira Leevre 48 Cm;FIDELIDADE;155.59;124.47;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Coleiras;1
+Promo;278585;Coleira Seresto P;FIDELIDADE;215.50;150.85;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Coleiras;1
+Promo;2435;Coleira Scalibor 48cm;FIDELIDADE;95.99;76.79;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Coleiras;2
+Promo;276835;Nexgard Spectra 15 A 30 Kg 3 Comprimidos (4.0 Mg);FIDELIDADE;444.99;333.74;;2026-09-04;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;1
+Promo;302110;Bravecto Plus Cat 250mg;FIDELIDADE;233.09;174.82;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;0
+Promo;302109;Bravecto Plus Cat 112.5mg;FIDELIDADE;207.59;155.69;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;0
+Promo;276661;Credeli Gatos 0,9 A 2,0kg (12 Mg);FIDELIDADE;78.99;55.29;;2026-06-18;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;2
+Promo;23881;Simparic 1.3 A 2.5 Kg Com 3 Comprimidos (5 Mg);FIDELIDADE;279.99;195.99;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;2
+Promo;250180;Credeli Caes 11 A 22kg 01 Comp (450 Mg);FIDELIDADE;122.99;86.09;;2026-06-18;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;1
+Promo;23871;Simparic 5.1 A 10 Kg Com 3 Comprimidos (20 Mg);FIDELIDADE;307.99;215.59;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;1
+Promo;277843;Credeli Plus Caes 11 A 22kg;FIDELIDADE;134.99;94.49;;2026-06-18;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;2
+Promo;276832;Nexgard Spectra 2 A 3.5 Kg 3 Comprimidos (0.5 Mg);FIDELIDADE;294.99;221.24;;2026-09-04;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;0
+Promo;17767;Nexgard Gg 25.1 A 50 Kg 1 Comprimidos (136 Mg);FIDELIDADE;151.99;106.39;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;3
+Promo;303104;Wellpet 560mg;FIDELIDADE;109.99;93.49;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;3
+Promo;277844;Credeli Plus Caes 22 A 45kg;FIDELIDADE;156.99;109.89;;2026-06-18;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;1
+Promo;23878;Simparic 10.1 A 20 Kg Com 1 Comprimido (40 Mg);FIDELIDADE;134.99;94.49;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;5
+Promo;17766;Nexgard G 10.1 A 25 Kg 1 Comprimidos (68 Mg);FIDELIDADE;131.99;92.39;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;6
+Promo;250179;Credeli Caes 1,3 A 2,5kg 01 Comp (56.25 Mg);FIDELIDADE;79.99;55.99;;2026-06-18;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;2
+Promo;303100;Wellpet 45mg;FIDELIDADE;59.99;50.99;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;4
+Promo;23874;Simparic 40.1 A 60 Kg Com 3 Comprimidos (120 Mg);FIDELIDADE;429.99;300.99;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;1
+Promo;276836;Nexgard Spectra 30 A 60 Kg 3 Comprimidos (8.0 Mg);FIDELIDADE;514.99;386.24;;2026-09-04;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;0
+Promo;17205;Bravecto 4.5 A 10kg 250 Mg;FIDELIDADE;238.99;179.24;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;8
+Promo;20162;Nexgard G 10.1 A 25 Kg Com 3 Comprimidos (68 Mg);FIDELIDADE;341.99;239.39;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;0
+Promo;250182;Credeli Caes 2,5 A 5,5kg 01 Comp (112.5 Mg);FIDELIDADE;85.99;60.19;;2026-06-18;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;2
+Promo;277840;Credeli Plus Caes 1,4 A 2,8kg;FIDELIDADE;87.99;61.59;;2026-06-18;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;2
+Promo;20163;Nexgard Gg 25.1 A 50 Kg 3 Comprimidos (136 Mg);FIDELIDADE;401.99;281.39;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;1
+Promo;303101;Wellpet 100mg;FIDELIDADE;72.99;62.04;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;3
+Promo;39181;Nexgard Spectra 2 A 3.5 Kg 1 Comprimidos (0.5 Mg);FIDELIDADE;110.99;83.24;;2026-09-04;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;0
+Promo;303102;Wellpet 200mg;FIDELIDADE;89.99;76.49;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;1
+Promo;20160;Nexgard P 2 A 4 Kg Com 3 Comprimidos (11.3 Mg);FIDELIDADE;263.99;184.79;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;1
+Promo;23870;Simparic 2.6 A 5 Kg Com 3 Comprimidos (10 Mg);FIDELIDADE;282.99;198.09;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;0
+Promo;23872;Simparic 10.1 A 20 Kg Com 3 Comprimidos (40 Mg);FIDELIDADE;352.99;247.09;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;1
+Promo;23879;Simparic 20.1 A 40 Kg Com 1 Comprimido (80 Mg);FIDELIDADE;159.99;111.99;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;4
+Promo;23877;Simparic 5.1 A 10 Kg Com 1 Comprimido (20 Mg);FIDELIDADE;117.99;82.59;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;0
+Promo;23880;Simparic 40.1 A 60 Kg Com 1 Comprimido (120 Mg);FIDELIDADE;169.99;118.99;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;2
+Promo;23873;Simparic 20.1 A 40 Kg Com 3 Comprimidos (80 Mg);FIDELIDADE;420.99;294.69;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;2
+Promo;17204;Bravecto 10 A 20kg 500 Mg;FIDELIDADE;280.99;210.74;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;7
+Promo;39183;Nexgard Spectra 7.5 A 15 Kg 1 Comprimidos (2.0 Mg);FIDELIDADE;140.99;105.74;;2026-09-04;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;7
+Promo;39184;Nexgard Spectra 15 A 30 Kg 1 Comprimidos (4.0 Mg);FIDELIDADE;165.99;124.49;;2026-09-04;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;6
+Promo;17203;Bravecto 20 A 40kg 1000 Mg;FIDELIDADE;322.99;242.24;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;14
+Promo;276834;Nexgard Spectra 7.5 A 15 Kg 3 Comprimidos (2.0 Mg);FIDELIDADE;378.99;284.24;;2026-09-04;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;0
+Promo;276662;Credeli Gatos 2,1 A 8,0kg (48 Mg);FIDELIDADE;89.99;62.99;;2026-06-18;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;8
+Promo;17764;Nexgard P 2 A 4 Kg 1 Comprimidos (11.3 Mg);FIDELIDADE;100.99;70.69;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;3
+Promo;20161;Nexgard M 4.1 A 10 Kg Com 3 Comprimidos (28.3 Mg);FIDELIDADE;292.99;205.09;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;4
+Promo;23875;Simparic 1.3 A 2.5 Kg Com 1 Comprimido (5 Mg);FIDELIDADE;99.99;69.99;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;1
+Promo;39185;Nexgard Spectra 30 A 60 Kg 1 Comprimidos (8.0 Mg);FIDELIDADE;189.99;142.49;;2026-09-04;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;1
+Promo;277841;Credeli Plus Caes 2,8 A 5,5kg;FIDELIDADE;99.99;69.99;;2026-06-18;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;1
+Promo;276833;Nexgard Spectra 3.5 A 7.5 Kg 3 Comprimidos (1.0 Mg);FIDELIDADE;332.99;249.74;;2026-09-04;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;2
+Promo;17206;Bravecto 40 A 56kg 1400 Mg;FIDELIDADE;352.99;264.74;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;0
+Promo;17207;Bravecto 2 A 4.5kg 112,50 Mg;FIDELIDADE;197.99;148.49;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;3
+Promo;250178;Credeli Caes 22 A 45kg 01 Comp (900 Mg);FIDELIDADE;142.99;100.09;;2026-06-18;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;3
+Promo;250181;Credeli Caes 5,5 A 11kg 01 Comp (225 Mg);FIDELIDADE;94.99;66.49;;2026-06-18;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;3
+Promo;23876;Simparic 2.6 A 5 Kg Com 1 Comprimido (10 Mg);FIDELIDADE;103.99;72.79;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;2
+Promo;17765;Nexgard M 4.1 A 10 Kg 1 Comprimidos (28.3 Mg);FIDELIDADE;110.99;77.69;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;5
+Promo;39182;Nexgard Spectra 3.5 A 7.5 Kg 1 Comprimidos (1.0 Mg);FIDELIDADE;123.99;92.99;;2026-09-04;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;4
+Promo;295518;Credeli Tab 2.5 A 5.5 Kg 112.5 Mg 3 Comprimidos;FIDELIDADE;225.99;158.19;;2026-06-18;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;3
+Promo;303103;Wellpet 400mg;FIDELIDADE;104.99;89.24;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;2
+Promo;277842;Credeli Plus Caes 5,5 A 11kg;FIDELIDADE;103.99;72.79;;2026-06-18;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Comprimido;2
+Promo;17376;Revolution Caes 20 A 40 Kg 2.0 Ml;FIDELIDADE;161.99;137.69;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;2
+Promo;304031;Revolution Plus 5.1kg A 10kg 3 Pipetas;FIDELIDADE;288.99;245.64;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;0
+Promo;276636;Antipulgas Banni 3 0,30 Ml;FIDELIDADE;72.99;58.39;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;296211;Antipulgas Banni Ces 1,34ml;FIDELIDADE;55.99;44.79;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;2
+Promo;13060;Revolution Gato 2,6 A 7,5 Kg 0.75 Ml C/3 Pipetas;FIDELIDADE;237.99;202.29;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;0
+Promo;14854;Neopet 4.02 Ml Acima 40kg;FIDELIDADE;58.99;47.19;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;296130;Nexgard Combo Cat L Tudli 0.9ml 1 Br;FIDELIDADE;112.99;96.04;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;3
+Promo;17374;Revolution Caes 5 A 10kg 0.50 Ml;FIDELIDADE;120.99;102.84;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;0
+Promo;17378;Revolution Gato 2,6 A 7,5 Kg 0.75 Ml;FIDELIDADE;105.99;90.09;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;302114;Bravecto Transdermal Cat 112.5mg;FIDELIDADE;197.99;148.49;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;278581;Advocate Caes 4 At 10kg;FIDELIDADE;110.99;94.34;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;296132;Nexgard Combo Cat L Tudli 0.9ml 3 Br;FIDELIDADE;256.99;218.44;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;4
+Promo;278582;Advocate Caes 25 At 40kg;FIDELIDADE;153.99;130.89;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;2
+Promo;296209;Antipulgas Banni Ces 0,32ml;FIDELIDADE;49.99;39.99;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;0
+Promo;14851;Neopet 0.67 Ml Ate 10kg;FIDELIDADE;34.99;27.99;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;302115;Bravecto Transdermal Cat 250mg;FIDELIDADE;210.59;157.94;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;0
+Promo;18342;Revolution Caes 2.6 A 5 Kg 0.25 Ml C/3 Pipetas;FIDELIDADE;256.99;218.44;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;14852;Neopet 1.34 Ml 10.1 A 20kg;FIDELIDADE;39.99;31.99;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;41173;Defend Pro Ces At 10kg;FIDELIDADE;32.99;26.39;;2026-08-13;09/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;41175;Defend Pro Ces 20 A 40kg;FIDELIDADE;44.99;35.99;;2026-08-13;09/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;296129;Nexgard Combo Cat S Tudli 0.3ml 1 Br;FIDELIDADE;109.99;93.49;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;18341;Revolution Caes/gato Ate 2.5kg 0.25 Ml C/3 Pipetas;FIDELIDADE;231.99;197.19;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;2
+Promo;277563;Neopet Ces 10,1 A 20kg 1,34 Ml Com 3 Pipetas;FIDELIDADE;78.99;63.19;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;0
+Promo;17377;Revolution Caes/gato Ate 2.5kg 0.25 Ml;FIDELIDADE;105.99;90.09;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;2
+Promo;304029;Revolution Plus 2.6kg A 5kg 3 Pipetas;FIDELIDADE;272.99;232.04;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;41176;Defend Pro Ces 40kg;FIDELIDADE;48.99;39.19;;2026-08-13;09/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;0
+Promo;278551;Ectocid Spot On Acima 40kg 4,02ml;FIDELIDADE;55.99;44.79;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;0
+Promo;278549;Ectocid Spot On 10 A 20kg 1,34ml;FIDELIDADE;40.99;32.79;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;0
+Promo;296131;Nexgard Combo Cat S Tudli 0.3ml 3 Br;FIDELIDADE;249.99;212.49;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;277564;Neopet Ces 20,1 A 40kg 2,68 Ml Com 3 Pipetas;FIDELIDADE;92.99;74.39;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;0
+Promo;41174;Defend Pro Ces 10 A 20kg;FIDELIDADE;38.99;31.19;;2026-08-13;09/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;277565;Neopet Ces Acima De 40kg 4,02 Ml Com 3 Pipetas;FIDELIDADE;114.99;91.99;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;0
+Promo;296212;Antipulgas Banni Ces 2,68ml;FIDELIDADE;62.99;50.39;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;2
+Promo;296306;Advocate Cat 3 X 0.8 Ml;FIDELIDADE;235.99;200.59;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;278580;Advocate Caes At 4kg;FIDELIDADE;98.99;84.14;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;3
+Promo;296134;Advocate Cat 3 X 0,4 Ml;FIDELIDADE;215.99;183.59;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;2
+Promo;14853;Neopet 2.68 Ml 20.1 A 40kg;FIDELIDADE;46.99;37.59;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;304026;Revolution Plus Ate 2.5kg;FIDELIDADE;110.99;94.34;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;2
+Promo;304028;Revolution Plus 2.6kg A 5kg;FIDELIDADE;115.99;98.59;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;278552;Ectocid Spot On At 10kg 0,67ml;FIDELIDADE;34.99;27.99;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;296210;Antipulgas Banni Ces 0,67ml;FIDELIDADE;52.99;42.39;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;0
+Promo;13063;Revolution Caes 5 A 10 Kg 0.50 Ml C/3 Pipetas;FIDELIDADE;271.99;231.19;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;17373;Revolution Caes 2 A 5 Kg 0.25 Ml;FIDELIDADE;105.99;90.09;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;304589;Antipulgas Combo Banni 3 0,90 Ml;FIDELIDADE;159.99;127.99;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;296133;Advocate Cat 1 X 0,4 Ml (gatos At 4kg);FIDELIDADE;112.99;96.04;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;2
+Promo;14850;Neopet Gatos 0.32 Ml At 8kg;FIDELIDADE;32.99;26.39;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;0
+Promo;296213;Antipulgas Banni Ces 4,02ml;FIDELIDADE;73.99;59.19;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;2
+Promo;304027;Revolution Plus At 2.5kg 3 Pipetas;FIDELIDADE;256.99;218.44;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;304588;Antipulgas Combo Banni 3 0,30 Ml;FIDELIDADE;144.99;115.99;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;0
+Promo;277562;Neopet Ces At 10kg 0,67 Ml Com 3 Pipetas;FIDELIDADE;69.99;55.99;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;2
+Promo;278550;Ectocid Spot On 20 A 40kg 2,68ml;FIDELIDADE;46.99;37.59;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;17375;Revolution Caes 10 A 20 Kg 1.0 Ml;FIDELIDADE;139.99;118.99;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;295625;Advocate Caes 10 At 25kg 2,5ml;FIDELIDADE;131.99;112.19;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;2
+Promo;304030;Revolution Plus 5.1kg A 10kg;FIDELIDADE;122.99;104.54;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;302112;Bravecto Transdermal Dog 500mg;FIDELIDADE;280.59;210.44;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;302113;Bravecto Transdermal Dog 1000mg;FIDELIDADE;323.09;242.32;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;276637;Antipulgas Banni 3 0,90 Ml;FIDELIDADE;79.99;63.99;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;5
+Promo;301643;Advocate Cat 1 X 0.8 Ml;FIDELIDADE;125.99;107.09;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;277561;Neopet Gatos At 8 Kg 0,32 Ml Com 3 Pipetas;FIDELIDADE;65.99;52.79;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;0
+Promo;41172;Defend Pro Gatos;FIDELIDADE;32.99;26.39;;2026-08-13;09/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;0
+Promo;302111;Bravecto Transdermal Dog 250mg;FIDELIDADE;238.59;178.94;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;302108;Bravecto Transdermal Dog 112.5mg;FIDELIDADE;197.99;148.49;;2026-07-02;30/09/2026;Farmacia;Medicamentos OTC;Antipulgas/Carrapatos;Transdermal;1
+Promo;303573;Biocanis Probiotico Pro 14g;FIDELIDADE;46.99;37.59;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Probiotico E Prebiotico;Probiotico/Prebiotico;7
+Promo;35733;Probiotico Pet 14g Avert;FIDELIDADE;45.99;30.99;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Probiotico E Prebiotico;Probiotico/Prebiotico;1
+Promo;35147;Ativi Cart 40 Mg;FIDELIDADE;184.99;147.99;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Condroprotetores;2
+Promo;303609;Ograx Senior 5 Cap X 30;OUTRA_D;50.00%;2;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Suplementos Vitaminicos;2
+Promo;16516;Ograx-3 500 Mg 30 Comp;OUTRA_D;50.00%;2;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Suplementos Vitaminicos;3
+Promo;26826;Ograx-3 1500 Mg 30 Capsulas;OUTRA_D;50.00%;2;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Suplementos Vitaminicos;1
+Promo;302547;Ograx Baby 30 Ml;OUTRA_D;50.00%;2;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Suplementos Vitaminicos;2
+Promo;23969;Hepguard 30 Comp;FIDELIDADE;109.99;60.99;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Suplementos Vitaminicos;2
+Promo;303610;Ograx Senior 10 Cap X 30;OUTRA_D;50.00%;2;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Suplementos Vitaminicos;1
+Promo;303038;Ograx Plus 5;OUTRA_D;50.00%;2;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Suplementos Vitaminicos;1
+Promo;16928;Ograx-3 1000 Mg 30 Comp;OUTRA_D;50.00%;2;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Suplementos Vitaminicos;0
+Promo;303039;Ograx Plus 15;OUTRA_D;50.00%;2;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Suplementos Vitaminicos;1
+Promo;41788;Ograx Gatos 30 Capsulas;OUTRA_D;50.00%;2;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Suplementos Vitaminicos;3
+Promo;276341;Longil Snacks 30 Tabletes;FIDELIDADE;102.99;82.39;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Suplementos/Vitaminas;0
+Promo;276340;Kardio 30g;FIDELIDADE;102.99;82.39;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Suplementos/Vitaminas;0
+Promo;5028;Metacell Pet 50 Ml;FIDELIDADE;62.99;50.39;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Suplementos/Vitaminas;1
+Promo;301754;Seren Snacks;FIDELIDADE;104.99;83.99;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Suplementos/Vitaminas;2
+Promo;3199;Energy Pet 125 Ml;FIDELIDADE;56.99;45.59;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Suplementos/Vitaminas;1
+Promo;301759;Rennaiz Snacks;FIDELIDADE;172.99;138.39;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Suplementos/Vitaminas;1
+Promo;276337;Seren Pasta 30g;FIDELIDADE;94.99;75.99;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Suplementos/Vitaminas;0
+Promo;301755;Plenipil Snacks;FIDELIDADE;129.99;103.99;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Suplementos/Vitaminas;1
+Promo;276343;Plenipil Snacks 30 Tabletes;FIDELIDADE;121.99;97.59;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Suplementos/Vitaminas;0
+Promo;301757;Imuness Snacks;FIDELIDADE;119.99;95.99;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Suplementos/Vitaminas;0
+Promo;301758;Uree Snacks;FIDELIDADE;144.99;115.99;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Suplementos/Vitaminas;1
+Promo;276342;Plenipil 30g;FIDELIDADE;81.59;65.27;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Suplementos/Vitaminas;0
+Promo;301756;Longil Snacks;FIDELIDADE;119.99;95.99;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Suplementos/Vitaminas;1
+Promo;276335;Uree Snacks 30 Tabletes;FIDELIDADE;124.99;99.99;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Suplementos Vitaminicos;Suplementos/Vitaminas;0
+Promo;8703;Top Dog 10 Kg Cx C/ 4 Comp;FIDELIDADE;79.99;63.99;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Vermifugos;Comprimido;4
+Promo;41169;Totalis Medium 04 Comp;FIDELIDADE;72.99;58.39;;2026-08-13;09/09/2026;Farmacia;Medicamentos OTC;Vermifugos;Comprimido;0
+Promo;41170;Totalis Maxi 02 Comp;FIDELIDADE;91.99;73.59;;2026-08-13;09/09/2026;Farmacia;Medicamentos OTC;Vermifugos;Comprimido;0
+Promo;41168;Totalis Mini 02 Comp;FIDELIDADE;36.99;29.59;;2026-08-13;09/09/2026;Farmacia;Medicamentos OTC;Vermifugos;Comprimido;0
+Promo;8702;Top Dog 2.5 Kg Cx C/ 4 Comp;FIDELIDADE;42.99;34.39;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Vermifugos;Comprimido;1
+Promo;8704;Top Dog 30 Kg C/ 2 Comp;FIDELIDADE;96.95;77.56;;2026-09-03;30/09/2026;Farmacia;Medicamentos OTC;Vermifugos;Comprimido;4
+Promo;441;Areia Pipicat Classic 4kg;PAGLEV;6;5;;2026-09-03;16/09/2026;Higiene;Areias Higienicas;Bentonita;Bentonita;15
+Promo;13564;Areia Pipicat Multcat 12kg Pb;OUTRA_D;25.00%;2;;2026-09-03;23/09/2026;Higiene;Areias Higienicas;Bentonita;Bentonita;11
+Promo;302567;My Cattie Classic 4kg;FIDELIDADE;14.99;9.99;;2026-08-06;30/09/2026;Higiene;Areias Higienicas;Bentonita;Bentonita;14
+Promo;302569;My Cattie Floral 4kg;FIDELIDADE;19.99;13.99;;2026-08-06;30/09/2026;Higiene;Areias Higienicas;Bentonita;Bentonita;30
+Promo;303638;Granulado Progato Vida Clean 4kg;OUTRA_D;50.00%;2;;2026-09-03;16/09/2026;Higiene;Areias Higienicas;Ecologica;Ecologica;5
+Promo;303477;Granulado Progato Vida Comfort 4kg;OUTRA_D;50.00%;2;;2026-09-03;16/09/2026;Higiene;Areias Higienicas;Ecologica;Ecologica;5
+Promo;276858;Xixi No Pode My Doggie 500ml;FIDELIDADE;19.99;17.99;;2026-07-02;30/09/2026;Higiene;Banheiro;Caes;Atrativos e Repelentes;3
+Promo;39478;Tapete Xixi Facil Pop Furacao Pet;FIDELIDADE;50.99;40.79;;2026-09-03;30/09/2026;Higiene;Banheiro;Caes;Sanitarios;0
+Promo;23913;Banheira Gato Classic Furacao Pet Azul;FIDELIDADE;30.99;24.79;;2026-09-03;30/09/2026;Higiene;Banheiro;Gatos;Furbas/Sanitarios;1
+Promo;39596;Banheira Gato Joy Furacao Pet Vermelha;FIDELIDADE;14.99;11.99;;2026-09-03;30/09/2026;Higiene;Banheiro;Gatos;Furbas/Sanitarios;1
+Promo;23914;Banheira Gato Classic Furacao Pet Black;FIDELIDADE;30.99;24.79;;2026-09-03;30/09/2026;Higiene;Banheiro;Gatos;Furbas/Sanitarios;1
+Promo;39598;Banheira Gato Joy Furacao Pet Black;FIDELIDADE;14.99;11.99;;2026-09-03;30/09/2026;Higiene;Banheiro;Gatos;Furbas/Sanitarios;1
+Promo;25919;Banheira Gato Classic Furacao Pet Rosa;FIDELIDADE;30.99;24.79;;2026-09-03;30/09/2026;Higiene;Banheiro;Gatos;Furbas/Sanitarios;1
+Promo;25918;Banheira Gato Classic Furacao Pet Branca;FIDELIDADE;30.99;24.79;;2026-09-03;30/09/2026;Higiene;Banheiro;Gatos;Furbas/Sanitarios;0
+Promo;39597;Banheira Gato Joy Furacao Pet Rosa;FIDELIDADE;14.99;11.99;;2026-09-03;30/09/2026;Higiene;Banheiro;Gatos;Furbas/Sanitarios;2
+Promo;23915;Banheira Gato Classic Furacao Pet Vermelha;FIDELIDADE;30.99;24.79;;2026-09-03;30/09/2026;Higiene;Banheiro;Gatos;Furbas/Sanitarios;0
+Promo;39451;Banheira Gato Joy Furacao Pet Azul;FIDELIDADE;14.99;11.99;;2026-09-03;30/09/2026;Higiene;Banheiro;Gatos;Furbas/Sanitarios;1
+Promo;276857;Banho A Seco My Doggie 500ml;FIDELIDADE;22.99;18.99;;2026-07-02;30/09/2026;Higiene;Banho;Banho a Seco/Talcos;Caes;7
+Promo;276854;Creme Condicionador My Doggie 500g;FIDELIDADE;19.99;14.99;;2026-07-02;30/09/2026;Higiene;Banho;Condicionador;Caes;3
+Promo;276856;Gel Dental Menta My Doggie 60g;OUTRA_D;50.00%;2;;2026-09-03;30/09/2026;Higiene;Banho;Higiene Bucal;Caes;6
+Promo;276855;Gel Dental Tutti Frutti My Doggie 60g;OUTRA_D;50.00%;2;;2026-09-03;30/09/2026;Higiene;Banho;Higiene Bucal;Caes;2
+Promo;28572;Soft Care Oto Clean Up 100 Ml;FIDELIDADE;62.99;53.54;;2026-09-03;30/09/2026;Higiene;Banho;Higiene Olhos/Orelhas/Patas;Caes;0
+Promo;20953;Lencos Umed Chalesco C/ 80 Toalhas American Pets;FIDELIDADE;23.99;19.19;;2026-09-03;30/09/2026;Higiene;Banho;Lencos Umedecidos;Caes;9
+Promo;31201;Sh Pet Society Super Premium Neutro 300ml;FIDELIDADE;66.99;53.59;;2026-08-13;30/09/2026;Higiene;Banho;Shampoo;Caes;1
+Promo;276853;Shampoo 5x1 My Doggie 500ml;FIDELIDADE;18.99;14.99;;2026-07-02;30/09/2026;Higiene;Banho;Shampoo;Caes;4
+Promo;29786;Sh Pet Society Beeps Branqueador 500ml;FIDELIDADE;40.99;32.79;;2026-08-13;30/09/2026;Higiene;Banho;Shampoo;Caes;2
+Promo;31202;Sh Pet Society Pelo Claro Para Cao-gato 300ml;FIDELIDADE;68.99;55.19;;2026-08-13;30/09/2026;Higiene;Banho;Shampoo;Caes;2
+Promo;29788;Sh Pet Society Beeps Filhote 500ml;FIDELIDADE;40.99;32.79;;2026-08-13;30/09/2026;Higiene;Banho;Shampoo;Caes;0
+Promo;29789;Sh Pet Society Beeps 2 Em 1 500ml;FIDELIDADE;42.99;34.39;;2026-08-13;30/09/2026;Higiene;Banho;Shampoo;Caes;0
+Promo;276852;Shampoo Filhotes My Doggie 500ml;FIDELIDADE;18.99;14.99;;2026-07-02;30/09/2026;Higiene;Banho;Shampoo;Caes;4
+Promo;29791;Sh Pet Society Beeps Neutro 500ml;FIDELIDADE;39.99;31.99;;2026-08-13;30/09/2026;Higiene;Banho;Shampoo;Caes;2
+Promo;31200;Sh Pet Society Filhote Pele Sensivel 300ml;FIDELIDADE;72.99;58.39;;2026-08-13;30/09/2026;Higiene;Banho;Shampoo;Caes;1
+Promo;10723;Tapete Higienico Chalesco 60x90cm 30 Unid;FIDELIDADE;94.99;85.49;;2026-09-03;30/09/2026;Higiene;Tapetes e Fraldas;Tapetes Higienicos;Tapetes Higienicos;6
+Promo;304679;Tapete Higienico Au Pads 80x60 Com 30 Unidades;FIDELIDADE;79.99;69.99;;2026-08-20;30/09/2026;Higiene;Tapetes e Fraldas;Tapetes Higienicos;Tapetes Higienicos;9
+Promo;37840;Tapete Higienico Petcamp Alta Absorcao 30 Unid;PARTIR_P;2;69.90;;2026-09-03;30/09/2026;Higiene;Tapetes e Fraldas;Tapetes Higienicos;Tapetes Higienicos;52
+Promo;276861;Tapete Higienico My Doggie 80x60 - 07 Unid;PARTIR_P;2;19.99;;2026-07-02;30/09/2026;Higiene;Tapetes e Fraldas;Tapetes Higienicos;Tapetes Higienicos;9
+Promo;303160;Tapete Higinico Nukys Pads 30un;FIDELIDADE;66.90;59.90;;2026-09-03;30/09/2026;Higiene;Tapetes e Fraldas;Tapetes Higienicos;Tapetes Higienicos;7
+Promo;7335;Tapete Higienico Nukys Pads 50 Unid;FIDELIDADE;106.99;99.90;;2026-09-03;30/09/2026;Higiene;Tapetes e Fraldas;Tapetes Higienicos;Tapetes Higienicos;9
+Promo;303094;Zz Tapete Higienico Ouro Fino Neutro 80cmx60cm Com 03 Uni (brinde);BRINDE;1;0.01;;2026-09-03;04/11/2026;Higiene;Tapetes e Fraldas;Tapetes Higienicos;Tapetes Higienicos;6
+Promo;7336;Tapete Higienico Nukys Pads 7 Unid;PARTIR_P;2;13.99;;2026-07-02;30/09/2026;Higiene;Tapetes e Fraldas;Tapetes Higienicos;Tapetes Higienicos;47
+Promo;303422;Nectar Beija Flor Fruta Vermelha 500ml;FIDELIDADE;7.69;6.15;;2026-08-27;23/09/2026;Pet Food;Outros Pets;Passaros;Nectar;0
+Promo;301620;Molho Cao Para Racao Churrasco 250gr;OUTRA_D;50.00%;2;;2026-08-27;23/09/2026;Pet Food;Petiscos Caes;Bebidas/Molhos;Molhos;5
+Promo;302139;Molho Cao Para Racao Frango 250gr;OUTRA_D;50.00%;2;;2026-08-27;23/09/2026;Pet Food;Petiscos Caes;Bebidas/Molhos;Molhos;5
+Promo;301619;Molho Cao Para Racao Carne 250gr;OUTRA_D;50.00%;2;;2026-08-27;23/09/2026;Pet Food;Petiscos Caes;Bebidas/Molhos;Molhos;4
+Promo;301621;Molho Cao Para Racao Barbecao 250gr;OUTRA_D;50.00%;2;;2026-08-27;23/09/2026;Pet Food;Petiscos Caes;Bebidas/Molhos;Molhos;5
+Promo;296246;Longcare Nutrimun 250g;FIDELIDADE;40.99;30.74;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;0
+Promo;35768;Petiscao Petisco Bifinho Petisquinho Frango 250gr;OUTRA_D;25.00%;2;;2026-09-03;16/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;3
+Promo;304090;Au Fil Sabor Carne 60g;PAGLEV;3;2;;2026-07-02;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;TRADICIONAL;30
+Promo;304093;Au Fil Sabor Frango 500g;FIDELIDADE;31.99;26.99;;2026-07-02;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;TRADICIONAL;15
+Promo;296250;Longcare Cordeiro 250g;FIDELIDADE;40.99;30.74;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;
+Promo;296242;Longcare Fit 250g;FIDELIDADE;40.99;30.74;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;3
+Promo;35766;Petiscao Petisco Bifinho Petisquinho Carne 500gr;OUTRA_D;25.00%;2;;2026-09-03;16/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;4
+Promo;35769;Petiscao Petisco Bifinho Petisquinho Frango 500gr;OUTRA_D;25.00%;2;;2026-09-03;16/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;7
+Promo;22628;Petiscao Bifinho Mastigavel Carne 250gr;OUTRA_D;25.00%;2;;2026-09-03;16/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;7
+Promo;276371;Bifinho Due Derm 300g;PARTIR_P;2;19.99;;2026-07-02;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;11
+Promo;276368;Bifinho Due Frutas 60g;PAGLEV;4;3;;2026-07-02;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;7
+Promo;296240;Longcare Prot Hidrol 250g;FIDELIDADE;43.99;32.99;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;3
+Promo;296244;Longcare Mobility 250g;FIDELIDADE;40.99;30.74;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;2
+Promo;304091;Au Fil Sabor Frango 60g;PAGLEV;3;2;;2026-07-02;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;TRADICIONAL;28
+Promo;276365;Bifinho Due Anti-ox 60g;PAGLEV;4;3;;2026-07-02;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;14
+Promo;276367;Bifinho Due Derm 60g;PAGLEV;4;3;;2026-07-02;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;7
+Promo;296249;Longcare Cordeiro 50g;PAGLEV;3;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;
+Promo;296239;Longcare Prot Hidrol 50g;PAGLEV;3;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;2
+Promo;296243;Longcare Mobility 50g;PAGLEV;3;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;1
+Promo;276369;Bifinho Due Anti-ox 300g;PARTIR_P;2;19.99;;2026-07-02;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;9
+Promo;296248;Longcare Zen 250g;FIDELIDADE;40.99;30.74;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;3
+Promo;276366;Bifinho Due Calm 60g;PAGLEV;4;3;;2026-07-02;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;11
+Promo;35765;Petiscao Petisco Bifinho Petisquinho Carne 250gr;OUTRA_D;25.00%;2;;2026-09-03;16/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;8
+Promo;296241;Longcare Fit 50g;PAGLEV;3;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;1
+Promo;296237;Longcare Salm E Tilap 50g;PAGLEV;3;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;2
+Promo;296247;Longcare Zen 50g;PAGLEV;3;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;7
+Promo;296238;Longcare Salm E Tilap 250g;FIDELIDADE;40.99;30.74;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;3
+Promo;304092;Au Fil Sabor Carne 500g;FIDELIDADE;31.99;26.99;;2026-07-02;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;TRADICIONAL;19
+Promo;276370;Bifinho Due Calm 300g;PARTIR_P;2;19.99;;2026-07-02;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;16
+Promo;276372;Bifinho Due Frutas 300g;PARTIR_P;2;19.99;;2026-07-02;30/09/2026;Pet Food;Petiscos Caes;Bifinhos;Tradicional;7
+Promo;783;Biscrok Adulto Raa Pequena 1kg;FIDELIDADE;38.99;29.99;;2026-09-03;16/09/2026;Pet Food;Petiscos Caes;Biscoitos;Tradicional;4
+Promo;276374;Biscoito Due Frutas Vermelhas 350g;FIDELIDADE;16.99;14.90;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Biscoitos;Tradicional;18
+Promo;785;Biscrok Adulto Multi 1kg;FIDELIDADE;38.99;29.99;;2026-09-03;16/09/2026;Pet Food;Petiscos Caes;Biscoitos;Tradicional;12
+Promo;304150;Au Crock Biscoto Carne 1kg;FIDELIDADE;34.99;28.99;;2026-07-02;30/09/2026;Pet Food;Petiscos Caes;Biscoitos;Tradicional;11
+Promo;276375;Biscoito Due Indoor 350g;FIDELIDADE;16.99;14.90;;2026-08-27;30/09/2026;Pet Food;Petiscos Caes;Biscoitos;Tradicional;20
+Promo;781;Biscrok Adulto Raa Grande 1kg;FIDELIDADE;38.99;29.99;;2026-09-03;16/09/2026;Pet Food;Petiscos Caes;Biscoitos;Tradicional;0
+Promo;276083;Premier Cookie Adulto Porte Pequeno Pscoa 250gr;FIDELIDADE;18.90;9.99;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Biscoitos;Tradicional;0
+Promo;41197;Golden Cookie Cao Adulto Pequeno Arraiau 350gr;FIDELIDADE;17.99;9.99;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Biscoitos;Tradicional;0
+Promo;304151;Au Crock Biscoto Frango 1kg;FIDELIDADE;34.99;28.99;;2026-07-02;30/09/2026;Pet Food;Petiscos Caes;Biscoitos;Tradicional;7
+Promo;38700;Petisco Natural Farm Casco Bovino Recheado 2un;OUTRA_D;50.00%;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;5
+Promo;279093;Petisco Natural Farm Chifre Bovino 2un 238gr;OUTRA_D;50.00%;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;6
+Promo;279084;Petisco Natural Farm Mix Classico 139gr;OUTRA_D;50.00%;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;0
+Promo;29404;Ll Pet Petisco Osso No 4x5 1un;PAGLEV;3;2;;2026-08-20;09/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;6
+Promo;303151;Humaita Natural Treats Partes Bovinas C/legumes 60g;OUTRA_D;30.00%;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;3
+Promo;29405;Ll Pet Petisco Osso No 4x5 Bacon;PAGLEV;3;2;;2026-08-20;09/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;3
+Promo;279031;Due Sticks Rigido 6 Natural 500g;FIDELIDADE;17.99;13.99;;2026-08-13;23/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;2
+Promo;40686;Ll Pet Petisco Orelha Bovina Com-shirink 1un;PAGLEV;3;2;;2026-08-20;09/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;10
+Promo;29407;Ll Pet Petisco Osso No 8x9 1 Un;FIDELIDADE;34.99;29.74;;2026-08-20;09/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;3
+Promo;39808;Petisco Natural Farm Casco Bovino 6un;OUTRA_D;50.00%;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;2
+Promo;279034;Due Sticks Rigido 8 Natural 9 Unid;PAGLEV;4;3;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;4
+Promo;303153;Humaita Natural Treats Partes Sunas C/legumes 60g;OUTRA_D;30.00%;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;2
+Promo;27975;Ll Pet Petisco Palito Bovino;FIDELIDADE;27.99;23.79;;2026-08-20;09/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;5
+Promo;32467;Ll Pet Petisco Prensado Com Aroma Bacon;PAGLEV;3;2;;2026-08-20;09/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;22
+Promo;278981;Mastig Focinho Suino 2un;PAGLEV;3;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;4
+Promo;27962;Ll Pet Petisco Combo Bone 4-5 1un;FIDELIDADE;16.99;14.44;;2026-08-20;09/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;4
+Promo;29412;Ll Pet Petisco Retriever 10 1un;FIDELIDADE;18.99;16.14;;2026-08-20;09/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;1
+Promo;27969;Ll Pet Petisco Chips Bovino;FIDELIDADE;26.99;22.94;;2026-08-20;09/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;5
+Promo;279037;Due Sticks Flexivel Menta 10 Unid;PAGLEV;4;3;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;6
+Promo;279038;Due Sticks Flexivel Bacon 10 Unid;PAGLEV;4;3;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;18
+Promo;301933;Mastig Osso 5-6 Colageno Carne 1p;PAGLEV;3;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;
+Promo;303154;Humaita Natural Treats Partes Sunas C/ Frutas 60g;OUTRA_D;30.00%;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;4
+Promo;24856;Mastig Mini Retriver 4 Combo 3un;PAGLEV;3;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;1
+Promo;303152;Humaita Natural Treats Partes Bovinas C/ Frutas 60g;OUTRA_D;30.00%;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;9
+Promo;32465;Ll Pet Petisco Enroladinho 3un;FIDELIDADE;18.49;15.72;;2026-08-20;09/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;4
+Promo;32471;Ll Pet Petisco Umero Bovino;FIDELIDADE;49.99;42.49;;2026-08-20;09/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;7
+Promo;279036;Due Sticks Flexivel Natural 10 Unid;PAGLEV;4;3;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;15
+Promo;301926;Mastig Pulmo Bovino 100g;PAGLEV;3;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;
+Promo;32470;Ll Pet Petisco Femur Suino 1un;PAGLEV;3;2;;2026-08-20;09/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;15
+Promo;279083;Petisco Natural Farm Mix 100gr;OUTRA_D;50.00%;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;8
+Promo;37131;Ll Pet Petisco Osso Prensado 4un;PAGLEV;3;2;;2026-08-20;09/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;5
+Promo;279091;Petisco Natural Farm Mix Casco-chifre 4un 378gr;OUTRA_D;50.00%;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;0
+Promo;304201;Mastig - Roll 4 Colageno Carne 3 P;PAGLEV;3;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;2
+Promo;279092;Petisco Natural Farm Pe De Frango 5un 60gr;OUTRA_D;50.00%;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;11
+Promo;302751;Petisco Natural Farm File Sassami;OUTRA_D;50.00%;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;2
+Promo;29403;Ll Pet Petisco Osso No 2x3 3un;FIDELIDADE;16.49;14.02;;2026-08-20;09/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;20
+Promo;27967;Ll Pet Petisco Combo Twister 3un;FIDELIDADE;20.99;17.84;;2026-08-20;09/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;8
+Promo;301709;Mastig Sortido Natural 120gr;PAGLEV;3;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;5
+Promo;301708;Mastig Filezinho Chips 5 Un;PAGLEV;3;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;
+Promo;38705;Petisco Natural Farm Osso Recheado Bacon 6 Pol 1un;OUTRA_D;50.00%;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;0
+Promo;301934;Mastig Osso 7-8 Colageno Carne 1p;PAGLEV;3;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;
+Promo;301930;Mastig Moela De Frango 80g;PAGLEV;3;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;4
+Promo;24857;Mastig Mini Retriver 8 Combo 3un;PAGLEV;3;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;2
+Promo;27966;Ll Pet Petisco Combo Roll Retriver 8 1un;FIDELIDADE;30.99;26.34;;2026-08-20;09/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;2
+Promo;38701;Petisco Natural Farm Costela Bovina 6 Pol 6un;OUTRA_D;50.00%;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;5
+Promo;32468;Ll Pet Petisco Twist;PAGLEV;3;2;;2026-08-20;09/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;3
+Promo;302753;Petisco Natural Farm Traqueia 4;OUTRA_D;50.00%;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Body Parts/Ossos;Tradicional;1
+Promo;34556;Gellato Caes Morango 30gr;PAGLEV;3;2;;2026-08-27;23/09/2026;Pet Food;Petiscos Caes;Creminhos;Caes;13
+Promo;34553;Gellato Caes Banana 30gr;PAGLEV;3;2;;2026-08-27;23/09/2026;Pet Food;Petiscos Caes;Creminhos;Caes;35
+Promo;34554;Gellato Caes Carne 30gr;PAGLEV;3;2;;2026-08-27;23/09/2026;Pet Food;Petiscos Caes;Creminhos;Caes;25
+Promo;302683;Pure Churu Cao Franco Com 4un De 14gr Cada 56gr;FIDELIDADE;24.99;19.99;;2026-09-03;09/09/2026;Pet Food;Petiscos Caes;Creminhos;Caes;1
+Promo;302685;Pure Churu Cao Frango Salmao Com 4un De 14gr Cada 56gr;FIDELIDADE;24.99;19.99;;2026-09-03;09/09/2026;Pet Food;Petiscos Caes;Creminhos;Caes;1
+Promo;302687;Pure Churu Cao Frango Vegetais Com 4un De 14gr Cada 56gr;FIDELIDADE;24.99;19.99;;2026-09-03;09/09/2026;Pet Food;Petiscos Caes;Creminhos;Caes;8
+Promo;302686;Pure Churu Cao Frango Queijo Com 4un De 14gr Cada 56gr;FIDELIDADE;24.99;19.99;;2026-09-03;09/09/2026;Pet Food;Petiscos Caes;Creminhos;Caes;4
+Promo;302684;Pure Churu Cao Atum Com 4un De 14gr Cada 56gr;FIDELIDADE;24.99;19.99;;2026-09-03;09/09/2026;Pet Food;Petiscos Caes;Creminhos;Caes;0
+Promo;304089;Doogs Kit Auniversrio Snack Sortido 80gr;FIDELIDADE;22.89;19.99;;2026-08-27;23/09/2026;Pet Food;Petiscos Caes;Snacks;Adulto;2
+Promo;279085;Snack Natural Farm Dental Pequeno 210gr;FIDELIDADE;21.49;18.27;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Snacks;Dental;7
+Promo;276051;Dental & Gum Ras Pq 110g - 7 Un;PAGLEV;3;2;;2026-07-02;30/09/2026;Pet Food;Petiscos Caes;Snacks;Dental;8
+Promo;276050;Dental & Gum Ras Gd 120g - 3 Un;PAGLEV;3;2;;2026-08-06;30/09/2026;Pet Food;Petiscos Caes;Snacks;Dental;8
+Promo;279096;Snack Natural Farm Dental Regular 420gr;FIDELIDADE;41.99;35.69;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Snacks;Dental;2
+Promo;17059;Pedigree Dentastix Rm 7 Sticks 180gr;FIDELIDADE;24.99;21.24;;2026-09-03;16/09/2026;Pet Food;Petiscos Caes;Snacks;Dental;11
+Promo;17053;Pedigree Dentastix Rp 7 Sticks 110gr;FIDELIDADE;19.99;16.99;;2026-09-03;16/09/2026;Pet Food;Petiscos Caes;Snacks;Dental;10
+Promo;276052;Dental & Gum Ras Md 170g - 7 Un;PAGLEV;3;2;;2026-07-02;30/09/2026;Pet Food;Petiscos Caes;Snacks;Dental;16
+Promo;276048;Dental & Gum Ras Pq 45g - 3 Un;PAGLEV;3;2;;2026-08-06;30/09/2026;Pet Food;Petiscos Caes;Snacks;Dental;10
+Promo;17055;Pedigree Dentastix Rg 7 Sticks 270gr;FIDELIDADE;33.69;28.64;;2026-09-03;16/09/2026;Pet Food;Petiscos Caes;Snacks;Dental;4
+Promo;279095;Snack Natural Farm Dental Mini 85gr;FIDELIDADE;10.99;9.34;;2026-09-03;30/09/2026;Pet Food;Petiscos Caes;Snacks;Dental;13
+Promo;276049;Dental & Gum Ras Md 70g - 3 Un;PAGLEV;3;2;;2026-08-06;30/09/2026;Pet Food;Petiscos Caes;Snacks;Dental;9
+Promo;276053;Dental & Gum Ras Gd 280g - 7 Un;PAGLEV;3;2;;2026-08-06;30/09/2026;Pet Food;Petiscos Caes;Snacks;Dental;13
+Promo;30428;Graminha Digestive Grass Caes Adulto 50gr;FIDELIDADE;12.99;9.99;;2026-08-27;23/09/2026;Pet Food;Petiscos Caes;Snacks;Funcional;0
+Promo;295981;Pedigree Tasty Bites Leite 80gr;FIDELIDADE;9.99;8.49;;2026-09-03;16/09/2026;Pet Food;Petiscos Caes;Snacks;Tradicional;0
+Promo;34555;Gellato Caes Kiwi 30g;PAGLEV;3;2;;2026-08-27;23/09/2026;Pet Food;Petiscos Caes;Snacks;Tradicional;21
+Promo;295979;Pedigree Tasty Bites Carne 80gr;FIDELIDADE;9.99;8.49;;2026-09-03;16/09/2026;Pet Food;Petiscos Caes;Snacks;Tradicional;6
+Promo;295980;Pedigree Tasty Bites Frango 80gr;FIDELIDADE;9.99;8.49;;2026-09-03;16/09/2026;Pet Food;Petiscos Caes;Snacks;Tradicional;2
+Promo;22629;Petiscao Bifinho Palito Mastigavel Frango 250gr;OUTRA_D;25.00%;2;;2026-09-03;16/09/2026;Pet Food;Petiscos Caes;Sticks;Tradicional;6
+Promo;22627;Petiscao Bifinho Palito Mastigavel Carne 250gr;OUTRA_D;25.00%;2;;2026-09-03;16/09/2026;Pet Food;Petiscos Caes;Sticks;Tradicional;0
+Promo;302138;Molho Gato Para Racao Peixe 250gr;OUTRA_D;50.00%;2;;2026-08-27;23/09/2026;Pet Food;Petiscos Gatos;Bebidas/Molhos;Molhos;4
+Promo;302137;Molho Gato Para Racao Carne 250gr;OUTRA_D;50.00%;2;;2026-08-27;23/09/2026;Pet Food;Petiscos Gatos;Bebidas/Molhos;Molhos;3
+Promo;303578;Hana Petisco Gato Kibble Vitaguard 60gr;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Petiscos Gatos;Snacks;Funcional;2
+Promo;303420;Gellato Gato Carne 30gr;PAGLEV;3;2;;2026-08-27;23/09/2026;Pet Food;Petiscos Gatos;Snacks;Funcional;25
+Promo;303421;Gellato Gato Yogurte 30gr;PAGLEV;3;2;;2026-08-27;23/09/2026;Pet Food;Petiscos Gatos;Snacks;Funcional;25
+Promo;33495;Hana Petisco Gato Adulto Hairball Control 60gr;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Petiscos Gatos;Snacks;Funcional;17
+Promo;33497;Hana Petisco Gato Adulto Omega Complex 60gr;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Petiscos Gatos;Snacks;Funcional;12
+Promo;302918;Optimum Gato Petisco Pele Pelo 80gr;FIDELIDADE;9.99;8.49;;2026-09-03;16/09/2026;Pet Food;Petiscos Gatos;Snacks;Funcional;1
+Promo;33498;Hana Petisco Gato Adulto Dental Care 60gr;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Petiscos Gatos;Snacks;Funcional;35
+Promo;33496;Hana Petisco Gato Adulto Ph Balance 60gr;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Petiscos Gatos;Snacks;Funcional;10
+Promo;302917;Optimum Gato Petisco Bola De Pelo 80gr;FIDELIDADE;9.99;8.49;;2026-09-03;16/09/2026;Pet Food;Petiscos Gatos;Snacks;Funcional;4
+Promo;279026;Due Feline Nuggets Gatos Frango 80gr;OUTRA_D;30.00%;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Gatos;Snacks;Tradicional;14
+Promo;303832;Due Feline Nuggets Gatos Salmo Bola De Pelo 40gr;PAGLEV;4;3;;2026-07-02;30/09/2026;Pet Food;Petiscos Gatos;Snacks;Tradicional;26
+Promo;303833;Due Feline Nuggets Gatos Carne 150gr;OUTRA_D;30.00%;2;;2026-07-02;30/09/2026;Pet Food;Petiscos Gatos;Snacks;Tradicional;0
+Promo;13939;Dreamies Gato Queijo 40gr;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Petiscos Gatos;Snacks;Tradicional;19
+Promo;279028;Due Feline Nuggets Gatos Salmo 40gr;PAGLEV;4;3;;2026-08-06;30/09/2026;Pet Food;Petiscos Gatos;Snacks;Tradicional;12
+Promo;13938;Dreamies Gato Carne 40gr;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Petiscos Gatos;Snacks;Tradicional;29
+Promo;279029;Due Feline Nuggets Gatos Frango 40gr;PAGLEV;4;3;;2026-08-06;30/09/2026;Pet Food;Petiscos Gatos;Snacks;Tradicional;11
+Promo;279030;Due Feline Nuggets Gatos Carne 40gr;PAGLEV;4;3;;2026-08-06;30/09/2026;Pet Food;Petiscos Gatos;Snacks;Tradicional;13
+Promo;303834;Due Vita Comprimido Fcil Ces 25gr;FIDELIDADE;24.99;19.99;;2026-07-02;30/09/2026;Pet Food;Petiscos Gatos;Snacks;Tradicional;7
+Promo;279027;Due Feline Nuggets Gatos Carne 80gr;OUTRA_D;30.00%;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Gatos;Snacks;Tradicional;10
+Promo;279025;Due Feline Nuggets Gatos Salmo 80gr;OUTRA_D;30.00%;2;;2026-09-03;30/09/2026;Pet Food;Petiscos Gatos;Snacks;Tradicional;23
+Promo;36251;Hana Petisco Gato Adulto Catnip Sensations 60gr;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Petiscos Gatos;Snacks;Tradicional;10
+Promo;14247;Dreamies Gato Frango 40gr;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Petiscos Gatos;Snacks;Tradicional;37
+Promo;276264;Dreamies Gato Salmao 40gr;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Petiscos Gatos;Snacks;Tradicional;16
+Promo;3865;Golden Cao Power Adulto Frango 15kg;OUTRA_D;30.00%;2;;2026-09-03;16/09/2026;Pet Food;Racao Seca Caes;Premium;Adulto;6
+Promo;42428;Dog Excellence Essence Adulto - 15kg;FIDELIDADE;185.99;158.09;;2026-09-03;30/09/2026;Pet Food;Racao Seca Caes;Premium;Adulto;2
+Promo;14749;Dog Excellence Adulto Rg Cordeiro 15kg;FIDELIDADE;225.99;192.09;;2026-09-03;30/09/2026;Pet Food;Racao Seca Caes;Premium;Adulto;2
+Promo;16343;Golden Cao Special Adulto Frango 15kg;OUTRA_D;30.00%;2;;2026-09-03;16/09/2026;Pet Food;Racao Seca Caes;Premium;Adulto;4
+Promo;302660;Raguife Premium Select - Ces Adulto Raas Medias E Grandes 15 Kg;FIDELIDADE;105.99;90.99;;2026-08-20;23/09/2026;Pet Food;Racao Seca Caes;Premium;Adulto;1
+Promo;38178;Origens Caes Class Carne E Frango Med 20kg;FIDELIDADE;199.99;179.99;;2026-08-27;09/09/2026;Pet Food;Racao Seca Caes;Premium;Adulto;11
+Promo;301950;Golden Cao Special Adulto Lv 15kg Pg 14kg;OUTRA_D;30.00%;2;;2026-09-03;16/09/2026;Pet Food;Racao Seca Caes;Premium;Adulto;0
+Promo;14747;Dog Excellence Senior Rp 10.1kg;FIDELIDADE;155.99;132.59;;2026-09-03;30/09/2026;Pet Food;Racao Seca Caes;Premium;Senior;2
+Promo;20880;Granplus Choice Cao Adulto Frango Carne 15kg;FIDELIDADE;159.90;129.99;;2026-08-27;16/09/2026;Pet Food;Racao Seca Caes;Standard;Adulto;4
+Promo;41615;Pedigree Cao Adulto Carne Frango Cereais 2.7kg;FIDELIDADE;49.99;42.99;;2026-09-03;16/09/2026;Pet Food;Racao Seca Caes;Standard;Adulto;2
+Promo;41609;Pedigree Cao Adulto Vegetais 2.7kg;FIDELIDADE;49.99;42.99;;2026-09-03;16/09/2026;Pet Food;Racao Seca Caes;Standard;Adulto;1
+Promo;41610;Pedigree Cao Adulto Raa Pequena 2.7kg;FIDELIDADE;49.99;42.99;;2026-09-03;16/09/2026;Pet Food;Racao Seca Caes;Standard;Adulto;0
+Promo;41611;Pedigree Cao Filhote 2.7kg;FIDELIDADE;49.99;42.99;;2026-09-03;16/09/2026;Pet Food;Racao Seca Caes;Standard;Filhotes;1
+Promo;302431;Pro Plan Cao Sensitive Skin Mini Salmao 2.5kg;FIDELIDADE;138.19;69.10;;2026-08-27;07/10/2026;Pet Food;Racao Seca Caes;Super Premium;Adulto;0
+Promo;37055;Pro Plan Cao Adulto Raca Media 2.5kg;FIDELIDADE;131.59;65.80;;2026-08-27;07/10/2026;Pet Food;Racao Seca Caes;Super Premium;Adulto;0
+Promo;28010;Pro Plan Cao Caloria Reduzida Mini Pequeno 7.5kg;FIDELIDADE;328.99;164.50;;2026-08-27;07/10/2026;Pet Food;Racao Seca Caes;Super Premium;Adulto;0
+Promo;302767;Pro Plan Cao Filhote Raa Media Grande 2.5kg;FIDELIDADE;138.19;69.10;;2026-08-27;07/10/2026;Pet Food;Racao Seca Caes;Super Premium;Adulto;0
+Promo;6654;Pro Plan Cao Adulto 1 A 7 Anos Mini-pequeno 1kg;FIDELIDADE;55.99;28.00;;2026-08-27;07/10/2026;Pet Food;Racao Seca Caes;Super Premium;Adulto;0
+Promo;26451;Pro Plan Cao Adulto 1 A 7 Anos Mini Pequeno 7.5kg;FIDELIDADE;314.59;157.30;;2026-08-27;07/10/2026;Pet Food;Racao Seca Caes;Super Premium;Adulto;0
+Promo;302188;Royal Canin Caes Maxi Adulto 12kg;FIDELIDADE;356.00;302.60;;2026-09-03;23/09/2026;Pet Food;Racao Seca Caes;Super Premium;Adulto;3
+Promo;37058;Pro Plan Cao Calorias Reduzidas Raa Media Grande 2.5kg;FIDELIDADE;138.19;69.10;;2026-08-27;07/10/2026;Pet Food;Racao Seca Caes;Super Premium;Adulto;0
+Promo;40862;Royal Canin Caes Maxi Joint Care Adulto Racas Grandes 10.1kg;FIDELIDADE;478.00;406.30;;2026-09-03;23/09/2026;Pet Food;Racao Seca Caes;Super Premium;Adulto;0
+Promo;6650;Pro Plan Cao Adulto 1 A 7 Anos Raca Media 15kg;FIDELIDADE;412.39;206.20;;2026-08-27;07/10/2026;Pet Food;Racao Seca Caes;Super Premium;Adulto;0
+Promo;276892;Royal Canin Caes Maxi Light 10,1kg;FIDELIDADE;426.99;362.94;;2026-09-03;23/09/2026;Pet Food;Racao Seca Caes;Super Premium;Adulto;2
+Promo;302768;Pro Plan Cao Filhote Raa Media Grande 15kg;FIDELIDADE;454.19;227.10;;2026-08-27;07/10/2026;Pet Food;Racao Seca Caes;Super Premium;Adulto;0
+Promo;302426;Pro Plan Vet Cao Hidrolizada Frango 7.5kg;FIDELIDADE;450.99;225.50;;2026-08-27;07/10/2026;Pet Food;Racao Seca Caes;Super Premium;Adulto;1
+Promo;6652;Pro Plan Cao Senior Todos Os Portes 15kg;FIDELIDADE;412.39;206.20;;2026-08-27;07/10/2026;Pet Food;Racao Seca Caes;Super Premium;Adulto;0
+Promo;37056;Pro Plan Cao Adulto 1 A 7 Anos Mini Pequeno 2.5kg;FIDELIDADE;131.59;65.80;;2026-08-27;07/10/2026;Pet Food;Racao Seca Caes;Super Premium;Adulto;0
+Promo;301886;Pro Plan Vet Cao Trato Urinario Ur 2kg;FIDELIDADE;143.19;71.60;;2026-08-27;07/10/2026;Pet Food;Racao Seca Caes;Super Premium;Adulto;
+Promo;302192;Royal Canin Caes Giant Adulto 12kg;FIDELIDADE;337.00;286.45;;2026-09-03;23/09/2026;Pet Food;Racao Seca Caes;Super Premium;Adulto;0
+Promo;15723;Royal Canin Ces Maxi Dermacomfort 10kg;FIDELIDADE;426.99;362.94;;2026-09-03;23/09/2026;Pet Food;Racao Seca Caes;Super Premium;Dermatologicos;0
+Promo;302548;Royal Canin Caes Giant Junior 12kg;FIDELIDADE;361.59;307.35;;2026-09-03;23/09/2026;Pet Food;Racao Seca Caes;Super Premium;Filhotes;0
+Promo;302432;Pro Plan Cao Sensitive Skin Mini Salmo 7.5kg;FIDELIDADE;328.99;164.50;;2026-08-27;07/10/2026;Pet Food;Racao Seca Caes;Super Premium;Filhotes;0
+Promo;37057;Pro Plan Cao Caloria Reduzida Raa Mini Pequena 2.5kg;FIDELIDADE;138.19;69.10;;2026-08-27;07/10/2026;Pet Food;Racao Seca Caes;Super Premium;Filhotes;0
+Promo;37060;Pro Plan Cao Filhote Raa Mini Pequena 2.5kg;FIDELIDADE;138.19;69.10;;2026-08-27;07/10/2026;Pet Food;Racao Seca Caes;Super Premium;Filhotes;0
+Promo;302576;Royal Canin Caes Maxi Junior 12kg;FIDELIDADE;382.97;325.52;;2026-09-03;23/09/2026;Pet Food;Racao Seca Caes;Super Premium;Filhotes;1
+Promo;27536;Pro Plan Cao Filhote Raa Mini Pequeno 7.5kg;FIDELIDADE;328.99;164.50;;2026-08-27;07/10/2026;Pet Food;Racao Seca Caes;Super Premium;Filhotes;0
+Promo;20158;Pro Plan Cao Filhote Raa Mini Pequena 1kg;FIDELIDADE;58.79;29.40;;2026-08-27;07/10/2026;Pet Food;Racao Seca Caes;Super Premium;Filhotes;0
+Promo;37054;Pro Plan Cao Adulto Raca Grande 2.5kg;FIDELIDADE;131.99;66.00;;2026-08-27;07/10/2026;Pet Food;Racao Seca Caes;Super Premium;Pet Food;0
+Promo;302190;Royal Canin Caes Maxi Adulto Ageing 8+ 12kg;FIDELIDADE;407.99;346.79;;2026-09-03;23/09/2026;Pet Food;Racao Seca Caes;Super Premium;Senior;1
+Promo;37053;Pro Plan Cao Active Mind Acima 7 Anos 2.5kg;FIDELIDADE;150.69;75.35;;2026-08-27;07/10/2026;Pet Food;Racao Seca Caes;Super Premium;Senior;0
+Promo;302193;Royal Canin Caes Maxi Adulto 5+ 12kg...p;FIDELIDADE;372.99;317.04;;2026-09-03;23/09/2026;Pet Food;Racao Seca Caes;Super Premium;Senior;2
+Promo;37396;Pro Plan Cao Active Mind Acima 7 Anos 1kg;FIDELIDADE;69.99;35.00;;2026-08-27;07/10/2026;Pet Food;Racao Seca Caes;Super Premium;Senior;0
+Promo;37395;Pro Plan Cao Active Mind Acima 7 Anos 15kg;FIDELIDADE;470.69;235.35;;2026-08-27;07/10/2026;Pet Food;Racao Seca Caes;Super Premium;Senior;0
+Promo;304648;Nutrio Natural Adultos Frango E Mandioca 15 Kg;FIDELIDADE;229.99;195.49;;2026-09-03;30/09/2026;Pet Food;Racao Seca Caes;Super Premium Natural;Adulto;0
+Promo;304649;Nutrio Natural Adultos Cordeiro E Batata Doce 15 Kg;FIDELIDADE;229.99;195.49;;2026-09-03;30/09/2026;Pet Food;Racao Seca Caes;Super Premium Natural;Adulto;0
+Promo;38304;Formula Fresh Caes Sensitive Mini/pq 1kg;OUTRA_D;50.00%;2;;2026-08-27;09/09/2026;Pet Food;Racao Seca Caes;Super Premium Natural;Adulto;2
+Promo;38242;Guabi Natural Cao Adulto Raca Media Frango 12kg;FIDELIDADE;259.99;204.27;;2026-09-03;30/09/2026;Pet Food;Racao Seca Caes;Super Premium Natural;Adulto;3
+Promo;38244;Guabi Natural Cao Adulto Raca Media Cordeiro 12kg;FIDELIDADE;279.99;219.99;;2026-09-03;30/09/2026;Pet Food;Racao Seca Caes;Super Premium Natural;Adulto;4
+Promo;304647;Nutrio Natural Adultos Frango E Batata Doce 15 Kg;FIDELIDADE;229.99;195.49;;2026-09-03;30/09/2026;Pet Food;Racao Seca Caes;Super Premium Natural;Adulto;0
+Promo;42404;Cat Excellence Castrados Senior 10.1kg;FIDELIDADE;189.99;161.49;;2026-09-03;30/09/2026;Pet Food;Racao Seca Gatos;Premium;Senior;1
+Promo;36442;Granplus Choice Gato Adulto Frango Carne 10.1kg;FIDELIDADE;145.99;129.99;;2026-08-27;16/09/2026;Pet Food;Racao Seca Gatos;Standard;Adulto;2
+Promo;41623;Whiskas Adulto Frango 2.7kg;FIDELIDADE;49.99;42.99;;2026-09-03;16/09/2026;Pet Food;Racao Seca Gatos;Standard;Adulto;0
+Promo;41618;Whiskas Castrado Carne 2.7kg;FIDELIDADE;49.99;42.99;;2026-09-03;16/09/2026;Pet Food;Racao Seca Gatos;Standard;Adulto;5
+Promo;41617;Whiskas Adulto Carne 2.7kg;FIDELIDADE;49.99;42.99;;2026-09-03;16/09/2026;Pet Food;Racao Seca Gatos;Standard;Adulto;9
+Promo;41621;Whiskas Adulto Peixe 2.7kg;FIDELIDADE;49.99;42.99;;2026-09-03;16/09/2026;Pet Food;Racao Seca Gatos;Standard;Adulto;1
+Promo;304220;Whiskas Superfoods Adulto Salmao 10.1kg;FIDELIDADE;210.99;149.99;;2026-09-03;16/09/2026;Pet Food;Racao Seca Gatos;Standard;Adulto;3
+Promo;41629;Whiskas Castrado Peixe 2.7kg;FIDELIDADE;49.99;42.99;;2026-09-03;16/09/2026;Pet Food;Racao Seca Gatos;Standard;Adulto;2
+Promo;41619;Whiskas Adulto Mix Carne 2.7kg;FIDELIDADE;49.99;42.99;;2026-09-03;16/09/2026;Pet Food;Racao Seca Gatos;Standard;Adulto;0
+Promo;41625;Whiskas Filhote Carne Leite 2.7kg;FIDELIDADE;49.99;42.99;;2026-09-03;16/09/2026;Pet Food;Racao Seca Gatos;Standard;Filhotes;0
+Promo;6976;Royal Canin Gatos Sensible 33 7.5kg;FIDELIDADE;453.98;385.88;;2026-09-03;30/09/2026;Pet Food;Racao Seca Gatos;Super Premium;Adulto;3
+Promo;38211;Pro Plan Gato Adulto Castrado Salmao 1kg;FIDELIDADE;79.89;39.95;;2026-08-27;07/10/2026;Pet Food;Racao Seca Gatos;Super Premium;Adulto;0
+Promo;38212;Pro Plan Gato Adulto Trato Urinario Frango 1kg;FIDELIDADE;79.89;39.95;;2026-08-27;07/10/2026;Pet Food;Racao Seca Gatos;Super Premium;Adulto;0
+Promo;37047;Royal Canin Gatos Sterilised Adulto 10.1kg;FIDELIDADE;507.98;431.78;;2026-09-03;30/09/2026;Pet Food;Racao Seca Gatos;Super Premium;Adulto;0
+Promo;38209;Pro Plan Gato Adulto Frango 1kg;FIDELIDADE;79.89;39.95;;2026-08-27;07/10/2026;Pet Food;Racao Seca Gatos;Super Premium;Adulto;0
+Promo;9868;Pro Plan Gato Adulto Frango 7.5kg;FIDELIDADE;345.37;172.69;;2026-08-27;07/10/2026;Pet Food;Racao Seca Gatos;Super Premium;Adulto;0
+Promo;6972;Royal Canin Gatos Persian 30 7.5kg;FIDELIDADE;472.99;402.04;;2026-09-03;30/09/2026;Pet Food;Racao Seca Gatos;Super Premium;Adulto;0
+Promo;16531;Pro Plan Gato Adulto Sterilized 7.5kg;FIDELIDADE;345.37;172.69;;2026-08-27;07/10/2026;Pet Food;Racao Seca Gatos;Super Premium;Adulto;0
+Promo;37043;Royal Canin Gatos Exigent 10.1kg;FIDELIDADE;507.98;431.78;;2026-09-03;30/09/2026;Pet Food;Racao Seca Gatos;Super Premium;Adulto;0
+Promo;6963;Royal Canin Gatos Fit 7.5kg;FIDELIDADE;430.99;366.34;;2026-09-03;30/09/2026;Pet Food;Racao Seca Gatos;Super Premium;Adulto;0
+Promo;38201;Pro Plan Gato Filhote Frango 400gr;FIDELIDADE;35.19;17.60;;2026-08-27;07/10/2026;Pet Food;Racao Seca Gatos;Super Premium;Filhotes;0
+Promo;38210;Pro Plan Gato Filhote Frango 1kg;FIDELIDADE;83.89;41.95;;2026-08-27;07/10/2026;Pet Food;Racao Seca Gatos;Super Premium;Filhotes;0
+Promo;10099;Pro Plan Gato Filhote 7.5kg;FIDELIDADE;361.99;181.00;;2026-08-27;07/10/2026;Pet Food;Racao Seca Gatos;Super Premium;Filhotes;0
+Promo;37044;Royal Canin Gatos Kitten 10.1kg;FIDELIDADE;534.00;453.90;;2026-09-03;30/09/2026;Pet Food;Racao Seca Gatos;Super Premium;Filhotes;0
+Promo;38219;Pro Plan Gato Filhote Frango 3kg;FIDELIDADE;187.09;93.55;;2026-08-27;07/10/2026;Pet Food;Racao Seca Gatos;Super Premium;Pet Food;0
+Promo;38218;Pro Plan Gato Adulto Frango 3kg;FIDELIDADE;179.99;90.00;;2026-08-27;07/10/2026;Pet Food;Racao Seca Gatos;Super Premium;Pet Food;0
+Promo;38220;Pro Plan Gato Adulto Castrado Salmao 3kg;FIDELIDADE;179.99;90.00;;2026-08-27;07/10/2026;Pet Food;Racao Seca Gatos;Super Premium;Pet Food;0
+Promo;38221;Pro Plan Gato Trato Urinrio Frango 3kg;FIDELIDADE;179.99;90.00;;2026-08-27;07/10/2026;Pet Food;Racao Seca Gatos;Super Premium;Pet Food;0
+Promo;20998;Pro Plan Gato Adulto Acima De 7 Anos 7.5kg;FIDELIDADE;345.37;172.69;;2026-08-27;07/10/2026;Pet Food;Racao Seca Gatos;Super Premium;Senior;0
+Promo;30815;Guabi Natural Gato Adulto Frango 7.5kg;FIDELIDADE;239.99;189.99;;2026-09-03;30/09/2026;Pet Food;Racao Seca Gatos;Super Premium Natural;Adulto;1
+Promo;30804;Guabi Natural Gato Castrado Frango 7.5kg;FIDELIDADE;259.99;199.99;;2026-09-03;30/09/2026;Pet Food;Racao Seca Gatos;Super Premium Natural;Adulto;6
+Promo;35861;Dog Chow Sache Cao Adulto Cordeiro 100gr;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Premium;Adulto;-14
+Promo;304718;Dog Chow Sache Cao Adulto Tripla Proteina Carne Frango Porco 85gr;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Premium;Adulto;2
+Promo;34027;Cesar Sache Cao Adulto Cordeiro Assado 85gr;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Premium;Adulto;30
+Promo;34026;Cesar Sache Cao Adulto Carne Assada 85gr;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Premium;Adulto;2
+Promo;35870;Dog Chow Sache Cao Adulto Raa Pequena Carne 100gr;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Premium;Adulto;-11
+Promo;304717;Dog Chow Sache Cao Adulto Alta Proteina Carne Porco Frango 85gr;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Premium;Adulto;0
+Promo;35859;Dog Chow Sache Cao Adulto Frango 100gr;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Premium;Adulto;27
+Promo;41691;Golden Sache Cao Adulto Porte Pequeno Frango 85gr;FIDELIDADE;3.69;2.99;;2026-08-27;09/09/2026;Pet Food;Racao Umida Caes;Premium;Adulto;85
+Promo;41692;Golden Sache Cao Adulto Medio Grande Frango 85gr;FIDELIDADE;3.99;3.24;;2026-08-27;09/09/2026;Pet Food;Racao Umida Caes;Premium;Adulto;46
+Promo;304713;Dog Chow Sache Cao Adulto Frango E Arroz 85gr;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Premium;Adulto;0
+Promo;35863;Dog Chow Sache Cao Adulto Carne 100gr;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Premium;Adulto;15
+Promo;33580;Cesar Sache Cao Adulto File Mignon 85gr;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Premium;Adulto;36
+Promo;33579;Cesar Sache Cao Adulto Frango Marinado 85gr;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Premium;Adulto;12
+Promo;304712;Dog Chow Sache Cao Adulto Cordeiro E Arroz 85gr;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Premium;Adulto;29
+Promo;304715;Dog Chow Sache Cao Adulto Triplo Proteina Carne Frango Salmao 85gr;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Premium;Adulto;0
+Promo;35869;Dog Chow Sache Cao Adulto Raa Pequena Salmao 100gr;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Premium;Adulto;1
+Promo;277525;Origens Sache Caes Adulto Carne 85g;PAGLEV;6;5;;2026-08-27;30/09/2026;Pet Food;Racao Umida Caes;Premium;Adulto;35
+Promo;304714;Dog Chow Sache Cao Adulto Carne E Arroz 85gr;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Premium;Adulto;7
+Promo;304716;Dog Chow Sache Cao Adulto Multiproteina Carne Frango Porco Peru Peixe 85gr;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Premium;Adulto;0
+Promo;41693;Golden Sache Cao Adulto Porte Pequeno Carne 85gr;FIDELIDADE;3.69;2.99;;2026-08-27;09/09/2026;Pet Food;Racao Umida Caes;Premium;Adulto;96
+Promo;277526;Origens Sache Caes Adulto Porte Pequeno Frango 85g;PAGLEV;6;5;;2026-08-27;30/09/2026;Pet Food;Racao Umida Caes;Premium;Adulto;43
+Promo;304710;Dog Chow Sache Cao Filhote Frango E Leite 85gr;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Premium;Filhote;38
+Promo;304711;Dog Chow Sache Cao Filhote Carne E Leite 85gr;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Premium;Filhote;26
+Promo;35860;Dog Chow Sache Cao Filhote Frango 100gr;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Premium;Filhotes;14
+Promo;41694;Golden Sache Cao Filhote Frango 85gr;FIDELIDADE;3.69;2.99;;2026-08-27;09/09/2026;Pet Food;Racao Umida Caes;Premium;Filhotes;47
+Promo;35866;Dog Chow Sache Cao Filhote Carne 100gr;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Premium;Filhotes;9
+Promo;35867;Dog Chow Sache Filhote Raa Pequena Frango 100g;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Premium;Filhotes;0
+Promo;277527;Origens Sache Caes Filhotes Carne E Frango 85g;PAGLEV;6;5;;2026-08-27;30/09/2026;Pet Food;Racao Umida Caes;Premium;Filhotes;65
+Promo;304573;Pedigree Sache Cao Caramelo Adulto Churrasco 70gr;FIDELIDADE;2.99;2.55;;2026-08-13;16/09/2026;Pet Food;Racao Umida Caes;Standard;Adulto;3
+Promo;304575;Pedigree Sache Cao Caramelo Adulto Peixada 70gr;FIDELIDADE;2.99;2.55;;2026-08-13;16/09/2026;Pet Food;Racao Umida Caes;Standard;Adulto;-3
+Promo;304577;Pedigree Sache Cao Caramelo Adulto Lombinho 70gr;FIDELIDADE;2.99;2.55;;2026-08-13;16/09/2026;Pet Food;Racao Umida Caes;Standard;Adulto;4
+Promo;304574;Pedigree Sache Cao Caramelo Adulto Galinhada 70gr;FIDELIDADE;2.99;2.55;;2026-08-13;16/09/2026;Pet Food;Racao Umida Caes;Standard;Adulto;4
+Promo;36503;Royal Canin Caes Sache Pomeranian 85g;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Super Premium;Adulto;23
+Promo;35566;Royal Canin Caes Sache Derma Comfort 85g;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Super Premium;Adulto;13
+Promo;35564;Royal Canin Caes Sache Light Weig Care 85g;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Super Premium;Adulto;16
+Promo;33795;Royal Canin Caes Sache Yorkshire Adulto 85g;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Super Premium;Adulto;10
+Promo;36504;Royal Canin Caes Sache Shih Tzu 85g;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Super Premium;Adulto;21
+Promo;35565;Royal Canin Caes Sache Digestive Care 85g;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Super Premium;Adulto;5
+Promo;34551;Royal Canin Caes Sache Mini Adulto 85g;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Super Premium;Adulto;19
+Promo;34550;Royal Canin Caes Sache Mini Puppy 85g;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Super Premium;Filhotes;12
+Promo;34586;Royal Canin Caes Sache Mini Ageing 85g;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Caes;Super Premium;Senior;21
+Promo;35208;Friskies Sache Gato Adulto Cordeiro Ao Molho 85gr;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Premium;Adulto;66
+Promo;279103;Optimum Sache Gato Castrado Carne 85gr;PAGLEV;4;3;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Premium;Adulto;50
+Promo;35184;Optimum Sache Gato Adulto Manutenao Peso Frango 85gr;PAGLEV;4;3;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Premium;Adulto;39
+Promo;41698;Golden Sache Gato Castrado Carne 70gr;FIDELIDADE;2.99;2.49;;2026-08-27;09/09/2026;Pet Food;Racao Umida Gatos;Premium;Adulto;29
+Promo;279105;Optimum Sache Gato Castrado Salmao 85gr;PAGLEV;4;3;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Premium;Adulto;4
+Promo;279102;Optimum Sache Gato Adulto Carne 85gr;PAGLEV;4;3;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Premium;Adulto;48
+Promo;277848;Golden Sache Cao Adulto Power Training 85gr;FIDELIDADE;3.99;3.24;;2026-08-27;09/09/2026;Pet Food;Racao Umida Gatos;Premium;Adulto;39
+Promo;304515;Friskies Sache Gato Adulto Mix De Carne 80gr;FIDELIDADE;3.39;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Premium;Adulto;12
+Promo;279104;Optimum Sache Gato Adulto Salmao 85gr;PAGLEV;4;3;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Premium;Adulto;19
+Promo;41696;Golden Sache Gato Adulto Atum 70gr;FIDELIDADE;2.99;2.49;;2026-08-27;09/09/2026;Pet Food;Racao Umida Gatos;Premium;Adulto;95
+Promo;24179;Friskies Sache Gato Adulto Frango Ao Molho 85gr;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Premium;Adulto;143
+Promo;24181;Friskies Sache Gato Adulto Atum Ao Molho 85gr;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Premium;Adulto;123
+Promo;24180;Friskies Sache Gato Adulto Peru Ao Molho 85gr;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Premium;Adulto;137
+Promo;35176;Friskies Sache Gato Adulto Carne Ao Molho 85gr;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Premium;Adulto;76
+Promo;304516;Friskies Sache Gato Adulto Mar De Sabores 80gr;FIDELIDADE;3.39;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Premium;Adulto;0
+Promo;35311;Optimum Sache Gato Castrado Frango 85gr;PAGLEV;4;3;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Premium;Adulto;75
+Promo;36527;Optimum Sache Gato Adulto Frango 85gr;PAGLEV;4;3;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Premium;Adulto;0
+Promo;26444;Friskies Sache Gato Adulto Peixe-branco Molho 85gr;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Premium;Adulto;89
+Promo;304517;Friskies Sache Gato Adulto Megamix 80gr;FIDELIDADE;3.39;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Premium;Adulto;0
+Promo;24422;Friskies Sache Gato Adulto Salmao Ao Molho 85gr;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Premium;Adulto;105
+Promo;41695;Golden Sache Gato Adulto Frango 70gr;FIDELIDADE;2.99;2.49;;2026-08-27;09/09/2026;Pet Food;Racao Umida Gatos;Premium;Adulto;61
+Promo;41697;Golden Sache Gato Castrado Frango 70gr;FIDELIDADE;2.99;2.49;;2026-08-27;09/09/2026;Pet Food;Racao Umida Gatos;Premium;Adulto;34
+Promo;35598;Optimum Sache Gato Filhote Frango 85gr;PAGLEV;4;3;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Premium;Filhotes;17
+Promo;41699;Golden Sache Gato Filhote Frango 70gr;FIDELIDADE;2.99;2.49;;2026-08-27;09/09/2026;Pet Food;Racao Umida Gatos;Premium;Filhotes;127
+Promo;35178;Friskies Sache Gato Filhote Carne Ao Molho 85gr;FIDELIDADE;3.79;2.69;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Premium;Filhotes;62
+Promo;278392;Royal Canin Gatos Sache Hair Skin Pedaos 85g;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Super Premium;Adulto;4
+Promo;20903;Royal Canin Gatos Sache Hairball Care 85g;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Super Premium;Adulto;18
+Promo;10703;Royal Canin Gatos Sache Instinctive 85g;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Super Premium;Adulto;51
+Promo;38153;Royal Canin Gatos Sache Light Weight Care 85gr;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Super Premium;Adulto;25
+Promo;39911;Royal Canin Gatos Sache Appetite Control Castrados 85g;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Super Premium;Adulto;15
+Promo;278397;Royal Canin Gatos Sache Sterilised Pat 85g;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Super Premium;Adulto;60
+Promo;15178;Royal Canin Gatos Sache Sterilised 85g;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Super Premium;Adulto;72
+Promo;278389;Royal Canin Gatos Sache Digestive Care 85g;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Super Premium;Adulto;0
+Promo;277567;Royal Canin Gatos Sache Digest Care Pedaos Sensitive 85g;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Super Premium;Adulto;20
+Promo;278398;Royal Canin Gatos Sache Sterilised Gelatina 85g;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Super Premium;Adulto;11
+Promo;10705;Royal Canin Gatos Sache Kitten Instinc 85g;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Super Premium;Filhotes;47
+Promo;17135;Royal Canin Gatos Sache Instinctive 7 85g;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Super Premium;Senior;2
+Promo;303668;Royal Canin Gatos Sache Ageing 11+ 85g;PAGLEV;3;2;;2026-09-03;16/09/2026;Pet Food;Racao Umida Gatos;Super Premium;Senior;6
+Promo;303405;Pate Natal Peru (dog);BRINDE;1;0.01;;2026-08-20;30/09/2026;Pet Food;Racao Umida Lata Gatos;Super Premium;Adulto;9
+Promo;303406;Pate Natal Bacalhau (cat);BRINDE;1;0.01;;2026-08-20;30/09/2026;Pet Food;Racao Umida Lata Gatos;Super Premium;Adulto;14
+Promo;304576;Pedigree Sache Cao Caramelo Adulto Picadinho 70gr;FIDELIDADE;2.99;2.55;;2026-08-13;16/09/2026;Pet Food;Rao Umida Caes;Standard;Adulto;6
+Promo;44769;PRATO 20X2,5 T/C P20M PC20;FIDELIDADE;4.90;2.45;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;43104;PRATO 14X2,1 T/C;FIDELIDADE;2.90;1.45;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;44908;CACHEPO RATTAN CINZA TAUPE OKLA 14X12,7 CM 1,2;FIDELIDADE;9.90;4.95;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;44918;CUIA BARI CINZA TAUPE 20.0X9,5 CM 2,2l id PC20;FIDELIDADE;17.90;8.95;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;46114;VASO SIENA 30 X 23 CM 10,0L ID PC 24 PRETO S30PR;FIDELIDADE;36.90;18.45;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;44767;MEIO VASO COCO TOP GARDEN 35 CM;FIDELIDADE;62.90;31.45;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;44913;VASO BARI ECO TABACO OKLA 18X15,5CM 2,4LIDPC14;FIDELIDADE;8.90;4.45;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;45848;PAZINHA ESTREITA VERDE X2049;FIDELIDADE;24.90;12.45;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;45885;PRATO JARD.BARI PRETO OKLA 47 X 16,5 CM;FIDELIDADE;13.90;6.95;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;45509;PAZINHA LARGA VERDE X2048;FIDELIDADE;24.90;12.45;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;45526;MEIO VASO DE COCO TOP GARDEN 25 CM;FIDELIDADE;38.50;19.25;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;44902;REGADOR TOP GARD 1.5LT AZ BEB RG15ZB;FIDELIDADE;34.90;17.45;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;44768;VASO BARI BRANCO OKLA 18X15,5CM 2,4L;FIDELIDADE;8.90;4.45;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;45888;CUIA BARI ECO TERRA COTA 20.0X9,5 CM 2,2l id PC20;FIDELIDADE;16.90;8.45;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;44920;PRATO SIENA 45 PRETO 40,0 X 20,8 X 4,0 CM;FIDELIDADE;17.90;8.95;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;45599;CUIA BARI ECO TABACO 20.0X9,5 CM 2,2l id PC20;FIDELIDADE;16.90;8.45;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;43576;CUIA BARI ECO TABACO 25.0X11,9 CM;FIDELIDADE;24.90;12.45;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;45527;PRATO 16X2.0 PRETO - PC16P;FIDELIDADE;2.90;1.45;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;45531;TRAVA VASO MODULAR PAREDE OKLA 8 P;FIDELIDADE;5.90;2.95;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;43571;VASO SIENA ECO TABACO OFF OKL 30X23CM 10L;FIDELIDADE;36.90;18.45;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;44919;CUIA BARI ECO TERRA COTA 25.0X11,9 CM;FIDELIDADE;29.90;14.95;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;45884;VASO BARI ECO TABACO OKLA 15X12,9CM 1,4LIDPC12;FIDELIDADE;4.90;2.45;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;45595;VASO PAREDE BARI PRETO OKLA 25X19,5X21,5CM ;FIDELIDADE;23.90;11.95;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;45592;PRATO 20X2.5 CINZA TAUPE PC20CT;FIDELIDADE;4.90;2.45;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;44770;PRATO 20X2.5 PRETO PP3 PC20P;FIDELIDADE;3.90;1.95;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;44905;PRATO 20X2.5 TABACO PC20TB;FIDELIDADE;4.90;2.45;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;45528;VASO BARI BRANCO OKLA 20X17,2CM 3,0L;FIDELIDADE;15.90;7.95;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;44903;CACHEPO RATTAN CINZA TAUPE OKLA 16X14,6CM 1,7L;FIDELIDADE;15.90;7.95;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;45594;VASO PAREDE BARI ECO TERRACOTA OKL 25X19,5X21,5CM ;FIDELIDADE;23.90;11.95;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;43102;VASO BARI AZULVINTA OKLA 20X17,2CM 3,0LIDPC16;FIDELIDADE;15.90;7.95;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;44904;VASO SIENA 20 X 15 CM 2,7L ID PC16 CINZA TAU S20CT;FIDELIDADE;14.90;7.45;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;45863;VASO BARI PRETO OKLA 20X17,2CM 3,0LIDPC16;FIDELIDADE;15.90;7.95;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;43575;CUIA BARI PRETO 20.0X9,5 CM 2,2l id PC20;FIDELIDADE;16.90;8.45;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;46252;PRATO 16X2.0 CINZA TAUPE PP1 PC16CT;FIDELIDADE;4.90;2.45;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;46037;VASO BARI ECO TABACO OKLA 20X17,2CM 3,0LIDPC16;FIDELIDADE;15.90;7.95;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;45886;VASO SIENA 15 X 11,5 CM 1,2L ID PC 12 CINZA TAU S15CT;FIDELIDADE;8.90;4.45;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;43580;CACHEPO RATTAN CINZA TAUPE 11X10CM 0,6L;FIDELIDADE;10.90;5.45;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;45600;CUIA BARI CINZA TAUPE 25.0X11,9 CM;FIDELIDADE;26.90;13.45;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;43106;PRATO 14X2.1 PRETO PP1;FIDELIDADE;2.90;1.45;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;46009;ARRANCA INCO X2052;FIDELIDADE;21.90;10.95;;2026-08-13;30/09/2026;TDB;TDB;TDB;TDB;
+Promo;288100;Gaiola Criadeira Calopsita Grande Prata;FIDELIDADE;339.50;169.75;;2026-04-23;06/01/2027;Uso Interno e Inativos;Inativos;Inativos;Inativos;0
