@@ -1,9 +1,9 @@
 export const SECTORS = [
   "Coleiras",
-  "Ração para gatos",
-  "Ração para cães",
-  "Sachês para gatos",
-  "Sachês para cães",
+  "Ração gatos",
+  "Ração cães",
+  "Sachês gatos",
+  "Sachês cães",
   "Higiene",
   "Brinquedos",
   "Areias",
