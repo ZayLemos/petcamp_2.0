@@ -2,7 +2,7 @@ import { redirect } from "next/navigation"
 import { AppHeader } from "@/components/app-header"
 import { BottomNav } from "@/components/bottom-nav"
 import { CalendarView } from "@/components/calendar-view"
-import { getAllTasks, getCurrentUser, getNotifications, getSession, getUnreadCount } from "@/lib/data"
+import { getAllTasks, getCurrentUser, getNotifications, getSession, getTasksForSector, getUnreadCount } from "@/lib/data"
 
 export default async function CalendarPage() {
   const session = await getSession()
@@ -12,7 +12,7 @@ export default async function CalendarPage() {
   if (!employee) redirect("/sign-in")
 
   const [tasks, notifications, unread] = await Promise.all([
-    getAllTasks(),
+    employee.role === "manager" ? getAllTasks() : getTasksForSector(employee.sector ?? ""),
     getNotifications(employee.id),
     getUnreadCount(employee.id),
   ])
