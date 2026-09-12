@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { importPromotionsFromExcel } from "@/app/actions/promotions";
+import { deleteSpreadsheetImports, importPromotionsFromExcel } from "@/app/actions/promotions";
 
 interface TarefaVisual {
   produto: string;
@@ -17,6 +17,14 @@ export default function GerentePage() {
   const [loading, setLoading] = useState(false);
   const [totalImportado, setTotalImportado] = useState(0);
   const [tarefas, setTarefas] = useState<TarefaVisual[]>([]);
+
+  const handleDeleteSpreadsheetImports = async () => {
+    if (!window.confirm("Apagar todas as promoções importadas por planilha? Cadastros manuais serão preservados.")) return
+    const result = await deleteSpreadsheetImports()
+    setTotalImportado(0)
+    setTarefas([])
+    alert(`${result.deleted} importação(ões) apagada(s).`)
+  }
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -106,9 +114,10 @@ export default function GerentePage() {
           </button>
         </form>
 
-        <p className="text-sm text-gray-600 font-medium">
-          📊 <span className="text-indigo-600 font-bold">{totalImportado}</span> item(ns) importado(s).
-        </p>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <p className="text-sm text-gray-600 font-medium"><span className="text-indigo-600 font-bold">{totalImportado}</span> item(ns) importado(s).</p>
+          <button type="button" onClick={handleDeleteSpreadsheetImports} className="rounded-xl border border-red-200 px-4 py-2 text-sm font-semibold text-red-600 hover:bg-red-50">Apagar importações da planilha</button>
+        </div>
 
         {tarefas.length > 0 && (
           <div className="overflow-y-auto max-h-[400px] border border-gray-100 rounded-xl mt-4">
