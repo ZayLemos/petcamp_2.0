@@ -95,26 +95,47 @@ export async function importPromotionsFromExcel(formData: FormData) {
     }
 
     const buffer = Buffer.from(await file.arrayBuffer())
-    const readOptions: Record<string, unknown> = { type: "buffer", cellDates: true, raw: false }
+    let rows: Record<string, unknown>[]
+
     if (extension === "csv") {
       const text = buffer.toString("utf8").replace(/^\uFEFF/, "")
-      const firstLine = text.split(/\r?\n/, 1)[0] ?? ""
-      const semicolons = (firstLine.match(/;/g) ?? []).length
-      const commas = (firstLine.match(/,/g) ?? []).length
-      readOptions.FS = semicolons >= commas ? ";" : ","
-      readOptions.codepage = 65001
+      const lines = text.split(/\r?\n/).filter((line) => line.trim().length > 0)
+      const delimiter = (lines[0]?.match(/;/g) ?? []).length >= (lines[0]?.match(/,/g) ?? []).length ? ";" : ","
+      const parseLine = (line: string) => {
+        const values: string[] = []
+        let value = ""
+        let quoted = false
+        for (let index = 0; index < line.length; index += 1) {
+          const character = line[index]
+          if (character === '"' && line[index + 1] === '"' && quoted) {
+            value += '"'
+            index += 1
+          } else if (character === '"') {
+            quoted = !quoted
+          } else if (character === delimiter && !quoted) {
+            values.push(value.trim())
+            value = ""
+          } else {
+            value += character
+          }
+        }
+        values.push(value.trim())
+        return values
+      }
+      const headers = parseLine(lines[0] ?? "").map((header) => header.replace(/^\uFEFF/, ""))
+      rows = lines.slice(1).map((line) => {
+        const values = parseLine(line)
+        return Object.fromEntries(headers.map((header, index) => [header, values[index] ?? ""]))
+      })
+    } else {
+      const workbook = XLSX.read(buffer, { type: "buffer", cellDates: true, raw: false })
+      rows = workbook.SheetNames.flatMap((sheetName) =>
+        XLSX.utils.sheet_to_json<Record<string, unknown>>(workbook.Sheets[sheetName], {
+          defval: "",
+          raw: false,
+        }),
+      )
     }
-
-    const workbook = XLSX.read(extension === "csv" ? buffer.toString("utf8") : buffer, {
-      ...readOptions,
-      type: extension === "csv" ? "string" : "buffer",
-    })
-    const rows = workbook.SheetNames.flatMap((sheetName) =>
-      XLSX.utils.sheet_to_json<Record<string, unknown>>(workbook.Sheets[sheetName], {
-        defval: "",
-        raw: false,
-      }),
-    )
     const normalize = (value: unknown) => String(value ?? "")
       .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
       .toLowerCase().replace(/[^a-z0-9]/g, "")
