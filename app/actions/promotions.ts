@@ -82,43 +82,85 @@ export async function createManualPromotion(data: {
   }
 }
 
-// 🔵 FUNÇÃO 2: IMPORTAÇÃO SIMPLIFICADA VIA CSV
+// Importa CSV/XLSX e cria uma promoção e duas tarefas para cada linha válida.
 export async function importPromotionsFromExcel(formData: FormData) {
   try {
     const me = await requireManager()
     const file = formData.get("file") as File | null
-    if (!file) return { ok: false, imported: 0, errors: ["Nenhum arquivo enviado."] }
+    if (!file) return { imported: 0, errors: ["Nenhum arquivo enviado."] }
 
-    const buffer = Buffer.from(await file.arrayBuffer())
     const extension = file.name.toLowerCase().split(".").pop()
-    
-    let rows: Record<string, any>[]
-    const options: any = { type: "buffer", cellDates: true }
-
-    if (extension === "csv") {
-      const texto = buffer.toString("utf-8")
-      const primeiraLinha = texto.split(/\r?\n/) || ""
-      options.FS = primeiraLinha.includes(";") ? ";" : ","
+    if (extension !== "csv" && extension !== "xlsx" && extension !== "xls") {
+      return { imported: 0, errors: ["Envie um arquivo CSV ou XLSX."] }
     }
 
-    const wb = XLSX.read(buffer, options)
-    const primeiraAba = wb.SheetNames
-    rows = XLSX.utils.sheet_to_json(wb.Sheets[primeiraAba], { defval: "" })
+    const buffer = Buffer.from(await file.arrayBuffer())
+    const readOptions: Record<string, unknown> = { type: "buffer", cellDates: true, raw: false }
+    if (extension === "csv") {
+      const text = buffer.toString("utf8").replace(/^\uFEFF/, "")
+      const firstLine = text.split(/\r?\n/, 1)[0] ?? ""
+      const semicolons = (firstLine.match(/;/g) ?? []).length
+      const commas = (firstLine.match(/,/g) ?? []).length
+      readOptions.FS = semicolons >= commas ? ";" : ","
+      readOptions.codepage = 65001
+    }
 
-    let contagemSucesso = 0
-
-    rows.forEach((row: any) => {
-      const temProduto = Object.keys(row).some(k => k.toLowerCase().includes("produto"));
-      const temSetor = Object.keys(row).some(k => k.toLowerCase().includes("setor"));
-      if (temProduto || temSetor) {
-        contagemSucesso++
+    const workbook = XLSX.read(buffer, readOptions)
+    const rows = workbook.SheetNames.flatMap((sheetName) =>
+      XLSX.utils.sheet_to_json<Record<string, unknown>>(workbook.Sheets[sheetName], {
+        defval: "",
+        raw: false,
+      }),
+    )
+    const normalize = (value: unknown) => String(value ?? "")
+      .normalize("NFD").replace(/[\\u0300-\\u036f]/g, "")
+      .toLowerCase().replace(/[^a-z0-9]/g, "")
+    const valueFor = (row: Record<string, unknown>, names: string[]) => {
+      const key = Object.keys(row).find((candidate) => names.some((name) => normalize(candidate).includes(name)))
+      return String(key ? row[key] ?? "" : "").trim()
+    }
+    const sectorFor = (value: string) => {
+      const normalized = normalize(value)
+      const sectors: Record<string, string> = {
+        coleiras: "Coleiras", racaogatos: "Ração gatos", racaocaes: "Ração cães",
+        sachegatos: "Sachês gatos", sachecaes: "Sachês cães",
+        higiene: "Higiene", brinquedos: "Brinquedos", areias: "Areias",
+        coadjuvantes: "Coadjuvantes", farmacia: "Farmácia",
       }
-    })
-
+      return sectors[normalized] ?? value.trim()
+    }
+    const valid = rows.map((row) => ({
+      product: valueFor(row, ["produto", "product", "item", "nome"]),
+      sector: sectorFor(valueFor(row, ["setor", "sector", "departamento", "area"])),
+      start: toISODate(valueFor(row, ["inicio", "startdate", "datainicio", "begin"])),
+      end: toISODate(valueFor(row, ["termino", "fim", "enddate", "datafim", "end"])),
+      title: valueFor(row, ["tipo", "title", "promocao", "promotion"]) || "Promoção",
+      oldPrice: valueFor(row, ["precoantigo", "oldprice", "precode", "de"]),
+      newPrice: valueFor(row, ["preconovo", "newprice", "por", "para"]),
+    }))
+    const errors: string[] = []
+    const imported = []
+    for (const [index, item] of valid.entries()) {
+      if (!item.product || !item.sector || !item.start || !item.end) {
+        errors.push(`Linha ${index + 2}: produto, setor, início ou término ausente.`)
+        continue
+      }
+      const [promotion] = await db.insert(promotions).values({
+        title: item.title, productName: item.product, sector: item.sector,
+        oldPrice: item.oldPrice || null, newPrice: item.newPrice || null,
+        startDate: item.start, endDate: item.end, createdBy: me.id,
+      }).returning({ id: promotions.id })
+      await db.insert(promotionTasks).values([
+        { promotionId: promotion.id, type: "start", sector: item.sector, dueDate: item.start },
+        { promotionId: promotion.id, type: "end", sector: item.sector, dueDate: item.end },
+      ])
+      imported.push(item.product)
+    }
     revalidatePath("/gerente")
-    return { ok: true, imported: contagemSucesso, errors: [] }
+    revalidatePath("/calendario")
+    return { imported: imported.length, errors }
   } catch (error: any) {
-    console.error(error)
-    return { ok: false, imported: 0, errors: [error.message || "Erro de leitura"] }
+    console.error("[v0] Erro ao importar planilha:", error)
+    return { imported: 0, errors: [error?.message || "Erro ao ler a planilha."] }
   }
 }
