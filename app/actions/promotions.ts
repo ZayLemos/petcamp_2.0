@@ -153,14 +153,18 @@ export async function importPromotionsFromExcel(formData: FormData) {
       }
       return sectors[normalized] ?? value.trim()
     }
+    const priceFor = (value: string) => {
+      const cleaned = value.trim().replace(/R\\$\\s*/gi, "").replace(/%/g, "").replace(/\\.(?=.*\\.)/g, "").replace(",", ".")
+      return cleaned && /^-?\\d+(\\.\\d+)?$/.test(cleaned) ? cleaned : ""
+    }
     const valid = rows.map((row) => ({
       product: valueFor(row, ["produto", "product", "item", "nome"]),
       sector: sectorFor(valueFor(row, ["setor", "sector", "departamento", "area"])),
       start: toISODate(valueFor(row, ["inicio", "startdate", "datainicio", "begin"])),
       end: toISODate(valueFor(row, ["termino", "fim", "enddate", "datafim", "datafinal", "end"])),
       title: valueFor(row, ["tipo", "title", "promocao", "promotion"]) || "Promoção",
-      oldPrice: valueFor(row, ["precoantigo", "oldprice", "precode", "arg1", "de"]),
-      newPrice: valueFor(row, ["preconovo", "newprice", "arg2", "por", "para"]),
+      oldPrice: priceFor(valueFor(row, ["precoantigo", "oldprice", "precode", "arg1", "de"])),
+      newPrice: priceFor(valueFor(row, ["preconovo", "newprice", "arg2", "por", "para"])),
     }))
     const errors: string[] = []
     const imported = []
