@@ -105,7 +105,10 @@ export async function importPromotionsFromExcel(formData: FormData) {
       readOptions.codepage = 65001
     }
 
-    const workbook = XLSX.read(buffer, readOptions)
+    const workbook = XLSX.read(extension === "csv" ? buffer.toString("utf8") : buffer, {
+      ...readOptions,
+      type: extension === "csv" ? "string" : "buffer",
+    })
     const rows = workbook.SheetNames.flatMap((sheetName) =>
       XLSX.utils.sheet_to_json<Record<string, unknown>>(workbook.Sheets[sheetName], {
         defval: "",
@@ -133,10 +136,10 @@ export async function importPromotionsFromExcel(formData: FormData) {
       product: valueFor(row, ["produto", "product", "item", "nome"]),
       sector: sectorFor(valueFor(row, ["setor", "sector", "departamento", "area"])),
       start: toISODate(valueFor(row, ["inicio", "startdate", "datainicio", "begin"])),
-      end: toISODate(valueFor(row, ["termino", "fim", "enddate", "datafim", "end"])),
+      end: toISODate(valueFor(row, ["termino", "fim", "enddate", "datafim", "datafinal", "end"])),
       title: valueFor(row, ["tipo", "title", "promocao", "promotion"]) || "Promoção",
-      oldPrice: valueFor(row, ["precoantigo", "oldprice", "precode", "de"]),
-      newPrice: valueFor(row, ["preconovo", "newprice", "por", "para"]),
+      oldPrice: valueFor(row, ["precoantigo", "oldprice", "precode", "arg1", "de"]),
+      newPrice: valueFor(row, ["preconovo", "newprice", "arg2", "por", "para"]),
     }))
     const errors: string[] = []
     const imported = []
