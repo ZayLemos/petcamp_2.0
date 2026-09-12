@@ -2,7 +2,7 @@
 
 import * as XLSX from "xlsx"
 import { db } from "@/lib/db"
-import { promotions, promotionTasks, notifications, user } from "@/lib/db/schema"
+import { promotions, promotionTasks, notifications, user, pushSubscriptions } from "@/lib/db/schema"
 import { getCurrentUser } from "@/lib/data"
 import { normalizeSector } from "@/lib/sectors"
 import { sendPushToUser } from "@/lib/push"
@@ -101,8 +101,9 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
 
     if (extension === "csv") {
       const conteudoTexto = buffer.toString("utf-8")
-      const primeiraLinha = conteudoTexto.split(/\r?\n/) || ""
-      options.FS = primeiraLinha.includes(";") ? ";" : ","
+      const primeiraLinha = conteudoTexto.split(/\r?\n/, 1)[0] ?? ""
+      options.FS = (primeiraLinha.match(/;/g) ?? []).length >= (primeiraLinha.match(/,/g) ?? []).length ? ";" : ","
+      options.codepage = 65001
     }
 
     const wb = XLSX.read(buffer, options)
@@ -225,8 +226,47 @@ export async function importPromotionsFromExcel(formData: FormData): Promise<Imp
 
 export async function deletePromotion(promotionId: string) {
   const me = await requireManager()
-  await db.delete(promotions).where(and(eq(promotions.id, promotionId), eq(promotions.createdBy, me.id)))
+  await db.delete(promotions).where(and(eq(promotions.id, Number(promotionId)), eq(promotions.createdBy, me.id)))
   revalidatePath("/gerente")
   revalidatePath("/painel")
   revalidatePath("/calendario")
+}
+
+const MANAGER_CODE = process.env.MANAGER_ACCESS_CODE ?? "petcamp-gerente"
+
+export async function promoteToManager(code: string) {
+  const me = await getCurrentUser()
+  if (!me) throw new Error("Não autenticado.")
+  if (code.trim() !== MANAGER_CODE) return { ok: false, error: "Código de gerente incorreto." }
+  await db.update(user).set({ role: "manager" }).where(eq(user.id, me.id))
+  revalidatePath("/", "layout")
+  return { ok: true }
+}
+
+export async function updateSector(sector: string) {
+  const me = await getCurrentUser()
+  if (!me) throw new Error("Não autenticado.")
+  if (!sector.trim()) return { ok: false, error: "Selecione ao menos uma opção." }
+  await db.update(user).set({ sector: sector.trim() }).where(eq(user.id, me.id))
+  revalidatePath("/", "layout")
+  return { ok: true }
+}
+
+type BrowserSubscription = { endpoint: string; keys: { p256dh: string; auth: string } }
+
+export async function savePushSubscription(sub: BrowserSubscription) {
+  const me = await getCurrentUser()
+  if (!me) throw new Error("Não autenticado.")
+  const existing = await db.select({ id: pushSubscriptions.id }).from(pushSubscriptions).where(eq(pushSubscriptions.endpoint, sub.endpoint)).limit(1)
+  if (existing.length > 0) {
+    await db.update(pushSubscriptions).set({ userId: me.id, keys: sub.keys }).where(eq(pushSubscriptions.endpoint, sub.endpoint))
+  } else {
+    await db.insert(pushSubscriptions).values({ userId: me.id, endpoint: sub.endpoint, keys: sub.keys })
+  }
+  return { ok: true }
+}
+
+export async function removePushSubscription(endpoint: string) {
+  await db.delete(pushSubscriptions).where(eq(pushSubscriptions.endpoint, endpoint))
+  return { ok: true }
 }

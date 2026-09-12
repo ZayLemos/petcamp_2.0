@@ -113,7 +113,7 @@ export async function importPromotionsFromExcel(formData: FormData) {
       }),
     )
     const normalize = (value: unknown) => String(value ?? "")
-      .normalize("NFD").replace(/[\\u0300-\\u036f]/g, "")
+      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
       .toLowerCase().replace(/[^a-z0-9]/g, "")
     const valueFor = (row: Record<string, unknown>, names: string[]) => {
       const key = Object.keys(row).find((candidate) => names.some((name) => normalize(candidate).includes(name)))
