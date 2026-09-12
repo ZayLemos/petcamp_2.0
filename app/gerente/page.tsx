@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { importPromotionsFromExcel } from "@/app/actions/promotions";
 
 interface TarefaVisual {
@@ -81,6 +83,10 @@ export default function GerentePage() {
   return (
     <div className="min-h-screen bg-gray-50 pb-20 font-sans p-6">
       <div className="max-w-4xl mx-auto bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-6">
+        <Link href="/painel" className="inline-flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-orange-600">
+          <ArrowLeft className="size-4" />
+          Voltar ao painel
+        </Link>
         <div>
           <h2 className="text-xl font-bold text-gray-800">Importar Planilha Simplificada</h2>
           <p className="text-xs text-gray-400 mt-1">Envie o arquivo atualizado da PetCamp para processamento direto na tela.</p>
