@@ -2,7 +2,7 @@ import "server-only"
 import { auth } from "@/lib/auth"
 import { db } from "@/lib/db"
 import { user, promotions, promotionTasks, notifications } from "@/lib/db/schema"
-import { and, desc, eq, sql } from "drizzle-orm"
+import { and, desc, eq, or, sql } from "drizzle-orm"
 import { headers } from "next/headers"
 
 export async function getSession() {
@@ -71,6 +71,14 @@ export type TaskWithPromotion = {
 }
 
 export async function getTasksForSector(sector: string): Promise<TaskWithPromotion[]> {
+  let sectors = [sector]
+  try {
+    const parsed = JSON.parse(sector)
+    if (Array.isArray(parsed)) sectors = parsed.filter((item): item is string => typeof item === "string" && item.trim().length > 0)
+  } catch {
+    // Compatibilidade com contas antigas que armazenam um setor simples.
+  }
+
   return db
     .select({
       id: promotionTasks.id,
@@ -88,7 +96,7 @@ export async function getTasksForSector(sector: string): Promise<TaskWithPromoti
     })
     .from(promotionTasks)
     .innerJoin(promotions, eq(promotionTasks.promotionId, promotions.id))
-    .where(eq(promotionTasks.sector, sector))
+    .where(sectors.length === 1 ? eq(promotionTasks.sector, sectors[0]) : or(...sectors.map((item) => eq(promotionTasks.sector, item))))
     .orderBy(promotionTasks.dueDate)
 }
 
