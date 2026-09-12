@@ -143,13 +143,19 @@ export async function importPromotionsFromExcel(formData: FormData) {
       const key = Object.keys(row).find((candidate) => names.some((name) => normalize(candidate).includes(name)))
       return String(key ? row[key] ?? "" : "").trim()
     }
-    const sectorFor = (value: string) => {
+    const sectorFor = (value: string, product: string) => {
       const normalized = normalize(value)
+      const normalizedProduct = normalize(product)
       const sectors: Record<string, string> = {
         coleiras: "Coleiras", racaogatos: "Ração gatos", racaocaes: "Ração cães",
-        sachegatos: "Sachês gatos", sachecaes: "Sachês cães",
+        sache: "Sachês gatos", saches: "Sachês gatos", sachegatos: "Sachês gatos", sachecaes: "Sachês cães",
         higiene: "Higiene", brinquedos: "Brinquedos", areias: "Areias",
         coadjuvantes: "Coadjuvantes", farmacia: "Farmácia",
+      }
+      if (normalized.includes("sache")) {
+        return normalized.includes("cao") || normalized.includes("cachorro") || normalizedProduct.includes("cao") || normalizedProduct.includes("cachorro")
+          ? "Sachês cães"
+          : "Sachês gatos"
       }
       return sectors[normalized] ?? value.trim()
     }
@@ -159,7 +165,10 @@ export async function importPromotionsFromExcel(formData: FormData) {
     }
     const valid = rows.map((row) => ({
       product: valueFor(row, ["produto", "product", "item", "nome"]),
-      sector: sectorFor(valueFor(row, ["setor", "sector", "departamento", "area"])),
+      sector: sectorFor(
+        valueFor(row, ["setor", "sector", "departamento", "area"]),
+        valueFor(row, ["produto", "product", "item", "nome"]),
+      ),
       start: toISODate(valueFor(row, ["inicio", "startdate", "datainicio", "begin"])),
       end: toISODate(valueFor(row, ["termino", "fim", "enddate", "datafim", "datafinal", "end"])),
       title: valueFor(row, ["tipo", "title", "promocao", "promotion"]) || "Promoção",
