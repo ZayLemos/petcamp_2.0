@@ -68,7 +68,7 @@ export default function GerentePage() {
         reader.readAsText(file);
         alert(`Planilha lida! ${res.imported} linhas processadas.`);
       } else {
-        alert("Nenhum produto foi identificado no arquivo.");
+        alert(res.errors?.length ? res.errors.join("\n") : "Nenhum produto foi identificado no arquivo.");
       }
     } catch (err) {
       console.error(err);
