@@ -2,7 +2,8 @@
 
 import * as XLSX from "xlsx"
 import { db } from "@/lib/db"
-import { promotions, promotionTasks } from "@/lib/db/schema"
+import { notifications, promotions, promotionTasks } from "@/lib/db/schema"
+import { eq } from "drizzle-orm"
 import { getCurrentUser } from "@/lib/data"
 import { revalidatePath } from "next/cache"
 
@@ -185,7 +186,7 @@ export async function importPromotionsFromExcel(formData: FormData) {
       const [promotion] = await db.insert(promotions).values({
         title: item.title, productName: item.product, sector: item.sector,
         oldPrice: item.oldPrice || null, newPrice: item.newPrice || null,
-        startDate: item.start, endDate: item.end, createdBy: me.id,
+        startDate: item.start, endDate: item.end, createdBy: `${me.id}:spreadsheet`,
       }).returning({ id: promotions.id })
       await db.insert(promotionTasks).values([
         { promotionId: promotion.id, type: "start", sector: item.sector, dueDate: item.start },
@@ -200,4 +201,18 @@ export async function importPromotionsFromExcel(formData: FormData) {
     console.error("[v0] Erro ao importar planilha:", error)
     return { imported: 0, errors: [error?.message || "Erro ao ler a planilha."] }
   }
+}
+
+export async function deleteSpreadsheetImports() {
+  const me = await requireManager()
+  const imported = await db.select({ id: promotions.id }).from(promotions).where(eq(promotions.createdBy, `${me.id}:spreadsheet`))
+  for (const promotion of imported) {
+    await db.delete(promotionTasks).where(eq(promotionTasks.promotionId, promotion.id))
+    await db.delete(notifications).where(eq(notifications.promotionId, promotion.id))
+    await db.delete(promotions).where(eq(promotions.id, promotion.id))
+  }
+  revalidatePath("/gerente")
+  revalidatePath("/painel")
+  revalidatePath("/calendario")
+  return { ok: true, deleted: imported.length }
 }
