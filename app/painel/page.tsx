@@ -4,7 +4,6 @@ import { BottomNav } from "@/components/bottom-nav"
 import { completeTasks, deleteOwnTask, moveOwnTask, toggleTaskCompletion } from "@/app/actions/account"
 import { SECTORS } from "@/lib/sectors"
 import { createPromotionNotifications } from "@/lib/promotion-notifications"
-import { TaskUpdatesChat } from "@/components/task-updates-chat"
 import { getCurrentUser, getNotifications, getSession, getTasksForSector, getUnreadCount } from "@/lib/data"
 
 export default async function PanelPage() {
@@ -93,7 +92,6 @@ export default async function PanelPage() {
             </ul>
           )}
         </section>
-        <div className="mt-6"><TaskUpdatesChat /></div>
       </div>
       <BottomNav isManager={employee.role === "manager"} />
     </main>

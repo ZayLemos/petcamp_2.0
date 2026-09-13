@@ -1,16 +1,14 @@
 import { NextResponse } from "next/server"
 import { put } from "@vercel/blob"
-import { and, desc, eq, inArray, isNull } from "drizzle-orm"
+import { desc, eq, inArray, isNull } from "drizzle-orm"
 import { db } from "@/lib/db"
 import { getCurrentUser } from "@/lib/data"
 import { taskUpdates, taskUpdateReplies, user } from "@/lib/db/schema"
 
 export async function GET(request: Request) {
   const me = await getCurrentUser()
-  if (!me) return NextResponse.json({ error: "Não autorizado" }, { status: 403 })
-  const conditions = me.role === "manager"
-    ? isNull(taskUpdates.approvedAt)
-    : and(isNull(taskUpdates.approvedAt), eq(taskUpdates.employeeId, me.id))
+  if (!me || me.role !== "manager") return NextResponse.json({ error: "Não autorizado" }, { status: 403 })
+  const conditions = isNull(taskUpdates.approvedAt)
   const updates = await db.select({ id: taskUpdates.id, taskId: taskUpdates.taskId, promotionId: taskUpdates.promotionId, employeeId: taskUpdates.employeeId, employeeName: user.name, sector: taskUpdates.sector, updateText: taskUpdates.updateText, photoPath: taskUpdates.photoPath, createdAt: taskUpdates.createdAt, managerReadAt: taskUpdates.managerReadAt, approvedAt: taskUpdates.approvedAt, approvedBy: taskUpdates.approvedBy }).from(taskUpdates).leftJoin(user, eq(taskUpdates.employeeId, user.id)).where(conditions).orderBy(desc(taskUpdates.createdAt)).limit(100)
   const grouped = Array.from(updates.reduce((map, update) => {
     const dateKey = new Date(update.createdAt).toISOString().slice(0, 10)
@@ -28,12 +26,12 @@ export async function GET(request: Request) {
   const idsParam = new URL(request.url).searchParams.get("updateIds")
   const replyIds = idsParam ? idsParam.split(",").map(Number).filter(Number.isInteger) : []
   const replies = replyIds.length ? await db.select().from(taskUpdateReplies).where(inArray(taskUpdateReplies.updateId, replyIds)).orderBy(taskUpdateReplies.createdAt) : []
-  return NextResponse.json({ updates: grouped, replies, isManager: me.role === "manager" })
+  return NextResponse.json({ updates: grouped, replies })
 }
 
 export async function POST(request: Request) {
   const me = await getCurrentUser()
-  if (!me) return NextResponse.json({ error: "Não autorizado" }, { status: 403 })
+  if (!me || me.role !== "manager") return NextResponse.json({ error: "Não autorizado" }, { status: 403 })
   const form = await request.formData()
   const updateId = Number(form.get("updateId"))
   const message = String(form.get("message") || "").trim()
