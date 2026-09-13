@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 import { put } from "@vercel/blob"
-import { and, desc, eq } from "drizzle-orm"
+import { and, desc, eq, inArray, isNull } from "drizzle-orm"
 import { db } from "@/lib/db"
 import { getCurrentUser } from "@/lib/data"
 import { taskUpdates, taskUpdateReplies, user } from "@/lib/db/schema"
@@ -8,9 +8,22 @@ import { taskUpdates, taskUpdateReplies, user } from "@/lib/db/schema"
 export async function GET() {
   const me = await getCurrentUser()
   if (!me) return NextResponse.json({ error: "Não autorizado" }, { status: 403 })
-  const updates = await db.select({ id: taskUpdates.id, taskId: taskUpdates.taskId, promotionId: taskUpdates.promotionId, employeeId: taskUpdates.employeeId, employeeName: user.name, sector: taskUpdates.sector, updateText: taskUpdates.updateText, photoPath: taskUpdates.photoPath, createdAt: taskUpdates.createdAt, managerReadAt: taskUpdates.managerReadAt }).from(taskUpdates).leftJoin(user, eq(taskUpdates.employeeId, user.id)).where(me.role === "manager" ? undefined : eq(taskUpdates.employeeId, me.id)).orderBy(desc(taskUpdates.createdAt)).limit(100)
+  const updates = await db.select({ id: taskUpdates.id, taskId: taskUpdates.taskId, promotionId: taskUpdates.promotionId, employeeId: taskUpdates.employeeId, employeeName: user.name, sector: taskUpdates.sector, updateText: taskUpdates.updateText, photoPath: taskUpdates.photoPath, createdAt: taskUpdates.createdAt, managerReadAt: taskUpdates.managerReadAt, approvedAt: taskUpdates.approvedAt, approvedBy: taskUpdates.approvedBy }).from(taskUpdates).leftJoin(user, eq(taskUpdates.employeeId, user.id)).where(and(isNull(taskUpdates.approvedAt), me.role === "manager" ? undefined : eq(taskUpdates.employeeId, me.id))).orderBy(desc(taskUpdates.createdAt)).limit(100)
+  const grouped = Array.from(updates.reduce((map, update) => {
+    const dateKey = new Date(update.createdAt).toISOString().slice(0, 10)
+    const key = dateKey
+    const existing = map.get(key)
+    if (existing) {
+      existing.updateText = `${existing.updateText}; ${update.updateText}`
+      existing.ids.push(update.id)
+      if (!update.managerReadAt) existing.managerReadAt = null
+    } else {
+      map.set(key, { ...update, ids: [update.id], updateText: update.updateText })
+    }
+    return map
+  }, new Map<string, (typeof updates)[number] & { ids: number[] }>()).values())
   const replies = await db.select().from(taskUpdateReplies).orderBy(taskUpdateReplies.createdAt)
-  return NextResponse.json({ updates, replies })
+  return NextResponse.json({ updates: grouped, replies, isManager: me.role === "manager" })
 }
 
 export async function POST(request: Request) {
@@ -29,7 +42,13 @@ export async function POST(request: Request) {
 export async function PATCH(request: Request) {
   const me = await getCurrentUser()
   if (!me || me.role !== "manager") return NextResponse.json({ error: "Não autorizado" }, { status: 403 })
-  const { updateId } = await request.json()
-  await db.update(taskUpdates).set({ managerReadAt: new Date() }).where(and(eq(taskUpdates.id, Number(updateId))))
+  const { updateId, action = "read" } = await request.json()
+  const ids = Array.isArray(updateId) ? updateId.map(Number).filter(Number.isInteger) : [Number(updateId)]
+  if (action === "approve") {
+    await db.delete(taskUpdateReplies).where(inArray(taskUpdateReplies.updateId, ids))
+    await db.delete(taskUpdates).where(inArray(taskUpdates.id, ids))
+  } else {
+    await db.update(taskUpdates).set({ managerReadAt: new Date() }).where(inArray(taskUpdates.id, ids))
+  }
   return NextResponse.json({ ok: true })
 }
