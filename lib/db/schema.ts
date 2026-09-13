@@ -104,3 +104,25 @@ export const pushSubscriptions = pgTable("push_subscriptions", {
   keys: jsonb("keys").notNull(),
   createdAt: timestamp("createdAt").notNull().defaultNow(),
 })
+
+export const taskUpdates = pgTable("task_updates", {
+  id: serial("id").primaryKey(),
+  taskId: integer("task_id").notNull(),
+  promotionId: integer("promotion_id").notNull(),
+  employeeId: text("employee_id").notNull(),
+  sector: text("sector").notNull(),
+  updateText: text("update_text").notNull(),
+  photoPath: text("photo_path"),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  managerReadAt: timestamp("manager_read_at"),
+})
+
+export const taskUpdateReplies = pgTable("task_update_replies", {
+  id: serial("id").primaryKey(),
+  updateId: integer("update_id").notNull(),
+  authorId: text("author_id").notNull(),
+  authorName: text("author_name").notNull(),
+  message: text("message").notNull(),
+  photoPath: text("photo_path"),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+})
