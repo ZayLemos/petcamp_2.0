@@ -88,10 +88,11 @@ export async function getTasksForSector(sector: string): Promise<TaskWithPromoti
   const sectorCondition = aliases.length === 1 ? eq(promotionTasks.sector, aliases[0]) : or(...aliases.map((item) => eq(promotionTasks.sector, item)))
   const catSache = normalizedSectors.some((item) => { const value = item.toLowerCase(); return value.includes("sache") && (value.includes("gato") || value.includes("cat")) })
   const dogSache = normalizedSectors.some((item) => { const value = item.toLowerCase(); return value.includes("sache") && (value.includes("cao") || value.includes("cachorro") || value.includes("dog")) })
+  const productName = sql`lower(translate(coalesce(${promotions.productName}, ''), 'áàãâäéèêëíìîïóòõôöúùûüç', 'aaaaaeeeeiiiiooooouuuuc'))`
   const productCondition = catSache
-    ? sql`lower(coalesce(${promotions.productName}, '')) NOT LIKE '%dog%' AND lower(coalesce(${promotions.productName}, '')) NOT LIKE '%cao%' AND lower(coalesce(${promotions.productName}, '')) NOT LIKE '%cachorro%'`
+    ? sql`(${productName} LIKE '%cat%' OR ${productName} LIKE '%gato%' OR ${productName} LIKE '%felino%') AND ${productName} NOT LIKE '%dog%' AND ${productName} NOT LIKE '%cao%' AND ${productName} NOT LIKE '%cachorro%' AND ${productName} NOT LIKE '%canino%'`
     : dogSache
-      ? sql`(lower(coalesce(${promotions.productName}, '')) LIKE '%dog%' OR lower(coalesce(${promotions.productName}, '')) LIKE '%cao%' OR lower(coalesce(${promotions.productName}, '')) LIKE '%cachorro%')`
+      ? sql`(${productName} LIKE '%dog%' OR ${productName} LIKE '%cao%' OR ${productName} LIKE '%cachorro%' OR ${productName} LIKE '%canino%')`
       : undefined
 
   return db
