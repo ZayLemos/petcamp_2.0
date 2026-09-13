@@ -36,8 +36,10 @@ export async function POST(request: Request) {
   const updateId = Number(form.get("updateId"))
   const message = String(form.get("message") || "").trim()
   const file = form.get("photo")
-  if (!Number.isInteger(updateId) || !message) return NextResponse.json({ error: "Mensagem inválida" }, { status: 400 })
-  const photoPath = file instanceof File && file.size > 0 ? (await put(`task-updates/${me.id}/${crypto.randomUUID()}-${file.name}`, file, { access: "private" })).pathname : null
+  const hasPhoto = file instanceof File && file.size > 0
+  if (!Number.isInteger(updateId) || (!message && !hasPhoto)) return NextResponse.json({ error: "Mensagem ou foto obrigatória" }, { status: 400 })
+  if (hasPhoto && (!file.type.startsWith("image/") || file.size > 5 * 1024 * 1024)) return NextResponse.json({ error: "A foto deve ser uma imagem de até 5 MB" }, { status: 400 })
+  const photoPath = hasPhoto ? (await put(`task-updates/${me.id}/${crypto.randomUUID()}.webp`, file, { access: "private" })).pathname : null
   const [reply] = await db.insert(taskUpdateReplies).values({ updateId, authorId: me.id, authorName: me.name, message, photoPath }).returning()
   return NextResponse.json({ reply })
 }
