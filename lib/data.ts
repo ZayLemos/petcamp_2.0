@@ -86,8 +86,8 @@ export async function getTasksForSector(sector: string): Promise<TaskWithPromoti
     return [item]
   })
   const sectorCondition = aliases.length === 1 ? eq(promotionTasks.sector, aliases[0]) : or(...aliases.map((item) => eq(promotionTasks.sector, item)))
-  const catSache = normalizedSectors.some((item) => item.toLowerCase().includes("sache") && item.toLowerCase().includes("gato"))
-  const dogSache = normalizedSectors.some((item) => item.toLowerCase().includes("sache") && (item.toLowerCase().includes("cao") || item.toLowerCase().includes("cachorro")))
+  const catSache = normalizedSectors.some((item) => { const value = item.toLowerCase(); return value.includes("sache") && (value.includes("gato") || value.includes("cat")) })
+  const dogSache = normalizedSectors.some((item) => { const value = item.toLowerCase(); return value.includes("sache") && (value.includes("cao") || value.includes("cachorro") || value.includes("dog")) })
   const productCondition = catSache
     ? sql`lower(coalesce(${promotions.productName}, '')) NOT LIKE '%dog%' AND lower(coalesce(${promotions.productName}, '')) NOT LIKE '%cao%' AND lower(coalesce(${promotions.productName}, '')) NOT LIKE '%cachorro%'`
     : dogSache

@@ -257,6 +257,19 @@ export async function toggleTaskCompletion(formData: FormData) {
   revalidatePath("/calendario")
 }
 
+export async function completeTasks(formData: FormData) {
+  const ids = String(formData.get("taskIds") ?? "").split(",").map(Number).filter((id) => Number.isInteger(id) && id > 0)
+  if (ids.length === 0) throw new Error("Nenhuma tarefa selecionada.")
+  const me = await getCurrentUser()
+  if (!me) throw new Error("Não autenticado.")
+  const rows = await db.select({ id: promotionTasks.id, sector: promotionTasks.sector }).from(promotionTasks).where(inArray(promotionTasks.id, ids))
+  const allowedSectors = me.sector ? (() => { try { const parsed = JSON.parse(me.sector); return (Array.isArray(parsed) ? parsed : [me.sector]).flatMap((item) => { const value = String(item); const normalized = value.toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g, ""); return normalized.includes("sache") && (normalized.includes("gato") || normalized.includes("cat")) ? ["Sachês gatos", "Sachês para gatos"] : normalized.includes("sache") && (normalized.includes("cao") || normalized.includes("cachorro") || normalized.includes("dog")) ? ["Sachês cães", "Sachês para cães"] : [value] }) } catch { return [me.sector] } })() : []
+  const permitted = rows.filter((row) => me.role === "manager" || allowedSectors.includes(row.sector)).map((row) => row.id)
+  if (permitted.length > 0) await db.update(promotionTasks).set({ completed: true, completedByName: me.name, completedAt: new Date() }).where(inArray(promotionTasks.id, permitted))
+  revalidatePath("/painel")
+  revalidatePath("/calendario")
+}
+
 export async function updateSector(sector: string) {
   const me = await getCurrentUser()
   if (!me) throw new Error("Não autenticado.")
