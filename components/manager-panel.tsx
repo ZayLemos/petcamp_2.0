@@ -3,7 +3,6 @@
 import { useState } from "react"
 import { importPromotionsFromExcel } from "@/app/actions/promotions"
 import { CheckCircle2, ClipboardList, FileSpreadsheet, Upload } from "lucide-react"
-import { TaskUpdatesChat } from "@/components/task-updates-chat"
 
 type Task = { id: number; sector: string; dueDate: string; completed: boolean; completedByName: string | null; title: string; type: string }
 
@@ -26,6 +25,5 @@ export function ManagerPanel({ tasks }: { tasks: Task[] }) {
       {result && <p className="mt-3 text-sm">{result.imported} item(ns) importado(s).{result.errors.length > 0 && ` ${result.errors.length} linha(s) precisam de revisão.`}</p>}
     </section>
     <section className="rounded-2xl border bg-card p-5 shadow-sm"><div className="flex items-center gap-2"><ClipboardList className="size-5 text-primary" /><h2 className="font-extrabold">Acompanhamento por funcionário</h2></div><div className="mt-4 space-y-2">{tasks.length === 0 ? <p className="text-sm text-muted-foreground">Ainda não há tarefas importadas.</p> : tasks.map((task) => <div key={task.id} className="flex items-center justify-between gap-3 rounded-xl bg-muted p-3 text-sm"><div><p className="font-bold">{task.title}</p><p className="text-muted-foreground">{task.sector} · {task.dueDate}</p></div><div className="flex items-center gap-2 text-right">{task.completed ? <><CheckCircle2 className="size-5 text-primary" /><span>{task.completedByName || "Concluída"}</span></> : <span className="text-muted-foreground">Pendente</span>}</div></div>)}</div></section>
-    <TaskUpdatesChat />
   </div>
 }

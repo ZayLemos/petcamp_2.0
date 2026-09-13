@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { deleteSpreadsheetImports, importPromotionsFromExcel } from "@/app/actions/promotions"
-import { TaskUpdatesChat } from "@/components/task-updates-chat";
+import { CompletedTasksReview } from "@/components/completed-tasks-review"
 
 interface TarefaVisual {
   produto: string;
@@ -96,6 +96,8 @@ export default function GerentePage() {
           <ArrowLeft className="size-4" />
           Voltar ao painel
         </Link>
+        <CompletedTasksReview />
+
         <div>
           <h2 className="text-xl font-bold text-gray-800">Importar Planilha Simplificada</h2>
           <p className="text-xs text-gray-400 mt-1">Envie o arquivo atualizado da PetCamp para processamento direto na tela.</p>
@@ -119,8 +121,6 @@ export default function GerentePage() {
           <p className="text-sm text-gray-600 font-medium"><span className="text-indigo-600 font-bold">{totalImportado}</span> item(ns) importado(s).</p>
           <button type="button" onClick={handleDeleteSpreadsheetImports} className="rounded-xl border border-red-200 px-4 py-2 text-sm font-semibold text-red-600 hover:bg-red-50">Apagar importações da planilha</button>
         </div>
-
-        <TaskUpdatesChat />
 
         {tarefas.length > 0 && (
           <div className="overflow-y-auto max-h-[400px] border border-gray-100 rounded-xl mt-4">
