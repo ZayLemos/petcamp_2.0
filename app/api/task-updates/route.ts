@@ -5,7 +5,7 @@ import { db } from "@/lib/db"
 import { getCurrentUser } from "@/lib/data"
 import { taskUpdates, taskUpdateReplies, user } from "@/lib/db/schema"
 
-export async function GET() {
+export async function GET(request: Request) {
   const me = await getCurrentUser()
   if (!me) return NextResponse.json({ error: "Não autorizado" }, { status: 403 })
   const conditions = me.role === "manager"
@@ -25,7 +25,9 @@ export async function GET() {
     }
     return map
   }, new Map<string, (typeof updates)[number] & { ids: number[] }>()).values())
-  const replies = await db.select().from(taskUpdateReplies).orderBy(taskUpdateReplies.createdAt)
+  const idsParam = new URL(request.url).searchParams.get("updateIds")
+  const replyIds = idsParam ? idsParam.split(",").map(Number).filter(Number.isInteger) : []
+  const replies = replyIds.length ? await db.select().from(taskUpdateReplies).where(inArray(taskUpdateReplies.updateId, replyIds)).orderBy(taskUpdateReplies.createdAt) : []
   return NextResponse.json({ updates: grouped, replies, isManager: me.role === "manager" })
 }
 
