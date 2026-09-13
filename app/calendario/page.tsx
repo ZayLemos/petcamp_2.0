@@ -4,6 +4,7 @@ import { AppHeader } from "@/components/app-header"
 import { BottomNav } from "@/components/bottom-nav"
 import { CalendarView } from "@/components/calendar-view"
 import { getAllTasks, getCurrentUser, getNotifications, getSession, getTasksForSector, getUnreadCount } from "@/lib/data"
+import { createPromotionNotifications } from "@/lib/promotion-notifications"
 
 export default async function CalendarPage() {
   const session = await getSession()
@@ -12,6 +13,7 @@ export default async function CalendarPage() {
   const employee = await getCurrentUser()
   if (!employee) redirect("/sign-in")
 
+  await createPromotionNotifications()
   const [tasks, notifications, unread] = await Promise.all([
     employee.role === "manager" ? getAllTasks() : getTasksForSector(employee.sector ?? ""),
     getNotifications(employee.id),
