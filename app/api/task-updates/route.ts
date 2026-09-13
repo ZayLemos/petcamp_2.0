@@ -11,7 +11,7 @@ export async function GET() {
   const updates = await db.select({ id: taskUpdates.id, taskId: taskUpdates.taskId, promotionId: taskUpdates.promotionId, employeeId: taskUpdates.employeeId, employeeName: user.name, sector: taskUpdates.sector, updateText: taskUpdates.updateText, photoPath: taskUpdates.photoPath, createdAt: taskUpdates.createdAt, managerReadAt: taskUpdates.managerReadAt, approvedAt: taskUpdates.approvedAt, approvedBy: taskUpdates.approvedBy }).from(taskUpdates).leftJoin(user, eq(taskUpdates.employeeId, user.id)).where(and(isNull(taskUpdates.approvedAt), me.role === "manager" ? undefined : eq(taskUpdates.employeeId, me.id))).orderBy(desc(taskUpdates.createdAt)).limit(100)
   const grouped = Array.from(updates.reduce((map, update) => {
     const dateKey = new Date(update.createdAt).toISOString().slice(0, 10)
-    const key = `${update.taskId}-${dateKey}`
+    const key = dateKey
     const existing = map.get(key)
     if (existing) {
       existing.updateText = `${existing.updateText}; ${update.updateText}`
