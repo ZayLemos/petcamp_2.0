@@ -85,6 +85,14 @@ export async function getTasksForSector(sector: string): Promise<TaskWithPromoti
     if (normalized.includes("sache") && (normalized.includes("cao") || normalized.includes("cachorro"))) return ["Sachês cães", "Sachês para cães"]
     return [item]
   })
+  const sectorCondition = aliases.length === 1 ? eq(promotionTasks.sector, aliases[0]) : or(...aliases.map((item) => eq(promotionTasks.sector, item)))
+  const catSache = normalizedSectors.some((item) => item.toLowerCase().includes("sache") && item.toLowerCase().includes("gato"))
+  const dogSache = normalizedSectors.some((item) => item.toLowerCase().includes("sache") && (item.toLowerCase().includes("cao") || item.toLowerCase().includes("cachorro")))
+  const productCondition = catSache
+    ? sql`lower(coalesce(${promotions.productName}, '')) NOT LIKE '%dog%' AND lower(coalesce(${promotions.productName}, '')) NOT LIKE '%cao%' AND lower(coalesce(${promotions.productName}, '')) NOT LIKE '%cachorro%'`
+    : dogSache
+      ? sql`(lower(coalesce(${promotions.productName}, '')) LIKE '%dog%' OR lower(coalesce(${promotions.productName}, '')) LIKE '%cao%' OR lower(coalesce(${promotions.productName}, '')) LIKE '%cachorro%')`
+      : undefined
 
   return db
     .select({
@@ -103,7 +111,7 @@ export async function getTasksForSector(sector: string): Promise<TaskWithPromoti
     })
     .from(promotionTasks)
     .innerJoin(promotions, eq(promotionTasks.promotionId, promotions.id))
-    .where(aliases.length === 1 ? eq(promotionTasks.sector, aliases[0]) : or(...aliases.map((item) => eq(promotionTasks.sector, item))))
+    .where(productCondition ? and(sectorCondition, productCondition) : sectorCondition)
     .orderBy(promotionTasks.dueDate)
 }
 

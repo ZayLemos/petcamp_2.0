@@ -250,7 +250,7 @@ export async function toggleTaskCompletion(formData: FormData) {
   if (!me) throw new Error("Não autenticado.")
   const task = await db.select({ id: promotionTasks.id, sector: promotionTasks.sector }).from(promotionTasks).where(eq(promotionTasks.id, taskId)).limit(1)
   if (!task[0]) throw new Error("Tarefa não encontrada.")
-  const allowedSectors = me.sector ? (() => { try { const parsed = JSON.parse(me.sector); return Array.isArray(parsed) ? parsed : [me.sector] } catch { return [me.sector] } })() : []
+  const allowedSectors = me.sector ? (() => { try { const parsed = JSON.parse(me.sector); return (Array.isArray(parsed) ? parsed : [me.sector]).flatMap((item) => { const value = String(item); const normalized = value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); return normalized.includes("sache") && normalized.includes("gato") ? ["Sachês gatos", "Sachês para gatos"] : normalized.includes("sache") && (normalized.includes("cao") || normalized.includes("cachorro")) ? ["Sachês cães", "Sachês para cães"] : [value] }) } catch { return [me.sector] } })() : []
   if (me.role !== "manager" && !allowedSectors.includes(task[0].sector)) throw new Error("Você não pode concluir esta tarefa.")
   await db.update(promotionTasks).set({ completed: sql`NOT ${promotionTasks.completed}` }).where(eq(promotionTasks.id, taskId))
   revalidatePath("/painel")
