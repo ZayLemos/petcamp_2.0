@@ -6,7 +6,7 @@ import { promotions, promotionTasks, notifications, user, pushSubscriptions } fr
 import { getCurrentUser } from "@/lib/data"
 import { normalizeSector } from "@/lib/sectors"
 import { sendPushToUser } from "@/lib/push"
-import { and, eq, inArray } from "drizzle-orm"
+import { and, eq, inArray, sql } from "drizzle-orm"
 import { revalidatePath } from "next/cache"
 
 async function requireManager() {
@@ -241,6 +241,20 @@ export async function promoteToManager(code: string) {
   await db.update(user).set({ role: "manager" }).where(eq(user.id, me.id))
   revalidatePath("/", "layout")
   return { ok: true }
+}
+
+export async function toggleTaskCompletion(formData: FormData) {
+  const taskId = Number(formData.get("taskId"))
+  if (!Number.isInteger(taskId) || taskId <= 0) throw new Error("Tarefa inválida.")
+  const me = await getCurrentUser()
+  if (!me) throw new Error("Não autenticado.")
+  const task = await db.select({ id: promotionTasks.id, sector: promotionTasks.sector }).from(promotionTasks).where(eq(promotionTasks.id, taskId)).limit(1)
+  if (!task[0]) throw new Error("Tarefa não encontrada.")
+  const allowedSectors = me.sector ? (() => { try { const parsed = JSON.parse(me.sector); return Array.isArray(parsed) ? parsed : [me.sector] } catch { return [me.sector] } })() : []
+  if (me.role !== "manager" && !allowedSectors.includes(task[0].sector)) throw new Error("Você não pode concluir esta tarefa.")
+  await db.update(promotionTasks).set({ completed: sql`NOT ${promotionTasks.completed}` }).where(eq(promotionTasks.id, taskId))
+  revalidatePath("/painel")
+  revalidatePath("/calendario")
 }
 
 export async function updateSector(sector: string) {
