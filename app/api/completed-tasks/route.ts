@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { and, desc, eq, isNotNull, isNull } from "drizzle-orm"
+import { and, desc, eq, inArray, isNotNull, isNull } from "drizzle-orm"
 import { getCurrentUser } from "@/lib/data"
 import { db } from "@/lib/db"
 import { promotionTasks, promotions } from "@/lib/db/schema"
@@ -8,8 +8,10 @@ export async function GET() {
   const me = await getCurrentUser()
   if (!me || me.role !== "manager") return NextResponse.json({ error: "Não autorizado" }, { status: 403 })
 
-  const tasks = await db.select({
+  const rows = await db.select({
     id: promotionTasks.id,
+    promotionId: promotionTasks.promotionId,
+    type: promotionTasks.type,
     title: promotions.title,
     productName: promotions.productName,
     sector: promotionTasks.sector,
@@ -20,6 +22,14 @@ export async function GET() {
     .where(and(eq(promotionTasks.completed, true), isNotNull(promotionTasks.completedAt), isNull(promotionTasks.verifiedAt)))
     .orderBy(desc(promotionTasks.completedAt))
 
+  const tasks = Array.from(rows.reduce((groups, row) => {
+    const key = `${row.promotionId}-${row.type}-${row.sector}-${row.completedByName}-${row.completedAt?.toISOString().slice(0, 10)}`
+    const group = groups.get(key)
+    if (group) group.ids.push(row.id)
+    else groups.set(key, { ...row, ids: [row.id] })
+    return groups
+  }, new Map<string, (typeof rows)[number] & { ids: number[] }>()).values())
+
   return NextResponse.json({ tasks })
 }
 
@@ -27,9 +37,9 @@ export async function PATCH(request: Request) {
   const me = await getCurrentUser()
   if (!me || me.role !== "manager") return NextResponse.json({ error: "Não autorizado" }, { status: 403 })
   const body = await request.json().catch(() => null)
-  const taskId = Number(body?.taskId)
-  if (!Number.isInteger(taskId) || taskId <= 0) return NextResponse.json({ error: "Tarefa inválida" }, { status: 400 })
+  const taskIds = Array.isArray(body?.taskIds) ? body.taskIds.map(Number).filter((id: number) => Number.isInteger(id) && id > 0) : [Number(body?.taskId)]
+  if (!taskIds.length) return NextResponse.json({ error: "Grupo inválido" }, { status: 400 })
 
-  await db.update(promotionTasks).set({ verifiedAt: new Date(), verifiedBy: me.id }).where(and(eq(promotionTasks.id, taskId), isNull(promotionTasks.verifiedAt)))
+  await db.update(promotionTasks).set({ verifiedAt: new Date(), verifiedBy: me.id }).where(and(inArray(promotionTasks.id, taskIds), isNull(promotionTasks.verifiedAt)))
   return NextResponse.json({ ok: true })
 }
