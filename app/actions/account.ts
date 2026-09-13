@@ -282,25 +282,27 @@ function parseAllowedSectors(value: string | null) {
 
 export async function deleteOwnTask(formData: FormData) {
   const taskId = Number(formData.get("taskId"))
+  const promotionId = Number(formData.get("promotionId"))
   const me = await getCurrentUser()
-  if (!me || !Number.isInteger(taskId) || taskId <= 0) throw new Error("Tarefa inválida.")
-  const task = await db.select({ id: promotionTasks.id, sector: promotionTasks.sector }).from(promotionTasks).where(eq(promotionTasks.id, taskId)).limit(1)
+  if (!me || (!Number.isInteger(taskId) && !Number.isInteger(promotionId))) throw new Error("Item inválido.")
+  const task = await db.select({ id: promotionTasks.id, promotionId: promotionTasks.promotionId, sector: promotionTasks.sector }).from(promotionTasks).where(Number.isInteger(promotionId) ? eq(promotionTasks.promotionId, promotionId) : eq(promotionTasks.id, taskId)).limit(1)
   if (!task[0]) throw new Error("Tarefa não encontrada.")
   if (me.role !== "manager" && !parseAllowedSectors(me.sector).includes(task[0].sector)) throw new Error("Você não pode alterar esta tarefa.")
-  await db.delete(promotionTasks).where(eq(promotionTasks.id, taskId))
+  await db.delete(promotionTasks).where(eq(promotionTasks.promotionId, task[0].promotionId))
   revalidatePath("/painel")
   revalidatePath("/calendario")
 }
 
 export async function moveOwnTask(formData: FormData) {
   const taskId = Number(formData.get("taskId"))
+  const promotionId = Number(formData.get("promotionId"))
   const destination = String(formData.get("destination") ?? "").trim()
   const me = await getCurrentUser()
-  if (!me || !Number.isInteger(taskId) || taskId <= 0 || !destination) throw new Error("Dados inválidos.")
-  const task = await db.select({ id: promotionTasks.id, sector: promotionTasks.sector }).from(promotionTasks).where(eq(promotionTasks.id, taskId)).limit(1)
+  if (!me || (!Number.isInteger(taskId) && !Number.isInteger(promotionId)) || !destination) throw new Error("Dados inválidos.")
+  const task = await db.select({ id: promotionTasks.id, promotionId: promotionTasks.promotionId, sector: promotionTasks.sector }).from(promotionTasks).where(Number.isInteger(promotionId) ? eq(promotionTasks.promotionId, promotionId) : eq(promotionTasks.id, taskId)).limit(1)
   if (!task[0]) throw new Error("Tarefa não encontrada.")
   if (me.role !== "manager" && !parseAllowedSectors(me.sector).includes(task[0].sector)) throw new Error("Você não pode alterar esta tarefa.")
-  await db.update(promotionTasks).set({ sector: destination }).where(eq(promotionTasks.id, taskId))
+  await db.update(promotionTasks).set({ sector: destination }).where(eq(promotionTasks.promotionId, task[0].promotionId))
   revalidatePath("/painel")
   revalidatePath("/calendario")
 }
