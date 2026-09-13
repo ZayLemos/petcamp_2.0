@@ -20,9 +20,19 @@ function formatDate(value: string) {
 export function CalendarView({ tasks, sector, isManager }: { tasks: TaskWithPromotion[]; sector: string | null; isManager: boolean }) {
   const today = new Date()
   const [month, setMonth] = useState(new Date(today.getFullYear(), today.getMonth(), 1))
-  const [selectedSector, setSelectedSector] = useState(sector ?? "")
+  const [selectedSector, setSelectedSector] = useState("")
   const [selectedDate, setSelectedDate] = useState<string | null>(null)
-  const activeSector = isManager ? selectedSector : sector
+  const activeSector = isManager ? selectedSector : ""
+  const employeeSectors = useMemo(() => {
+    if (!sector) return []
+    try {
+      const parsed = JSON.parse(sector)
+      return Array.isArray(parsed) ? parsed.filter((item): item is string => typeof item === "string") : [sector]
+    } catch {
+      return [sector]
+    }
+  }, [sector])
+  const sectorLabel = employeeSectors.join(", ") || "Não definido"
   const visibleTasks = useMemo(() => tasks.filter((task) => !activeSector || task.sector === activeSector), [activeSector, tasks])
   const sectorSummaries = useMemo(() => {
     const grouped = new Map<string, TaskWithPromotion[]>()
@@ -50,7 +60,7 @@ export function CalendarView({ tasks, sector, isManager }: { tasks: TaskWithProm
           <button type="button" aria-label="Próximo mês" onClick={() => setMonth(new Date(month.getFullYear(), month.getMonth() + 1, 1))} className="rounded-xl p-2 text-muted-foreground hover:bg-muted"><ChevronRight className="size-5" /></button>
         </div>
         {isManager && <label className="mt-4 block text-sm font-semibold">Setor do calendário<select value={selectedSector} onChange={(event) => { setSelectedSector(event.target.value); setSelectedDate(null) }} className="mt-2 w-full rounded-xl border border-border bg-background px-3 py-2"><option value="">Todos os setores</option>{SECTORS.map((item) => <option key={item} value={item}>{item}</option>)}</select></label>}
-        {!isManager && <p className="mt-4 text-sm text-muted-foreground">Setor: <span className="font-semibold text-foreground">{sector ?? "Não definido"}</span></p>}
+        {!isManager && <p className="mt-4 text-sm text-muted-foreground">Setor: <span className="font-semibold text-foreground">{sectorLabel}</span></p>}
         <div className="mt-4 grid grid-cols-7 gap-1 text-center text-xs font-bold text-muted-foreground">{weekDays.map((day) => <span key={day} className="py-1">{day}</span>)}</div>
         <div className="grid grid-cols-7 gap-1 text-center">{cells.map((day, index) => {
           if (day < 1 || day > daysInMonth) return <span key={index} className="min-h-12 rounded-lg" />

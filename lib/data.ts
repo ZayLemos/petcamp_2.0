@@ -78,6 +78,13 @@ export async function getTasksForSector(sector: string): Promise<TaskWithPromoti
   } catch {
     // Compatibilidade com contas antigas que armazenam um setor simples.
   }
+  const normalizedSectors = sectors.map((item) => item.replace(/^\[|\]$/g, "").replaceAll('"', "").trim())
+  const aliases = normalizedSectors.flatMap((item) => {
+    const normalized = item.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    if (normalized.includes("sache") && normalized.includes("gato")) return ["Sachês gatos", "Sachês para gatos"]
+    if (normalized.includes("sache") && (normalized.includes("cao") || normalized.includes("cachorro"))) return ["Sachês cães", "Sachês para cães"]
+    return [item]
+  })
 
   return db
     .select({
@@ -96,7 +103,7 @@ export async function getTasksForSector(sector: string): Promise<TaskWithPromoti
     })
     .from(promotionTasks)
     .innerJoin(promotions, eq(promotionTasks.promotionId, promotions.id))
-    .where(sectors.length === 1 ? eq(promotionTasks.sector, sectors[0]) : or(...sectors.map((item) => eq(promotionTasks.sector, item))))
+    .where(aliases.length === 1 ? eq(promotionTasks.sector, aliases[0]) : or(...aliases.map((item) => eq(promotionTasks.sector, item))))
     .orderBy(promotionTasks.dueDate)
 }
 
