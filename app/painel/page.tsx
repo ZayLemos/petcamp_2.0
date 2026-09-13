@@ -3,6 +3,7 @@ import { AppHeader } from "@/components/app-header"
 import { BottomNav } from "@/components/bottom-nav"
 import { completeTasks, deleteOwnTask, moveOwnTask, toggleTaskCompletion } from "@/app/actions/account"
 import { SECTORS } from "@/lib/sectors"
+import { createPromotionNotifications } from "@/lib/promotion-notifications"
 import { getCurrentUser, getNotifications, getSession, getTasksForSector, getUnreadCount } from "@/lib/data"
 
 export default async function PanelPage() {
@@ -12,6 +13,7 @@ export default async function PanelPage() {
   const employee = await getCurrentUser()
   if (!employee) redirect("/sign-in")
 
+  await createPromotionNotifications()
   const notifications = await getNotifications(employee.id)
   const unread = await getUnreadCount(employee.id)
   const tasks = employee.sector ? await getTasksForSector(employee.sector) : []
