@@ -154,9 +154,13 @@ export async function importPromotionsFromExcel(formData: FormData) {
         coadjuvantes: "Coadjuvantes", farmacia: "Farmácia",
       }
       if (normalized.includes("sache")) {
-        return normalized.includes("cao") || normalized.includes("cachorro") || normalizedProduct.includes("cao") || normalizedProduct.includes("cachorro")
+        const dogProduct = ["cao", "cachorro", "canino", "dog"].some((term) => normalizedProduct.includes(term))
+        const catProduct = ["gato", "felino", "cat"].some((term) => normalizedProduct.includes(term))
+        return normalized.includes("cao") || normalized.includes("cachorro") || dogProduct
           ? "Sachês cães"
-          : "Sachês gatos"
+          : normalized.includes("gato") || catProduct
+            ? "Sachês gatos"
+            : "Sachês gatos"
       }
       return sectors[normalized] ?? value.trim()
     }
