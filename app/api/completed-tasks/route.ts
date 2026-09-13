@@ -23,12 +23,16 @@ export async function GET() {
     .orderBy(desc(promotionTasks.completedAt))
 
   const tasks = Array.from(rows.reduce((groups, row) => {
-    const key = `${row.promotionId}-${row.type}-${row.sector}-${row.completedByName}-${row.completedAt?.toISOString().slice(0, 10)}`
+    const key = `${row.promotionId}-${row.type}-${row.sector}-${row.completedAt?.toISOString().slice(0, 10)}`
     const group = groups.get(key)
-    if (group) group.ids.push(row.id)
-    else groups.set(key, { ...row, ids: [row.id] })
+    if (group) {
+      group.ids.push(row.id)
+      group.items.push(row)
+    } else {
+      groups.set(key, { ...row, ids: [row.id], items: [row] })
+    }
     return groups
-  }, new Map<string, (typeof rows)[number] & { ids: number[] }>()).values())
+  }, new Map<string, (typeof rows)[number] & { ids: number[]; items: typeof rows }>()).values())
 
   return NextResponse.json({ tasks })
 }
