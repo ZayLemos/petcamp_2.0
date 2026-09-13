@@ -3,6 +3,7 @@ import { AppHeader } from "@/components/app-header"
 import { BottomNav } from "@/components/bottom-nav"
 import { SectorEditor } from "@/components/sector-editor"
 import { LogoutButton } from "@/components/logout-button"
+import { PushManager } from "@/components/push-manager"
 import { getCurrentUser, getNotifications, getSession, getUnreadCount } from "@/lib/data"
 
 export default async function AccountPage() {
@@ -46,6 +47,11 @@ export default async function AccountPage() {
           </dl>
         </section>
         <SectorEditor initialSector={employee.sector} />
+        <section className="rounded-2xl border border-border bg-card p-5 shadow-sm">
+          <h2 className="text-lg font-extrabold">Notificações no celular</h2>
+          <p className="mt-1 text-sm text-muted-foreground">Ative para receber avisos mesmo quando o PetCamp estiver fechado.</p>
+          <div className="mt-4"><PushManager /></div>
+        </section>
         <LogoutButton />
       </div>
       <BottomNav isManager={employee.role === "manager"} />
