@@ -2,7 +2,7 @@
 
 import * as XLSX from "xlsx"
 import { db } from "@/lib/db"
-import { promotions, promotionTasks, notifications, user, pushSubscriptions } from "@/lib/db/schema"
+import { promotions, promotionTasks, notifications, user, pushSubscriptions, taskUpdates } from "@/lib/db/schema"
 import { getCurrentUser } from "@/lib/data"
 import { normalizeSector } from "@/lib/sectors"
 import { sendPushToUser } from "@/lib/push"
@@ -248,11 +248,15 @@ export async function toggleTaskCompletion(formData: FormData) {
   if (!Number.isInteger(taskId) || taskId <= 0) throw new Error("Tarefa inválida.")
   const me = await getCurrentUser()
   if (!me) throw new Error("Não autenticado.")
-  const task = await db.select({ id: promotionTasks.id, sector: promotionTasks.sector }).from(promotionTasks).where(eq(promotionTasks.id, taskId)).limit(1)
+  const task = await db.select({ id: promotionTasks.id, promotionId: promotionTasks.promotionId, sector: promotionTasks.sector, title: promotions.title, productName: promotions.productName }).from(promotionTasks).innerJoin(promotions, eq(promotionTasks.promotionId, promotions.id)).where(eq(promotionTasks.id, taskId)).limit(1)
   if (!task[0]) throw new Error("Tarefa não encontrada.")
   const allowedSectors = me.sector ? (() => { try { const parsed = JSON.parse(me.sector); return (Array.isArray(parsed) ? parsed : [me.sector]).flatMap((item) => { const value = String(item); const normalized = value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); return normalized.includes("sache") && normalized.includes("gato") ? ["Sachês gatos", "Sachês para gatos"] : normalized.includes("sache") && (normalized.includes("cao") || normalized.includes("cachorro")) ? ["Sachês cães", "Sachês para cães"] : [value] }) } catch { return [me.sector] } })() : []
   if (me.role !== "manager" && !allowedSectors.includes(task[0].sector)) throw new Error("Você não pode concluir esta tarefa.")
-  await db.update(promotionTasks).set({ completed: sql`NOT ${promotionTasks.completed}` }).where(eq(promotionTasks.id, taskId))
+  await db.update(promotionTasks).set({ completed: sql`NOT ${promotionTasks.completed}`, completedBy: me.id, completedByName: me.name, completedAt: new Date() }).where(eq(promotionTasks.id, taskId))
+  if (me.role !== "manager") {
+    await db.insert(taskUpdates).values({ taskId, promotionId: task[0].promotionId, employeeId: me.id, sector: task[0].sector, updateText: `Tarefa concluída: ${task[0].productName || task[0].title}` })
+  }
+  revalidatePath("/gerente")
   revalidatePath("/painel")
   revalidatePath("/calendario")
 }
@@ -262,10 +266,14 @@ export async function completeTasks(formData: FormData) {
   if (ids.length === 0) throw new Error("Nenhuma tarefa selecionada.")
   const me = await getCurrentUser()
   if (!me) throw new Error("Não autenticado.")
-  const rows = await db.select({ id: promotionTasks.id, sector: promotionTasks.sector }).from(promotionTasks).where(inArray(promotionTasks.id, ids))
+  const rows = await db.select({ id: promotionTasks.id, promotionId: promotionTasks.promotionId, sector: promotionTasks.sector }).from(promotionTasks).where(inArray(promotionTasks.id, ids))
   const allowedSectors = me.sector ? (() => { try { const parsed = JSON.parse(me.sector); return (Array.isArray(parsed) ? parsed : [me.sector]).flatMap((item) => { const value = String(item); const normalized = value.toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g, ""); return normalized.includes("sache") && (normalized.includes("gato") || normalized.includes("cat")) ? ["Sachês gatos", "Sachês para gatos"] : normalized.includes("sache") && (normalized.includes("cao") || normalized.includes("cachorro") || normalized.includes("dog")) ? ["Sachês cães", "Sachês para cães"] : [value] }) } catch { return [me.sector] } })() : []
   const permitted = rows.filter((row) => me.role === "manager" || allowedSectors.includes(row.sector)).map((row) => row.id)
-  if (permitted.length > 0) await db.update(promotionTasks).set({ completed: true, completedByName: me.name, completedAt: new Date() }).where(inArray(promotionTasks.id, permitted))
+  if (permitted.length > 0) {
+    await db.update(promotionTasks).set({ completed: true, completedBy: me.id, completedByName: me.name, completedAt: new Date() }).where(inArray(promotionTasks.id, permitted))
+    if (me.role !== "manager") await db.insert(taskUpdates).values(permitted.map((id) => { const row = rows.find((item) => item.id === id)!; return { taskId: row.id, promotionId: row.promotionId, employeeId: me.id, sector: row.sector, updateText: "Tarefa concluída em lote" } }))
+  }
+  revalidatePath("/gerente")
   revalidatePath("/painel")
   revalidatePath("/calendario")
 }
