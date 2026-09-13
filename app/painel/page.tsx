@@ -13,7 +13,27 @@ export default async function PanelPage() {
   const notifications = await getNotifications(employee.id)
   const unread = await getUnreadCount(employee.id)
   const tasks = employee.sector ? await getTasksForSector(employee.sector) : []
-  const pendingTasks = tasks.filter((task) => !task.completed)
+  const sectorNames = (() => {
+    if (!employee.sector) return []
+    try {
+      const parsed = JSON.parse(employee.sector)
+      return Array.isArray(parsed) ? parsed.filter((item): item is string => typeof item === "string") : [employee.sector]
+    } catch {
+      return [employee.sector]
+    }
+  })()
+  const sectorLabel = sectorNames.join(", ") || "Nenhum setor definido"
+  const validationSummaries = Array.from(
+    tasks.reduce((groups, task) => {
+      const key = `${task.sector}|${task.dueDate}`
+      const current = groups.get(key) ?? { sector: task.sector, dueDate: task.dueDate, total: 0, completed: 0 }
+      current.total += 1
+      if (task.completed) current.completed += 1
+      groups.set(key, current)
+      return groups
+    }, new Map<string, { sector: string; dueDate: string; total: number; completed: number }>()),
+  ).map(([, summary]) => ({ ...summary, isComplete: summary.completed === summary.total }))
+  const pendingTasks = validationSummaries.filter((summary) => !summary.isComplete)
 
   return (
     <main className="min-h-dvh bg-background pb-20">
@@ -26,7 +46,7 @@ export default async function PanelPage() {
       <div className="mx-auto flex max-w-lg flex-col gap-5 px-4 py-6">
         <section className="rounded-2xl bg-secondary p-5 text-secondary-foreground shadow-sm">
           <p className="text-sm font-semibold text-secondary-foreground/75">Seu setor</p>
-          <h2 className="mt-1 text-2xl font-extrabold">{employee.sector ?? "Nenhum setor definido"}</h2>
+          <h2 className="mt-1 text-2xl font-extrabold">{sectorLabel}</h2>
           <p className="mt-2 text-sm text-secondary-foreground/75">
             Acompanhe as tarefas e promoções do seu setor.
           </p>
@@ -44,13 +64,14 @@ export default async function PanelPage() {
         <section className="rounded-2xl border border-border bg-card p-5 shadow-sm">
           <h2 className="text-lg font-extrabold">Próximas tarefas</h2>
           {pendingTasks.length === 0 ? (
-            <p className="mt-3 text-sm text-muted-foreground">Nenhuma tarefa pendente no momento.</p>
+            <p className="mt-3 text-sm text-muted-foreground">Nenhuma validação pendente no momento.</p>
           ) : (
             <ul className="mt-3 space-y-3">
-              {pendingTasks.slice(0, 5).map((task) => (
-                <li key={task.id} className="rounded-xl bg-muted p-3">
-                  <p className="font-bold">{task.title}</p>
-                  <p className="mt-1 text-xs text-muted-foreground">Prazo: {task.dueDate}</p>
+              {pendingTasks.slice(0, 5).map((summary) => (
+                <li key={`${summary.sector}-${summary.dueDate}`} className="rounded-xl bg-muted p-3">
+                  <p className="font-bold">Validação do setor</p>
+                  <p className="mt-1 text-xs text-muted-foreground">{summary.sector} · Prazo: {summary.dueDate}</p>
+                  <p className="mt-1 text-xs text-amber-700">{summary.completed}/{summary.total} concluídas</p>
                 </li>
               ))}
             </ul>
