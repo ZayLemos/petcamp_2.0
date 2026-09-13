@@ -1,7 +1,8 @@
 import { redirect } from "next/navigation"
 import { AppHeader } from "@/components/app-header"
 import { BottomNav } from "@/components/bottom-nav"
-import { completeTasks, toggleTaskCompletion } from "@/app/actions/account"
+import { completeTasks, deleteOwnTask, moveOwnTask, toggleTaskCompletion } from "@/app/actions/account"
+import { SECTORS } from "@/lib/sectors"
 import { getCurrentUser, getNotifications, getSession, getTasksForSector, getUnreadCount } from "@/lib/data"
 
 export default async function PanelPage() {
@@ -80,7 +81,7 @@ export default async function PanelPage() {
                         <p className="mt-1 text-xs text-amber-700">{summary.completed}/{summary.total} concluídas</p>
                       </summary>
                       <ul className="mt-3 space-y-2 border-t border-border pt-3">
-                        {summaryTasks.map((task) => <li key={task.id} className="flex items-center justify-between gap-2 rounded-lg bg-card p-2 text-sm"><div><p className="font-semibold">{task.productName ?? task.title}</p><p className="text-xs text-muted-foreground">{task.type === "start" ? "Início" : "Término"} · {task.completed ? "Concluída" : "Pendente"}</p></div><form action={toggleTaskCompletion}><input type="hidden" name="taskId" value={task.id} /><button type="submit" className="rounded-lg bg-primary px-2 py-1 text-xs font-bold text-primary-foreground">{task.completed ? "Reabrir" : "Concluir"}</button></form></li>)}
+                        {summaryTasks.map((task) => <li key={task.id} className="flex items-center justify-between gap-2 rounded-lg bg-card p-2 text-sm"><div><p className="font-semibold">{task.productName ?? task.title}</p><p className="text-xs text-muted-foreground">{task.type === "start" ? "Início" : "Término"} · {task.completed ? "Concluída" : "Pendente"}</p></div><div className="flex flex-wrap justify-end gap-1"><form action={toggleTaskCompletion}><input type="hidden" name="taskId" value={task.id} /><button type="submit" className="rounded-lg bg-primary px-2 py-1 text-xs font-bold text-primary-foreground">{task.completed ? "Reabrir" : "Concluir"}</button></form><form action={deleteOwnTask}><input type="hidden" name="taskId" value={task.id} /><button type="submit" className="rounded-lg border border-red-200 px-2 py-1 text-xs font-bold text-red-600">Excluir</button></form><form action={moveOwnTask} className="flex gap-1"><input type="hidden" name="taskId" value={task.id} /><select name="destination" aria-label="Novo setor" className="max-w-28 rounded-lg border border-border px-1 text-xs">{SECTORS.map((item) => <option key={item}>{item}</option>)}</select><button type="submit" className="rounded-lg border border-primary px-2 py-1 text-xs font-bold text-primary">Mover</button></form></div></li>)}
                       </ul>
                     </details>
                   </li>

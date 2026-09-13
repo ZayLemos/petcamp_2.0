@@ -270,6 +270,41 @@ export async function completeTasks(formData: FormData) {
   revalidatePath("/calendario")
 }
 
+function parseAllowedSectors(value: string | null) {
+  if (!value) return []
+  try {
+    const parsed = JSON.parse(value)
+    return Array.isArray(parsed) ? parsed.map(String) : [value]
+  } catch {
+    return [value]
+  }
+}
+
+export async function deleteOwnTask(formData: FormData) {
+  const taskId = Number(formData.get("taskId"))
+  const me = await getCurrentUser()
+  if (!me || !Number.isInteger(taskId) || taskId <= 0) throw new Error("Tarefa inválida.")
+  const task = await db.select({ id: promotionTasks.id, sector: promotionTasks.sector }).from(promotionTasks).where(eq(promotionTasks.id, taskId)).limit(1)
+  if (!task[0]) throw new Error("Tarefa não encontrada.")
+  if (me.role !== "manager" && !parseAllowedSectors(me.sector).includes(task[0].sector)) throw new Error("Você não pode alterar esta tarefa.")
+  await db.delete(promotionTasks).where(eq(promotionTasks.id, taskId))
+  revalidatePath("/painel")
+  revalidatePath("/calendario")
+}
+
+export async function moveOwnTask(formData: FormData) {
+  const taskId = Number(formData.get("taskId"))
+  const destination = String(formData.get("destination") ?? "").trim()
+  const me = await getCurrentUser()
+  if (!me || !Number.isInteger(taskId) || taskId <= 0 || !destination) throw new Error("Dados inválidos.")
+  const task = await db.select({ id: promotionTasks.id, sector: promotionTasks.sector }).from(promotionTasks).where(eq(promotionTasks.id, taskId)).limit(1)
+  if (!task[0]) throw new Error("Tarefa não encontrada.")
+  if (me.role !== "manager" && !parseAllowedSectors(me.sector).includes(task[0].sector)) throw new Error("Você não pode alterar esta tarefa.")
+  await db.update(promotionTasks).set({ sector: destination }).where(eq(promotionTasks.id, taskId))
+  revalidatePath("/painel")
+  revalidatePath("/calendario")
+}
+
 export async function updateSector(sector: string) {
   const me = await getCurrentUser()
   if (!me) throw new Error("Não autenticado.")
