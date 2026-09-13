@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation"
 import { AppHeader } from "@/components/app-header"
 import { BottomNav } from "@/components/bottom-nav"
-import { toggleTaskCompletion } from "@/app/actions/account"
+import { completeTasks, toggleTaskCompletion } from "@/app/actions/account"
 import { getCurrentUser, getNotifications, getSession, getTasksForSector, getUnreadCount } from "@/lib/data"
 
 export default async function PanelPage() {
@@ -72,6 +72,7 @@ export default async function PanelPage() {
                 const summaryTasks = tasks.filter((task) => task.sector === summary.sector && task.dueDate === summary.dueDate)
                 return (
                   <li key={`${summary.sector}-${summary.dueDate}`} className="rounded-xl bg-muted p-3">
+                    <div className="mb-3 flex items-center justify-between gap-2"><span className="text-xs font-semibold text-muted-foreground">{summary.completed}/{summary.total} concluídas</span><form action={completeTasks}><input type="hidden" name="taskIds" value={summaryTasks.map((task) => task.id).join(",")} /><button type="submit" className="rounded-lg bg-primary px-3 py-1.5 text-xs font-bold text-primary-foreground">Concluir tudo</button></form></div>
                     <details>
                       <summary className="cursor-pointer list-none">
                         <p className="font-bold">Validação do setor</p>
