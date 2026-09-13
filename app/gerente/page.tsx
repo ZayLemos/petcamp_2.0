@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { deleteSpreadsheetImports, importPromotionsFromExcel } from "@/app/actions/promotions"
+import { CompletedTasksReview } from "@/components/completed-tasks-review"
 
 interface TarefaVisual {
   produto: string;
@@ -95,6 +96,8 @@ export default function GerentePage() {
           <ArrowLeft className="size-4" />
           Voltar ao painel
         </Link>
+        <CompletedTasksReview />
+
         <div>
           <h2 className="text-xl font-bold text-gray-800">Importar Planilha Simplificada</h2>
           <p className="text-xs text-gray-400 mt-1">Envie o arquivo atualizado da PetCamp para processamento direto na tela.</p>

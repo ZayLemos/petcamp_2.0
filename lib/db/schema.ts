@@ -82,6 +82,8 @@ export const promotionTasks = pgTable("promotion_tasks", {
   completedBy: text("completedBy"),
   completedByName: text("completedByName"),
   completedAt: timestamp("completedAt"),
+  verifiedAt: timestamp("verified_at"),
+  verifiedBy: text("verified_by"),
   createdAt: timestamp("createdAt").notNull().defaultNow(),
 })
 
