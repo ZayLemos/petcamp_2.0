@@ -115,6 +115,8 @@ export const taskUpdates = pgTable("task_updates", {
   photoPath: text("photo_path"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   managerReadAt: timestamp("manager_read_at"),
+  approvedAt: timestamp("approved_at"),
+  approvedBy: text("approved_by"),
 })
 
 export const taskUpdateReplies = pgTable("task_update_replies", {
