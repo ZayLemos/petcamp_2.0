@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation"
+import { toggleTaskCompletion } from "@/app/actions/account"
 import { AppHeader } from "@/components/app-header"
 import { BottomNav } from "@/components/bottom-nav"
 import { CalendarView } from "@/components/calendar-view"
@@ -25,7 +26,7 @@ export default async function CalendarPage() {
         notifications={notifications}
         unread={unread}
       />
-      <CalendarView tasks={tasks} sector={employee.sector} isManager={employee.role === "manager"} />
+      <CalendarView tasks={tasks} sector={employee.sector} isManager={employee.role === "manager"} toggleTaskCompletion={toggleTaskCompletion} />
       <BottomNav isManager={employee.role === "manager"} />
     </main>
   )
