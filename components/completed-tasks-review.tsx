@@ -18,6 +18,7 @@ type CompletedTask = {
   sector: string
   completedByName: string | null
   completedAt: string
+  promotionStartDate: string | null
 }
 
 export function CompletedTasksReview() {
@@ -41,9 +42,9 @@ export function CompletedTasksReview() {
   }
 
   return <section className="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm">
-    <div className="flex items-center gap-2"><ClipboardCheck className="size-5 text-orange-500" /><div><h2 suppressHydrationWarning className="font-extrabold text-gray-800">Conferência de produtos concluídos</h2><p className="text-sm text-gray-500">Veja quem concluiu cada grupo de produto e confirme com OK.</p></div></div>
+    <div className="flex items-center gap-2"><ClipboardCheck className="size-5 text-orange-500" /><div><h2 suppressHydrationWarning className="font-extrabold text-gray-800">Conferência de conclusões</h2><p className="text-sm text-gray-500">Mostramos o funcionário, a data da conclusão e a data da promoção. Confirme com OK.</p></div></div>
     <div className="mt-4 space-y-2">
-      {loading ? <p className="text-sm text-gray-500">Carregando conclusões...</p> : tasks.length === 0 ? <p className="text-sm text-gray-500">Nenhuma tarefa aguardando conferência.</p> : tasks.map((task) => <div key={task.id} className="flex items-center justify-between gap-4 rounded-xl bg-orange-50 p-4"><div><p className="font-bold text-gray-800">{task.productName || task.title}</p><p className="text-sm text-gray-600">Concluído por {task.completedByName || "Funcionário"}</p><p suppressHydrationWarning className="text-xs text-gray-500">{new Date(task.completedAt).toLocaleDateString("pt-BR")}</p></div><button type="button" onClick={() => verify(task)} disabled={confirming === task.id} className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-green-600 px-4 py-2 text-sm font-bold text-white disabled:opacity-60"><CheckCircle2 className="size-4" />{confirming === task.id ? "Confirmando..." : "OK"}</button></div>)}
+      {loading ? <p className="text-sm text-gray-500">Carregando conclusões...</p> : tasks.length === 0 ? <p className="text-sm text-gray-500">Nenhuma tarefa aguardando conferência.</p> : tasks.map((task) => <div key={task.id} className="flex items-center justify-between gap-4 rounded-xl bg-orange-50 p-4"><div><p className="text-sm text-gray-600">{task.completedByName || "Funcionário"} concluiu</p><p suppressHydrationWarning className="text-xs text-gray-500">Concluída em {new Date(task.completedAt).toLocaleDateString("pt-BR")}</p><p suppressHydrationWarning className="text-xs text-gray-500">Promoção em {task.promotionStartDate ? new Date(task.promotionStartDate).toLocaleDateString("pt-BR") : "—"}</p></div><button type="button" onClick={() => verify(task)} disabled={confirming === task.id} className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-green-600 px-4 py-2 text-sm font-bold text-white disabled:opacity-60"><CheckCircle2 className="size-4" />{confirming === task.id ? "Confirmando..." : "OK"}</button></div>)}
     </div>
   </section>
 }

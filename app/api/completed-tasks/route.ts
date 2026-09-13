@@ -17,13 +17,14 @@ export async function GET() {
     sector: promotionTasks.sector,
     completedByName: promotionTasks.completedByName,
     completedAt: promotionTasks.completedAt,
+    promotionStartDate: promotions.startDate,
   }).from(promotionTasks)
     .innerJoin(promotions, eq(promotionTasks.promotionId, promotions.id))
     .where(and(eq(promotionTasks.completed, true), isNotNull(promotionTasks.completedAt), isNull(promotionTasks.verifiedAt)))
     .orderBy(desc(promotionTasks.completedAt))
 
   const tasks = Array.from(rows.reduce((groups, row) => {
-    const key = String(row.promotionId)
+    const key = `${row.completedByName || "funcionario"}-${row.completedAt?.toISOString().slice(0, 10)}`
     const group = groups.get(key)
     if (group) {
       group.ids.push(row.id)
