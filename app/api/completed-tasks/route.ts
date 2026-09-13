@@ -17,6 +17,7 @@ export async function GET() {
     sector: promotionTasks.sector,
     completedByName: promotionTasks.completedByName,
     completedAt: promotionTasks.completedAt,
+    promotionStartDate: promotions.startDate,
   }).from(promotionTasks)
     .innerJoin(promotions, eq(promotionTasks.promotionId, promotions.id))
     .where(and(eq(promotionTasks.completed, true), isNotNull(promotionTasks.completedAt), isNull(promotionTasks.verifiedAt)))
