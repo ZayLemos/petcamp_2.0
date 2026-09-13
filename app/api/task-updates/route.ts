@@ -44,6 +44,11 @@ export async function PATCH(request: Request) {
   if (!me || me.role !== "manager") return NextResponse.json({ error: "Não autorizado" }, { status: 403 })
   const { updateId, action = "read" } = await request.json()
   const ids = Array.isArray(updateId) ? updateId.map(Number).filter(Number.isInteger) : [Number(updateId)]
-  await db.update(taskUpdates).set(action === "approve" ? { managerReadAt: new Date(), approvedAt: new Date(), approvedBy: me.id } : { managerReadAt: new Date() }).where(inArray(taskUpdates.id, ids))
+  if (action === "approve") {
+    await db.delete(taskUpdateReplies).where(inArray(taskUpdateReplies.updateId, ids))
+    await db.delete(taskUpdates).where(inArray(taskUpdates.id, ids))
+  } else {
+    await db.update(taskUpdates).set({ managerReadAt: new Date() }).where(inArray(taskUpdates.id, ids))
+  }
   return NextResponse.json({ ok: true })
 }
