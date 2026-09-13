@@ -24,7 +24,11 @@ export function TaskUpdatesChat() {
     setIsManager(data.isManager === true)
     if (selected === null && data.updates[0]) setSelected(data.updates[0].id)
   }
-  useEffect(() => { load() }, [])
+  useEffect(() => {
+    load()
+    const timer = window.setInterval(load, 10000)
+    return () => window.clearInterval(timer)
+  }, [])
   const currentReplies = useMemo(() => replies.filter((reply) => reply.updateId === selected), [replies, selected])
   async function sendReply(event: React.FormEvent) {
     event.preventDefault()
