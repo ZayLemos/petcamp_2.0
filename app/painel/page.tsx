@@ -67,13 +67,23 @@ export default async function PanelPage() {
             <p className="mt-3 text-sm text-muted-foreground">Nenhuma validação pendente no momento.</p>
           ) : (
             <ul className="mt-3 space-y-3">
-              {pendingTasks.slice(0, 5).map((summary) => (
-                <li key={`${summary.sector}-${summary.dueDate}`} className="rounded-xl bg-muted p-3">
-                  <p className="font-bold">Validação do setor</p>
-                  <p className="mt-1 text-xs text-muted-foreground">{summary.sector} · Prazo: {summary.dueDate}</p>
-                  <p className="mt-1 text-xs text-amber-700">{summary.completed}/{summary.total} concluídas</p>
-                </li>
-              ))}
+              {pendingTasks.slice(0, 5).map((summary) => {
+                const summaryTasks = tasks.filter((task) => task.sector === summary.sector && task.dueDate === summary.dueDate)
+                return (
+                  <li key={`${summary.sector}-${summary.dueDate}`} className="rounded-xl bg-muted p-3">
+                    <details>
+                      <summary className="cursor-pointer list-none">
+                        <p className="font-bold">Validação do setor</p>
+                        <p className="mt-1 text-xs text-muted-foreground">{summary.sector} · Prazo: {summary.dueDate}</p>
+                        <p className="mt-1 text-xs text-amber-700">{summary.completed}/{summary.total} concluídas</p>
+                      </summary>
+                      <ul className="mt-3 space-y-2 border-t border-border pt-3">
+                        {summaryTasks.map((task) => <li key={task.id} className="rounded-lg bg-card p-2 text-sm"><p className="font-semibold">{task.productName ?? task.title}</p><p className="text-xs text-muted-foreground">{task.type === "start" ? "Início" : "Término"} · {task.completed ? "Concluída" : "Pendente"}</p></li>)}
+                      </ul>
+                    </details>
+                  </li>
+                )
+              })}
             </ul>
           )}
         </section>
