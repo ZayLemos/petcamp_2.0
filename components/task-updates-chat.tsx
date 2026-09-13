@@ -22,16 +22,20 @@ export function TaskUpdatesChat() {
     if (!response.ok) return
     const data = await response.json()
     setUpdates(data.updates)
-    setReplies(data.replies)
     setIsManager(data.isManager === true)
     if (selected === null && data.updates[0]) setSelected(data.updates[0].id)
   }
   useEffect(() => {
     load()
-    const timer = window.setInterval(load, 30000)
+    const timer = window.setInterval(load, 60000)
     return () => window.clearInterval(timer)
   }, [])
-  const currentReplies = useMemo(() => replies.filter((reply) => reply.updateId === selected), [replies, selected])
+  const currentReplies = useMemo(() => replies.filter((reply) => selected !== null && (updates.find((item) => item.id === selected)?.ids || [selected]).includes(reply.updateId)), [replies, selected, updates])
+  useEffect(() => {
+    if (selected === null) return
+    const ids = updates.find((item) => item.id === selected)?.ids || [selected]
+    fetch(`/api/task-updates?updateIds=${ids.join(",")}`, { cache: "no-store" }).then((response) => response.ok ? response.json() : null).then((data) => { if (data) setReplies(data.replies) })
+  }, [selected, updates])
   async function sendReply(event: React.FormEvent) {
     event.preventDefault()
     if (!selected || (!message.trim() && !photo)) return
