@@ -23,7 +23,7 @@ export async function GET() {
     .orderBy(desc(promotionTasks.completedAt))
 
   const tasks = Array.from(rows.reduce((groups, row) => {
-    const key = String(row.promotionId)
+    const key = `${row.completedByName || "funcionario"}-${row.completedAt?.toISOString().slice(0, 10)}`
     const group = groups.get(key)
     if (group) {
       group.ids.push(row.id)
